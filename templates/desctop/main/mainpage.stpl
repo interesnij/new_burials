@@ -11,25 +11,25 @@
     <div class="mx-0 front-icons row">
         <div class="p-0 front-icons__item col-sm-12 col-md-6 col-lg-3">
             <a class="front-icons__link d-flex align-items-center" href="/cemeteries">
-                <img src="/static/content/cemeteries.svg" alt="Кладбища">
+                <img src="/static/images/cemeteries.svg" alt="Кладбища">
                 <h3 class="text-uppercase front-icons__title">Кладбища</h3>
             </a>
         </div> 
         <div class="p-0 front-icons__item col-sm-12 col-md-6 col-lg-3">
             <a class="front-icons__link d-flex align-items-center" href="/search">
-                <img src="/static/content/burials.svg" alt="Захоронения">
+                <img src="/static/images/burials.svg" alt="Захоронения">
                 <h3 class="text-uppercase front-icons__title">Захоронения</h3>
             </a>
         </div>
         <div class="p-0 front-icons__item col-sm-12 col-md-6 col-lg-3">
             <a class="front-icons__link d-flex align-items-center" href="/mass-graves">
-                <img src="/static/content/mass-graves.svg" alt="Братские могилы">
+                <img src="/static/images/mass-graves.svg" alt="Братские могилы">
                 <h3 class="text-uppercase front-icons__title">Братские могилы</h3>
             </a>
         </div>
         <div class="p-0 front-icons__item col-sm-12 col-md-6 col-lg-3">
             <a class="front-icons__link d-flex align-items-center" href="/find">
-                <img src="/static/content/query.svg" alt="Запрос на поиск">
+                <img src="/static/images/query.svg" alt="Запрос на поиск">
                 <h3 class="text-uppercase front-icons__title">Запрос на поиск</h3>
             </a>
         </div>
