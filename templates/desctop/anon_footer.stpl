@@ -1,0 +1,137 @@
+    <div class="bg-light p-5 text-center cursor-pointer">
+    <img class="mw-100" src="/static/images/investor-1.jpeg" alt="Инвестируй в Проект">
+    </div>
+</div>
+<div>
+    <div class="footer border-top py-5">
+        <div class="container">
+            <div class="pt-4 row">
+                <div class="col-12 col-sm">
+                    <div class="mb-5">
+                        <a class="logo" href="/">
+                            Напогосте.рф
+                        </a>
+                    </div>
+                    <div class="mb-5">
+                        <div class="d-flex socials">
+                            <a href="" target="blank"><i class="icon-facebook"></i></a>
+                            <a href="" target="blank"><i class="icon-youtube"></i></a>
+                            <a href="" target="blank"><i class="icon-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="mb-5">
+                        <button type="button" class="btn btn-outline-primary">Напишите нам</button>
+                    </div>
+                </div>
+                <div class="d-none d-lg-block col-12 col-sm">
+                    <h4 class="text-uppercase mb-4">Меню</h4>
+                    <ul class="footer__menu">
+                        <li><a target="_self" href="/cemeteries">Кладбища</a></li>
+                        <li><a target="_self" href="/search">Захоронения</a></li>
+                        <li><a target="_self" href="/mass-graves">Братские могилы</a></li>
+                        <li><a target="_self" href="/find">Заказать поиск</a></li>
+                        <li><a target="_self" href="/services">Услуги</a></li>
+                        <li><a target="_self" href="/blog">Блог</a></li>
+                        <li><a target="_self" href="/faq">Вопрос-ответ</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-sm">
+                    <h4 class="text-uppercase mb-4 d-none d-sm-block">Документы</h4>
+                    <ul class="footer__menu">
+                        <li><a target="_blank" href="/agreement">Пользовательское соглашение</a></li>
+                        <li><a target="_blank" href="/confidence">Политика конфиденциальности</a></li>
+                        <li><a target="_blank" href="/requisites">Реквизиты</a></li>
+                        <li><a target="_blank" href="/contract">Публичный договор</a></li>
+                    </ul>
+                    <ul class="footer__menu">
+                        <li><a target="_self" href="/page/promo">Промо-материалы</a></li>
+                        <li><a target="_self" href="/page/investor">Инвестируй в Проект</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-sm">
+                    <h4 class="text-uppercase mb-4 d-none d-sm-block">Мы принимаем</h4>
+                    <img src="/static/images/payments2.png" alt="Принимаем к оплате">
+                </div>
+            </div>
+            <div class="pt-4 row">
+                <div class="col-12 col-sm">
+                    <p>
+                        Индивидуальный предприниматель <br>
+                        УНП: 11111111<br>
+                        Свидетельство о государственной регистрации № 1111111 от 01.01.2024
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-second border-top py-5 d-none d-lg-block">
+        <div class="container">
+            <div class="row">
+                <div class="col-auto text-uppercase font-weight-bold d-flex align-items-center col">Свяжитесь с нами</div>
+                <div class="d-flex align-items-center col">
+                    <div class="d-flex site-contacts">
+                        <div>
+                            <div class="main-phone" role="button" tabindex="0">
+                                <span>+8 800<!-- --> <strong>000 00 00</strong></span>
+                                <i class="icon-phone"></i>
+                                <i class="icon-whatsapp"></i>
+                                <i class="icon-viber"></i>
+                                <i class="icon-telegram"></i>
+                            </div>
+                        </div>
+                        <div class="px-3"><a href="mailto:info@напогосте.рф">info@напогосте.рф</a></div>
+                    </div>
+                </div>
+                <div class="col-auto col">
+                    <div class="country-switcher dropdown">
+                        <button type="button" aria-haspopup="true" aria-expanded="false" class="d-flex align-items-center btn btn-link">
+                            <span class="d-none d-xl-inline">Страна поиска: </span>
+                            <img src="/static/images/belarus-flag.jpg" alt="Беларусь"><i class="icon-chevron-down"></i>
+                        </button>
+                        <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
+                            <button type="button" tabindex="0" role="menuitem" class="d-flex justify-content-between align-items-center dropdown-item">
+                                Беларусь
+                                <img src="/static/images/belarus-flag.jpg" alt="Беларусь">
+                            </button>
+                            <button type="button" tabindex="0" role="menuitem" class="d-flex justify-content-between align-items-center dropdown-item">
+                                Россия
+                                <img src="/static/images/russia-flag.png" alt="Россия">
+                            </button>
+                            <button type="button" tabindex="0" role="menuitem" class="d-flex justify-content-between align-items-center dropdown-item">
+                                Украина
+                                <img src="/static/images/ukraine-flag.png" alt="Украина">
+                            </button>
+                            <button type="button" tabindex="0" role="menuitem" class="d-flex justify-content-between align-items-center dropdown-item">
+                                Казахстан
+                                <img src="/static/images/kz-flag.png" alt="Казахстан">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bottom text-center text-sm-left">
+        <div class="container">
+            <div class="row">
+                <div class="col">Все права защищены © <!-- -->2024<!-- --> напогосте.рф</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="cart-block empty"></div>
+<div class="help-button"><button type="button">?</button></div>
+<div class="s-alert-wrapper"></div>
+</div>
+
+<div id="fullscreens_container"></div>
+<div id="modal_container"></div>
+
+
+<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=f24c512a-4137-4c65-a9e6-39f5d7cd0ebe&suggest_apikey=6d98461b-030b-42e8-9a8b-0ad3c4bea025" type="text/javascript"></script>
+<script src="/static/scripts/main8.js?ver5"></script>
+<script src="/static/scripts/map.js"></script>
+
+</body>
+
+</html>

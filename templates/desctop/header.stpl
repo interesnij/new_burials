@@ -1,0 +1,169 @@
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="/static/images/favicon.ico">
+    <title>Поиск захоронений онлайн, поиск могилы по фамилии, месту или дате смерти</title>
+    <meta name="description" content="Этот сайт является агрегатором ритуальных услуг со всех городов, а так же предоставляет электронную регистрацию захоронений.">
+    <meta name="keywords" content="Этот сайт является агрегатором ритуальных услуг со всех городов, а так же предоставляет электронную регистрацию захоронений.">
+    <link href="/static/styles/bootstrap.css" rel="stylesheet">
+    <link href="/static/styles/style.css" rel="stylesheet">
+</head> 
+
+<body>
+    <div id="main">
+        <div class="header transparent">
+            <div class="header-first py-md-3">
+                <div class="container">
+                    <div class="align-items-md-center flex-md-nowrap row">
+                        <div class="col-auto logo-col col">
+                            <a class="logo" href="/">
+                                Напогосте.рф
+                            </a>
+                        </div>
+                        <div class="currency-col col">
+                            <div class="dropdown">
+                                <button type="button" aria-haspopup="true" aria-expanded="false" class="px-1 border-0 bg-transparent btn btn-secondary">
+                                    BYN
+                                </button>
+                                <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu">
+                                    <button type="button" tabindex="0" role="menuitem" class="dropdown-item">EUR</button>
+                                    <button type="button" tabindex="0" role="menuitem" class="dropdown-item">USD</button>
+                                    <button type="button" tabindex="0" role="menuitem" class="dropdown-item">UAH</button>
+                                    <button type="button" tabindex="0" role="menuitem" class="dropdown-item">RUB</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-auto order-9 order-xl-0 d-xl-none burger col">
+                            <div class="burger-menu">
+                                <div class="dropdown">
+                                    <button type="button" aria-haspopup="true" aria-expanded="false" class="btn btn-link">
+                                        <i class="icon-burger"></i>
+                                        <span class="text-uppercase d-none d-xl-inline">Меню</span>
+                                    </button>
+                                    <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu">
+                                        <ul class="menu-main d-block nav">
+                                            <li class="nav-item"><a class="nav-link" href="/">Главная</a></li> 
+                                            <li class="nav-item"><a class="nav-link" href="/braves/">Братские могилы</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="/wall">Стена памяти</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="/places/">Кладбища</a></li>
+                                            <% if services_enabled { %>
+                                                <li class="nav-item"><a class="nav-link" href="/services">Уборка могил</a></li>
+                                            <% } %>
+                                            <li class="nav-item"><a class="nav-link" href="/organizations_country/1/">Организации</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border-right col-auto order-3 oder-md-0 col">
+                            <div class="country-switcher dropdown">
+                                <button type="button" aria-haspopup="true" aria-expanded="false" class="d-flex align-items-center btn btn-link">
+                                    <span class="d-none d-xl-inline">Страна поиска: </span>
+                                    <img src="/static/images/belarus-flag.jpg" alt="Беларусь">
+                                    <i class="icon-chevron-down"></i>
+                                </button>
+                                <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
+                                    <button type="button" tabindex="0" role="menuitem" class="d-flex justify-content-between align-items-center dropdown-item">Беларусь
+                                        <img src="/static/images/belarus-flag.jpg" alt="Беларусь">
+                                    </button>
+                                    <button type="button" tabindex="0" role="menuitem" class="d-flex justify-content-between align-items-center dropdown-item">
+                                        Россия
+                                        <img src="/static/images/russia-flag.png" alt="Россия">
+                                    </button>
+                                    <button type="button" tabindex="0" role="menuitem" class="d-flex justify-content-between align-items-center dropdown-item">
+                                        Украина
+                                        <img src="/static/images/ukraine-flag.png" alt="Украина">
+                                    </button>
+                                    <button type="button" tabindex="0" role="menuitem" class="d-flex justify-content-between align-items-center dropdown-item">
+                                        Казахстан
+                                        <img src="/static/images/kz-flag.png" alt="Казахстан">
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border-right col-auto contacts-col col"></div>
+                        <div class="border-right col-auto order-4 oder-md-0 add-col col">
+                            <div class="dropdown">
+                                <button type="button" aria-haspopup="true" aria-expanded="false" class="add-toggle btn btn-outline-primary">
+                                    <i class="icon-plus"></i><span>Добавить</span>
+                                </button>
+                                <div tabindex="-1" role="menu" aria-hidden="true" class="add-menu dropdown-menu"> 
+                                    <% if request_user.is_superuser() { %>
+                                        <a href="/create_country/" class="create_country border-bottom dropdown-item d-flex align-items-center">
+                                            <span>Страну</span>
+                                        </a>
+                                        <a href="/create_region/" class="create_region border-bottom dropdown-item d-flex align-items-center">
+                                            <span>Регион</span>
+                                        </a>
+                                        <a href="/create_district/" class="create_district border-bottom dropdown-item d-flex align-items-center">
+                                            <span>Район</span>
+                                        </a>
+                                        <a href="/create_city/" class="create_city border-bottom dropdown-item d-flex align-items-center">
+                                            <span>Город</span>
+                                        </a>
+                                        <a class="border-bottom dropdown-item d-flex align-items-center" href="/create_deceased/">
+                                            <span>Захоронение</span>
+                                        </a>
+                                        <a class="border-bottom dropdown-item d-flex align-items-center" href="/create_place/">
+                                            <span>Кладбище</span>
+                                        </a>
+                                        <a class="border-bottom dropdown-item d-flex align-items-center" href="/create_brave/">
+                                            <span>Братскую могилу</span>
+                                        </a>
+                                        <a class="border-bottom dropdown-item d-flex align-items-center" href="/create_organization/">
+                                            <span>Организацию</span>
+                                        </a>
+                                        <a class="border-bottom dropdown-item d-flex align-items-center lists" href="/lists/">
+                                            <span>Списки</span>
+                                        </a>
+                                    <% } else { %>
+                                        <a class="border-bottom dropdown-item d-flex align-items-center" href="/create_deceased/">
+                                            <i class="icon-burial"></i><span>Захоронение</span>
+                                        </a>
+                                        <a class="border-bottom dropdown-item d-flex align-items-center" href="/create_place/">
+                                            <i class="icon-cemetery"></i><span>Кладбище</span>
+                                        </a>
+                                        <a class="border-bottom dropdown-item d-flex align-items-center" href="/create_brave/">
+                                            <i class="icon-mass-grave"></i><span>Братскую могилу</span>
+                                        </a>
+                                        <a class="border-bottom dropdown-item d-flex align-items-center" href="/create_organization/">
+                                            <i class="icon-office"></i><span>Организацию</span>
+                                        </a>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-auto order-5 oder-md-0 col">
+                            <div class="dropdown">
+                                <button type="button" aria-haspopup="true" aria-expanded="false" class="user-toggle btn btn-link">
+                                    <i class="icon-user"></i><span class="d-none d-xl-inline">Вход и регистрация</span>
+                                </button>
+                                <div tabindex="-1" role="menu" aria-hidden="true" class="cabinet-menu dropdown-menu">
+                                    <button type="button" tabindex="0" role="menuitem" class="dropdown-item login_window">Войти</button>
+                                    <button type="button" tabindex="0" role="menuitem" class="dropdown-item signup_window">Зарегистрироваться</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header-second border-top border-bottom d-none d-xl-block">
+                <div class="container">
+                    <ul class="menu-main justify-content-between nav">
+                        <li class="py-3 nav-item"><a class="nav-link" href="/">Главная</a></li>
+                        <li class="py-3 nav-item"><a class="nav-link" href="/braves/">Братские могилы</a></li>
+                        <li class="py-3 nav-item"><a class="nav-link" href="/wall/">Стена памяти</a></li>
+                        <li class="py-3 nav-item"><a class="nav-link" href="/places/">Кладбища</a></li>
+                        <% if services_enabled { %>
+                            <li class="py-3 nav-item"><a class="nav-link" href="/services">Уборка могил</a></li>
+                        <% } %>
+                        <li class="py-3 nav-item"><a class="nav-link" href="/organizations_country/1/">Организации</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">

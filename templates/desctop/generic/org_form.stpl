@@ -1,0 +1,22 @@
+<form class="find-burial-form py-4 px-md-5 px-3 row" service-pk="<%=service.id %>">
+	<div class="row">
+		<div class="col-md-12 col-lg-4">
+			<div class="form-group">
+                <label for="id_name" class="">Название фирмы <span class="text-red-600">*</span></label>
+                <input name="name" id="id_name" type="text" class="form-control">
+            </div> 
+		</div> 
+		<div class="col-md-12 col-lg-4">
+			<div class="form-group">
+                <label for="id_location" class="">Расположение</label>
+                <input id="id_location" class="form-control" name="location" type="text">
+            </div>
+		</div>
+        <div class="col-md-12 col-lg-4">
+			<div class="form-group">
+                <button style="margin-top: 23px;" type="button" class="search search_organizations btn btn-primary">Искать</button>
+            </div> 
+		</div>
+	</div>
+</form>
+<div class="col-md-12 search_container"></div>

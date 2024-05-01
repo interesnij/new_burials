@@ -1,0 +1,24 @@
+
+<h6 class="text-lg font-semibold" style="margin-top: 50px;">
+                        Построить маршрут
+                    </h6>
+                    <p class="font-semibold mt-2">
+                        <br /> 
+                        <div>
+                            <label class="font-semibold" for="suggest1">Адрес отправления:</label>
+                            <input type="text" id="suggest1" class="input form-input">
+                            <span id="notice1"></span>
+                        </div> 
+                        <div>
+                            <label class="font-semibold" for="suggest2">Адрес назначения:</label>
+                              <input value="" type="text" id="suggest2" class="input form-input">
+                            <p id="notice2"></p>
+                            <br />
+                        </div>
+                        <div style="margin-bottom: 60px;">
+                            <button class="btn" style="border: 1px solid grey; float: right;margin-bottom: 10px;" type="submit" id="button3">Построить</button>
+                            <span id="notice3"></span>
+                        </div>
+                    </p>
+                    
+<div id="map"></div>

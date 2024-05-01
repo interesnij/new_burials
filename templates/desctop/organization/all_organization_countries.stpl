@@ -1,0 +1,4 @@
+<% include!("../header.stpl"); %>
+
+
+<% include!("../footer.stpl"); %>

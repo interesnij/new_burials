@@ -1,0 +1,21 @@
+<div class="property-grid-content grid-item">
+    <div class="row">
+    <% for i in object_list.iter() { %> 
+        <div style="margin-bottom:10px">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <img src="<%= i.get_image() %>" class="list_fit shadow" alt="img">
+                    <div class="ms-3 flex-1">
+                        <a href="/deceased/<%= i.id %>/" class="">
+                            <%= i.name %>
+                        </a>
+                        <p class="small">
+                            <%= i.phone %>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% } %>
+    </div>
+</div>

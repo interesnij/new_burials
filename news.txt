@@ -1,0 +1,28 @@
+
+2. добавить управление картой, фуллскрин
+
+https://pomnim.online/cemetery/62584
+https://pomnim.by/burial/1313291
+фирмы https://mortem.rip/users/?page=1
+
+
+4. В форме поиска вместо локации нужно ввести жиыой поиск по кладбищам
+6. Кнопки выкачивания данных в экселе например, например кладбища.
+1. Отзывы о проекте
+2. О сайт страница, terms, policy, 
+3. Парсер? 
+
+яндекс карты ключ 066a49f1-a356-4f39-a77c-1d74eb1714aa
+кладбища 52   часа
+
+
+941efd099cc9f352.pem gd_bundle-g2-g1.crt 
+
+UPDATE I did as @nikita-kipriyanov suggested, this worked.
+
+cat 3423l4kj23l4j.pem sf_bundle-g2-g1.crt > fullchain.pem 
+This would become the ssl_certificate file
+renamed the generated-private-key.txt into a privkey.pem file, 
+then change file encoding of it: 
+sudo iconv -c -f UTF8 -t ASCII privkey.pem >> privkey.pem 
+This would become the ssl_certificate_key file

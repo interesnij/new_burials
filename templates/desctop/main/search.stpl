@@ -1,0 +1,35 @@
+<h2 class="text-center mb-4">Результтаты поиска по запросу <%= q %></h2>
+
+<div class="mx-0 front-icons row">
+
+    <% for i in object_list.iter() { %>
+        <div class="d-flex col-sm-12 col-md-6 col-lg-3">
+            <div class="border rounded p-3 mb-4 text-center flex-grow-1">
+                <a href="/deceased/<%= i.id %>/">
+                    <img src="<%= i.get_image() %>" alt="Захоронение ID <%= i.id %>" class="mw-100">
+                    <div class="font-weight-bold"><%= i.get_fio() %></div>
+                </a>
+                <div class="front-wall-date">
+                    <div>
+                        <strong class="text-dark">Годы жизни: </strong>
+                        <span>
+                            <% if i.birth_date.is_some() { %>
+                                <%= i.birth_date.unwrap().format("%d-%m-%Y").to_string() %>
+                            <% } %>
+                            <br>
+                            <% if i.death_date.is_some() { %>
+                                <%= i.death_date.unwrap().format("%d-%m-%Y").to_string() %>
+                            <% } %>
+                        </span>
+                    </div>
+                </div>
+                <div class="p-2">
+                    <% if i.memory_words.is_some() { %>
+                    <%= i.memory_words.as_deref().unwrap() %>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    <% } %>
+
+</div>
