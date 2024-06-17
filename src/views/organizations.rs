@@ -37,8 +37,6 @@ use std::borrow::BorrowMut;
 
 
 pub fn organization_routes(config: &mut web::ServiceConfig) {
-    config.route("/organizations_city/{id}/", web::get().to(all_organization_city_page));
-    config.route("/organizations_region/{id}/", web::get().to(all_organization_region_page));
     config.route("/organizations_country/{id}/", web::get().to(all_organization_country_page));
     config.route("/organization/{id}/", web::get().to(organization_page));
 
@@ -57,105 +55,6 @@ pub fn organization_routes(config: &mut web::ServiceConfig) {
     config.route("/services/{id}/", web::get().to(service_page));
 }
 
-
-pub async fn all_organization_city_page(req: HttpRequest, _id: web::Path<i32>) -> actix_web::Result<HttpResponse> {
-    let (is_desctop, is_ajax) = crate::utils::get_device_and_ajax(&req);
-    let services_enabled = false;
-    let _city = crate::utils::get_city(*_id).expect("E.");
-    let (_organizations, all_places)  = block(move || Organization::get_city_organizations(_city.id)).await?;
-    let user_id = get_request_user(&req).await;
-    if user_id.is_some() {
-        let _request_user = user_id.unwrap();
-            #[derive(TemplateOnce)]
-            #[template(path = "desctop/organization/all_organization_city.stpl")]
-            struct Template {
-                request_user:      User, 
-                city:              Citie,
-                all_organizations: Vec<Organization>,
-                all_places:        Vec<PlaceSmall>,
-                services_enabled:  bool,
-            } 
-            let body = Template {
-                request_user:      _request_user,
-                city:              _city,
-                all_organizations: _organizations,
-                all_places:        all_places,
-                services_enabled:  services_enabled,
-            }
-            .render_once()
-            .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
-            Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-    }
-    else {
-            #[derive(TemplateOnce)]
-            #[template(path = "desctop/organization/anon_all_organization_city.stpl")]
-            struct Template {
-                city:              Citie,
-                all_organizations: Vec<Organization>,
-                all_places:        Vec<PlaceSmall>,
-                services_enabled:  bool,
-            }
-            let body = Template {
-                city:              _city,
-                all_organizations: _organizations,
-                all_places:        all_places,
-                services_enabled:  services_enabled,
-            }
-            .render_once()
-            .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
-            Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-    }
-}
-
-//Получение всех организаций одного региона
-pub async fn all_organization_region_page(req: HttpRequest, _id: web::Path<i32>) -> actix_web::Result<HttpResponse> {
-    let (is_desctop, is_ajax) = crate::utils::get_device_and_ajax(&req);
-    let services_enabled = false;
-    let _region = crate::utils::get_region(*_id).expect("E.");
-    let (_organizations, all_places)  = block(move || Organization::get_region_organizations(_region.id)).await?;
-    let user_id = get_request_user(&req).await;
-    if user_id.is_some() {
-        let _request_user = user_id.unwrap();
-            #[derive(TemplateOnce)]
-            #[template(path = "desctop/organization/all_organization_region.stpl")]
-            struct Template {
-                request_user:      User,
-                region:            Region,
-                all_organizations: Vec<Organization>,
-                all_places:        Vec<PlaceSmall>,
-                services_enabled:  bool,
-            }
-            let body = Template {
-                request_user:      _request_user,
-                region:            _region,
-                all_organizations: _organizations,
-                all_places:        all_places,
-                services_enabled:  services_enabled,
-            }
-            .render_once()
-            .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
-            Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-    }
-    else {
-            #[derive(TemplateOnce)]
-            #[template(path = "desctop/organization/anon_all_organization_region.stpl")]
-            struct Template {
-                region:            Region,
-                all_organizations: Vec<Organization>,
-                all_places:        Vec<PlaceSmall>,
-                services_enabled:  bool,
-            }
-            let body = Template {
-                region:            _region,
-                all_organizations: _organizations,
-                all_places:        all_places,
-                services_enabled:  services_enabled,
-            }
-            .render_once()
-            .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
-            Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-    }
-}
 
 //Получение всех организаций одной страны
 pub async fn all_organization_country_page(req: HttpRequest, _id: web::Path<i32>) -> actix_web::Result<HttpResponse> {

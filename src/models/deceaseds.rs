@@ -446,7 +446,7 @@ impl Deceased {
         is_famous:    Option<bool>,
         with_photo:   Option<bool>,
         with_cord:    Option<bool>,
-        page:         Option<i32>,
+        page:         i32,
     ) -> (String, Vec<Deceased>, usize) { 
         /*
             case switch 
@@ -464,7 +464,7 @@ impl Deceased {
         let _connection = establish_connection();
         let mut stack = Vec::new();
         let mut case = 0;
-        let mut q = String::New();
+        let mut q = "".to_string();
 
         let mut next_page_number = 0;
         let offset: i64;
