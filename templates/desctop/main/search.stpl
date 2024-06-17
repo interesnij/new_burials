@@ -67,7 +67,7 @@
                             </strong>
                             <span>
                                 <% let _place = i.get_place(); %>
-                                <% if _place.is_some() { %>
+                                <% if _place.is_ok() { %>
                                     <%= _place.expect("E").title %>
                                 <% } %>
                             </span>
