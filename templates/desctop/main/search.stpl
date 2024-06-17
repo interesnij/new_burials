@@ -65,7 +65,12 @@
                             <strong class="text-dark">
                                 Место захоронения:&nbsp;
                             </strong>
-                            <span><%= i.get_place().title %></span>
+                            <span>
+                                <% let _place = i.get_place() %>
+                                <% if _place.is_some() { %>
+                                    <%= _place.expect("E").title %>
+                                <% } %>
+                            </span>
                         </div>
                         <div>
                             <strong class="text-dark">

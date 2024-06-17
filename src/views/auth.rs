@@ -49,10 +49,12 @@ pub async fn signup_page(req: HttpRequest) -> actix_web::Result<HttpResponse> {
         #[derive(TemplateOnce)]
         #[template(path = "desctop/auth/signup.stpl")]
         struct Template {
-            is_ajax: i32,
+            is_ajax:          i32,
+            services_enabled: bool,
         }
         let body = Template {
-            is_ajax: is_ajax,
+            is_ajax:          is_ajax,
+            services_enabled: services_enabled,
         }
         .render_once()
         .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
@@ -69,9 +71,11 @@ pub async fn login_page(req: HttpRequest) -> actix_web::Result<HttpResponse> {
         #[template(path = "desctop/auth/login.stpl")]
         struct Template {
             is_ajax: i32,
+            services_enabled: bool,
         }
         let body = Template {
-            is_ajax: is_ajax,
+            is_ajax:          is_ajax,
+            services_enabled: services_enabled,
         }
         .render_once()
         .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
