@@ -139,7 +139,7 @@ pub struct SeacrhData {
     pub with_coordinates: Option<bool>,
     pub page:             Option<i32>,
 } 
-pub async fn main_search_page(req: HttpRequest) -> actix_web::Result<HttpResponse> {
+pub async fn search_page(req: HttpRequest) -> actix_web::Result<HttpResponse> {
     let params_some = web::Query::<SeacrhData>::from_query(&req.query_string());
     if params_some.is_ok() {
         let params = params_some.unwrap();
