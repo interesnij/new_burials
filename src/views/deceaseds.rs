@@ -145,7 +145,7 @@ pub async fn edit_deceased_page(req: HttpRequest, _id: web::Path<i32>) -> actix_
     let _place = crate::utils::get_place(_deceased.place_id).expect("E.");
     let user_id = get_request_user(&req).await;
 
-    if user_id.is_some() { 
+    if user_id.is_some() {
         let _request_user = user_id.unwrap();
         if !_request_user.is_admin() {
             return Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body("403"));
@@ -169,7 +169,6 @@ pub async fn edit_deceased_page(req: HttpRequest, _id: web::Path<i32>) -> actix_
             .render_once()
             .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
             Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-            pResponse::Ok().content_type("text/html; charset=utf-8").body(body))
     }
     else {
         Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body("anon"))
