@@ -219,7 +219,7 @@ impl Deceased {
     }
     pub fn get_fio(&self) -> String {
         if self.middle_name.is_some() {
-            return self.last_name.clone() + &" ".to_string() + &self.first_name.clone() + &deceased.middle_name.as_deref().unwrap();   
+            return self.last_name.clone() + &" ".to_string() + &self.first_name.clone() + &self.middle_name.as_deref().unwrap();   
         }
         else {
             return self.first_name.clone() + &" ".to_string() + &self.last_name.clone();
@@ -733,7 +733,7 @@ impl Deceased {
 
             stack.push(i);
         }
-        return (q, stack, count);
+        return (q, stack, 0);
     }
 
     pub fn get_all (

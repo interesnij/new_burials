@@ -145,7 +145,7 @@ pub async fn main_search_page(req: HttpRequest) -> actix_web::Result<HttpRespons
         let params = params_some.unwrap();
         let page = crate::utils::get_page(&req);
         let user_id = get_request_user(&req).await;
-        let (q, object_list) = Deceased::main_search2 ( 
+        let (q, object_list, count) = Deceased::main_search2 ( 
             params.first_name.clone(),  
             params.middle_name.clone(),
             params.last_name.clone(),
@@ -160,6 +160,7 @@ pub async fn main_search_page(req: HttpRequest) -> actix_web::Result<HttpRespons
             params.with_coordinates,
             page,
         );
+        let services_enabled = false;
         if user_id.is_some() {
             let _request_user = user_id.unwrap();
 
@@ -185,13 +186,11 @@ pub async fn main_search_page(req: HttpRequest) -> actix_web::Result<HttpRespons
             #[derive(TemplateOnce)]
             #[template(path = "desctop/main/anon_search.stpl")]
             struct Template {
-                request_user:     User,
                 object_list:      Vec<Deceased>,
                 q:                String,
                 services_enabled: bool,
             }
             let body = Template {
-                request_user:     _request_user,
                 object_list:      object_list,
                 q:                q,
                 services_enabled: services_enabled,

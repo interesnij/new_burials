@@ -424,6 +424,7 @@ pub async fn service_page(req: HttpRequest, _id: web::Path<i32>) -> actix_web::R
                 request_user:       _request_user,
                 service:            _service,
                 organizations_list: organizations_list,
+                services_enabled:   services_enabled,
             }
             .render_once()
             .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;

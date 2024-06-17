@@ -46,6 +46,7 @@ pub async fn signup_page(req: HttpRequest) -> actix_web::Result<HttpResponse> {
     }
     else {
         let (is_desctop, is_ajax) = crate::utils::get_device_and_ajax(&req);
+        let services_enabled = false;
         #[derive(TemplateOnce)]
         #[template(path = "desctop/auth/signup.stpl")]
         struct Template {
@@ -66,6 +67,7 @@ pub async fn login_page(req: HttpRequest) -> actix_web::Result<HttpResponse> {
         Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(""))
     }
     else {
+        let services_enabled = false;
         let (is_desctop, is_ajax) = crate::utils::get_device_and_ajax(&req);
         #[derive(TemplateOnce)]
         #[template(path = "desctop/auth/login.stpl")]
