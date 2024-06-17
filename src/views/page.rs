@@ -28,7 +28,7 @@ use crate::utils::{
 
 pub fn page_routes(config: &mut web::ServiceConfig) {
     config.route("/", web::get().to(index_page));
-    config.route("/main_search", web::get().to(main_search_page));
+    config.route("/search/", web::get().to(search_page));
     config.route("/image/{id}/", web::get().to(image_page));
     config.route("/org_search", web::get().to(org_search_page));
 }
@@ -46,51 +46,28 @@ pub async fn index_page(req: HttpRequest) -> actix_web::Result<HttpResponse> {
             User::create_superuser(_request_user.id);
         }
         //println!("_request_user {:?}", _request_user.username.clone());
-        
-        if is_desctop {
-            #[derive(TemplateOnce)]
-            #[template(path = "desctop/main/mainpage.stpl")]
-            struct Template {
-                request_user:     User,
-                service_list:     Vec<Service>,
-                braves_list:      Vec<Deceased>,
-                services_enabled: bool,
-            }
-            let body = Template {
-                request_user:     _request_user,
-                service_list:     service_list,
-                braves_list:      braves_list,
-                services_enabled: services_enabled,
-            }
-            .render_once()
-            .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
-            Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
-        else {
-            #[derive(TemplateOnce)]
-            #[template(path = "desctop/main/mainpage.stpl")]
-            struct Template {
-                request_user:     User,
-                service_list:     Vec<Service>,
-                braves_list:      Vec<Deceased>,
-                services_enabled: bool,
-            }
-            let body = Template {
-                request_user:     _request_user,
-                service_list:     service_list,
-                braves_list:      braves_list,
-                services_enabled: services_enabled,
-            }
-            .render_once()
-            .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
-            Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
 
+            #[derive(TemplateOnce)]
+            #[template(path = "desctop/main/mainpage.stpl")]
+            struct Template {
+                request_user:     User,
+                service_list:     Vec<Service>,
+                braves_list:      Vec<Deceased>,
+                services_enabled: bool,
+            }
+            let body = Template {
+                request_user:     _request_user,
+                service_list:     service_list,
+                braves_list:      braves_list,
+                services_enabled: services_enabled,
+            }
+            .render_once()
+            .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
+            Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
     }
 
     else {
         println!("anon");
-        if is_desctop {
             #[derive(TemplateOnce)]
             #[template(path = "desctop/main/anon_mainpage.stpl")]
             struct Template {
@@ -106,24 +83,6 @@ pub async fn index_page(req: HttpRequest) -> actix_web::Result<HttpResponse> {
             .render_once()
             .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
             Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
-        else {
-            #[derive(TemplateOnce)]
-            #[template(path = "desctop/main/anon_mainpage.stpl")]
-            struct Template {
-                service_list:     Vec<Service>,
-                braves_list:      Vec<Deceased>,
-                services_enabled: bool,
-            }
-            let body = Template {
-                service_list:     service_list,
-                braves_list:      braves_list,
-                services_enabled: services_enabled,
-            }
-            .render_once()
-            .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
-            Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
     }
 }
 
@@ -133,7 +92,6 @@ pub async fn not_found(req: HttpRequest, _id: web::Path<i32>) -> actix_web::Resu
     let user_id = get_request_user(&req).await;
     if user_id.is_some() {
         let _request_user = user_id.unwrap();
-        if is_desctop {
             #[derive(TemplateOnce)]
             #[template(path = "desctop/main/404.stpl")]
             struct Template {
@@ -145,25 +103,9 @@ pub async fn not_found(req: HttpRequest, _id: web::Path<i32>) -> actix_web::Resu
             .render_once()
             .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
             Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
-        else {
-            #[derive(TemplateOnce)]
-            #[template(path = "desctop/main/404.stpl")]
-            struct Template {
-                request_user:   User,
-            }
-            let body = Template {
-                request_user:   _request_user,
-            }
-            .render_once()
-            .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
-            Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
-
     }
     
     else {
-        if is_desctop {
             #[derive(TemplateOnce)]
             #[template(path = "desctop/main/anon_404.stpl")]
             struct Template {}
@@ -171,16 +113,6 @@ pub async fn not_found(req: HttpRequest, _id: web::Path<i32>) -> actix_web::Resu
             .render_once()
             .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
             Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
-        else {
-            #[derive(TemplateOnce)]
-            #[template(path = "desctop/main/anon_404.stpl")]
-            struct Template {}
-            let body = Template {}
-            .render_once()
-            .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
-            Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
     }
 }
 
@@ -199,13 +131,14 @@ pub struct SeacrhData {
     pub is_famous:        Option<bool>,
     pub with_photo:       Option<bool>,
     pub with_coordinates: Option<bool>,
+    pub page:             Option<i32>,
 } 
 pub async fn main_search_page(req: HttpRequest) -> actix_web::Result<HttpResponse> {
     let params_some = web::Query::<SeacrhData>::from_query(&req.query_string());
     if params_some.is_ok() {
         let params = params_some.unwrap();
         let user_id = get_request_user(&req).await;
-        let (q, object_list) = Deceased::main_search (
+        let (q, object_list) = Deceased::main_search ( 
             params.first_name.clone(),  
             params.middle_name.clone(),
             params.last_name.clone(),
@@ -218,6 +151,8 @@ pub async fn main_search_page(req: HttpRequest) -> actix_web::Result<HttpRespons
             params.is_famous,
             params.with_photo,
             params.with_coordinates,
+            params.page,
+            20,
         );
         if user_id.is_some() {
             let _request_user = user_id.unwrap();

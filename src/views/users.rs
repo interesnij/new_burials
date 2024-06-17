@@ -40,7 +40,6 @@ pub async fn profile_page(req: HttpRequest) -> actix_web::Result<HttpResponse> {
     let user_id = crate::utils::get_request_user(&req).await;
     if user_id.is_some() {
         let _request_user = user_id.unwrap();
-        if is_desctop {
             #[derive(TemplateOnce)]
             #[template(path = "desctop/user/user.stpl")]
             struct Template {
@@ -54,22 +53,6 @@ pub async fn profile_page(req: HttpRequest) -> actix_web::Result<HttpResponse> {
             .render_once()
             .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
             Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
-        else {
-            #[derive(TemplateOnce)]
-            #[template(path = "desctop/user/user.stpl")]
-            struct Template {
-                request_user:     User,
-                services_enabled: bool,
-            }
-            let body = Template {
-                request_user:     _request_user,
-                services_enabled: services_enabled,
-            }
-            .render_once()
-            .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
-            Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
     }
     else {
         Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body("401"))

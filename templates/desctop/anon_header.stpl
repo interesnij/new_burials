@@ -125,7 +125,7 @@
                 <div class="container">
                     <ul class="menu-main justify-content-between nav">
                         <li class="py-3 nav-item"><a class="nav-link" href="/">Главная</a></li>
-                        <li class="py-3 nav-item"><a class="nav-link" href="/find/">Заявка на поиск</a></li>
+                        <li class="py-3 nav-item"><a class="nav-link" href="/search/">База захоронений</a></li>
                         <li class="py-3 nav-item"><a class="nav-link" href="/braves/">Братские могилы</a></li>
                         <li class="py-3 nav-item"><a class="nav-link" href="/wall/">Стена памяти</a></li>
                         <li class="py-3 nav-item"><a class="nav-link" href="/places/">Кладбища</a></li>

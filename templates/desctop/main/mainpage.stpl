@@ -44,7 +44,7 @@
             <div class="d-flex col-sm-12 col-md-6 col-lg-3">
                 <div class="border rounded p-3 mb-4 text-center flex-grow-1">
                     <a href="/brave/<%= i.id %>/">
-                        <img src="<%= i.get_image() %>" alt="Захоронение ID <%= i.id %>" class="mw-100">
+                        <img src="<%= i.get_image() %>" alt="img" class="mw-100">
                         <div class="font-weight-bold"><%= i.get_fio() %></div>
                     </a>
                     <div class="front-wall-date">

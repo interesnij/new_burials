@@ -89,7 +89,6 @@ pub async fn all_deceased_place_page(req: HttpRequest, _id: web::Path<i32>) -> a
 
     if user_id.is_some() { 
         let _request_user = user_id.unwrap();
-        if is_desctop {
             #[derive(TemplateOnce)]
             #[template(path = "desctop/place/all_deceased_place.stpl")]
             struct Template {
@@ -111,33 +110,8 @@ pub async fn all_deceased_place_page(req: HttpRequest, _id: web::Path<i32>) -> a
             .render_once()
             .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
             Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
-        else {
-            #[derive(TemplateOnce)]
-            #[template(path = "desctop/place/all_deceased_place.stpl")]
-            struct Template {
-                request_user:     User,
-                place:            Place,
-                object_list:      Vec<Deceased>,
-                next_page_number: i32,
-                is_ajax:          i32,
-                services_enabled: bool,
-            }
-            let body = Template {
-                request_user:     _request_user,
-                place:            _place,
-                object_list:      object_list,
-                next_page_number: next_page_number,
-                is_ajax:          is_ajax,
-                services_enabled: services_enabled,
-            }
-            .render_once()
-            .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
-            Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
     }
     else {
-        if is_desctop {
             #[derive(TemplateOnce)]
             #[template(path = "desctop/place/anon_all_deceased_place.stpl")]
             struct Template {
@@ -157,28 +131,6 @@ pub async fn all_deceased_place_page(req: HttpRequest, _id: web::Path<i32>) -> a
             .render_once()
             .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
             Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
-        else {
-            #[derive(TemplateOnce)]
-            #[template(path = "desctop/place/anon_all_deceased_place.stpl")]
-            struct Template {
-                place:            Place,
-                object_list:      Vec<Deceased>,
-                next_page_number: i32,
-                is_ajax:          i32,
-                services_enabled: bool,
-            }
-            let body = Template {
-                place:            _place,
-                object_list:      object_list,
-                next_page_number: next_page_number,
-                is_ajax:          is_ajax,
-                services_enabled: services_enabled,
-            }
-            .render_once()
-            .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
-            Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
     }
 }
 
@@ -210,7 +162,6 @@ pub async fn all_deceased_brave_page(req: HttpRequest, _id: web::Path<i32>) -> a
 
     if user_id.is_some() { 
         let _request_user = user_id.unwrap();
-        if is_desctop {
             #[derive(TemplateOnce)]
             #[template(path = "desctop/place/all_deceased_brave.stpl")]
             struct Template {
@@ -232,33 +183,8 @@ pub async fn all_deceased_brave_page(req: HttpRequest, _id: web::Path<i32>) -> a
             .render_once()
             .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
             Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
-        else {
-            #[derive(TemplateOnce)]
-            #[template(path = "desctop/place/all_deceased_brave.stpl")]
-            struct Template {
-                request_user:     User,
-                brave:            Place,
-                object_list:      Vec<Deceased>,
-                next_page_number: i32,
-                is_ajax:          i32,
-                services_enabled: bool,
-            }
-            let body = Template {
-                request_user:     _request_user,
-                brave:            _brave,
-                object_list:      object_list,
-                next_page_number: next_page_number,
-                is_ajax:          is_ajax,
-                services_enabled: services_enabled,
-            }
-            .render_once()
-            .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
-            Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
     }
     else {
-        if is_desctop {
             #[derive(TemplateOnce)]
             #[template(path = "desctop/place/anon_all_deceased_brave.stpl")]
             struct Template {
@@ -278,28 +204,6 @@ pub async fn all_deceased_brave_page(req: HttpRequest, _id: web::Path<i32>) -> a
             .render_once()
             .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
             Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
-        else {
-            #[derive(TemplateOnce)]
-            #[template(path = "desctop/place/anon_all_deceased_brave.stpl")]
-            struct Template {
-                brave:            Place,
-                object_list:      Vec<Deceased>,
-                next_page_number: i32,
-                is_ajax:          i32,
-                services_enabled: bool,
-            }
-            let body = Template {
-                brave:            _brave,
-                object_list:      object_list,
-                next_page_number: next_page_number,
-                is_ajax:          is_ajax,
-                services_enabled: services_enabled,
-            }
-            .render_once()
-            .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
-            Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
     }
 }
 
@@ -350,7 +254,7 @@ pub async fn all_places_page(req: HttpRequest) -> actix_web::Result<HttpResponse
 
     if user_id.is_some() { 
         let _request_user = user_id.unwrap();
-        if is_desctop {
+
             #[derive(TemplateOnce)]
             #[template(path = "desctop/place/all_places.stpl")]
             struct Template {
@@ -368,29 +272,8 @@ pub async fn all_places_page(req: HttpRequest) -> actix_web::Result<HttpResponse
             .render_once()
             .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
             Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
-        else {
-            #[derive(TemplateOnce)]
-            #[template(path = "desctop/place/all_places.stpl")]
-            struct Template {
-                request_user:     User,
-                object_list:      Vec<Place>,
-                services_enabled: bool,
-                next_page_number: i32,
-            }
-            let body = Template {
-                request_user:     _request_user,
-                object_list:      object_list,
-                services_enabled: services_enabled,
-                next_page_number: next_page_number,
-            }
-            .render_once()
-            .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
-            Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
     }
     else {
-        if is_desctop {
             #[derive(TemplateOnce)]
             #[template(path = "desctop/place/anon_all_places.stpl")]
             struct Template {
@@ -406,24 +289,6 @@ pub async fn all_places_page(req: HttpRequest) -> actix_web::Result<HttpResponse
             .render_once()
             .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
             Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
-        else {
-            #[derive(TemplateOnce)]
-            #[template(path = "desctop/place/anon_all_places.stpl")]
-            struct Template {
-                object_list:      Vec<Place>,
-                services_enabled: bool,
-                next_page_number: i32,
-            }
-            let body = Template {
-                object_list:      object_list,
-                services_enabled: services_enabled,
-                next_page_number: next_page_number,
-            }
-            .render_once()
-            .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
-            Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
     }
 }
 
@@ -455,7 +320,6 @@ pub async fn all_braves_page(req: HttpRequest) -> actix_web::Result<HttpResponse
 
     if user_id.is_some() { 
         let _request_user = user_id.unwrap();
-        if is_desctop {
             #[derive(TemplateOnce)]
             #[template(path = "desctop/place/all_braves.stpl")]
             struct Template {
@@ -473,29 +337,8 @@ pub async fn all_braves_page(req: HttpRequest) -> actix_web::Result<HttpResponse
             .render_once()
             .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
             Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
-        else {
-            #[derive(TemplateOnce)]
-            #[template(path = "desctop/place/all_braves.stpl")]
-            struct Template {
-                request_user:     User,
-                object_list:      Vec<Place>,
-                services_enabled: bool,
-                next_page_number: i32,
-            }
-            let body = Template {
-                request_user:     _request_user,
-                object_list:      object_list,
-                services_enabled: services_enabled,
-                next_page_number: next_page_number,
-            }
-            .render_once()
-            .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
-            Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
     }
     else {
-        if is_desctop {
             #[derive(TemplateOnce)]
             #[template(path = "desctop/place/anon_all_braves.stpl")]
             struct Template {
@@ -511,24 +354,6 @@ pub async fn all_braves_page(req: HttpRequest) -> actix_web::Result<HttpResponse
             .render_once()
             .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
             Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
-        else {
-            #[derive(TemplateOnce)]
-            #[template(path = "desctop/place/anon_all_braves.stpl")]
-            struct Template {
-                object_list:      Vec<Place>,
-                services_enabled: bool,
-                next_page_number: i32,
-            }
-            let body = Template {
-                object_list:      object_list,
-                services_enabled: services_enabled,
-                next_page_number: next_page_number,
-            }
-            .render_once()
-            .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
-            Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
     }
 }
 
@@ -595,7 +420,6 @@ pub async fn all_place_city_page(req: HttpRequest, _id: web::Path<i32>) -> actix
     let user_id = get_request_user(&req).await;
     if user_id.is_some() {
         let _request_user = user_id.unwrap();
-        if is_desctop {
             #[derive(TemplateOnce)]
             #[template(path = "desctop/place/all_place_city.stpl")]
             struct Template {
@@ -613,29 +437,8 @@ pub async fn all_place_city_page(req: HttpRequest, _id: web::Path<i32>) -> actix
             .render_once()
             .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
             Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
-        else {
-            #[derive(TemplateOnce)]
-            #[template(path = "desctop/place/all_place_city.stpl")]
-            struct Template {
-                request_user:     User,
-                city:             Citie,
-                all_places:       Vec<Place>,
-                services_enabled: bool,
-            }
-            let body = Template {
-                request_user:     _request_user,
-                city:             _city,
-                all_places:       _places,
-                services_enabled: services_enabled,
-            }
-            .render_once()
-            .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
-            Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
     }
     else {
-        if is_desctop {
             #[derive(TemplateOnce)]
             #[template(path = "desctop/place/anon_all_place_city.stpl")]
             struct Template {
@@ -651,24 +454,6 @@ pub async fn all_place_city_page(req: HttpRequest, _id: web::Path<i32>) -> actix
             .render_once()
             .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
             Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
-        else {
-            #[derive(TemplateOnce)]
-            #[template(path = "desctop/place/anon_all_place_city.stpl")]
-            struct Template {
-                city:             Citie,
-                all_places:       Vec<Place>,
-                services_enabled: bool,
-            }
-            let body = Template {
-                city:             _city,
-                all_places:       _places,
-                services_enabled: services_enabled,
-            }
-            .render_once()
-            .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
-            Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
     }
 }
 //Получение всех кладбищ одного региона
@@ -681,7 +466,6 @@ pub async fn all_place_region_page(req: HttpRequest, _id: web::Path<i32>) -> act
     let user_id = get_request_user(&req).await;
     if user_id.is_some() {
         let _request_user = user_id.unwrap();
-        if is_desctop { 
             #[derive(TemplateOnce)]
             #[template(path = "desctop/place/all_place_region.stpl")]
             struct Template {
@@ -699,29 +483,8 @@ pub async fn all_place_region_page(req: HttpRequest, _id: web::Path<i32>) -> act
             .render_once()
             .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
             Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
-        else {
-            #[derive(TemplateOnce)]
-            #[template(path = "desctop/place/all_place_region.stpl")]
-            struct Template {
-                request_user:     User,
-                region:           Region,
-                all_places:       Vec<Place>,
-                services_enabled: bool,
-            }
-            let body = Template {
-                request_user:     _request_user,
-                region:           _region,
-                all_places:       _places,
-                services_enabled: services_enabled,
-            }
-            .render_once()
-            .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
-            Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
     }
     else {
-        if is_desctop {
             #[derive(TemplateOnce)]
             #[template(path = "desctop/place/anon_all_place_region.stpl")]
             struct Template {
@@ -737,24 +500,6 @@ pub async fn all_place_region_page(req: HttpRequest, _id: web::Path<i32>) -> act
             .render_once()
             .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
             Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
-        else {
-            #[derive(TemplateOnce)]
-            #[template(path = "desctop/place/anon_all_place_region.stpl")]
-            struct Template {
-                region:           Region,
-                all_places:       Vec<Place>,
-                services_enabled: bool,
-            }
-            let body = Template {
-                region:           _region,
-                all_places:       _places,
-                services_enabled: services_enabled,
-            }
-            .render_once()
-            .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
-            Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
     }
 }
 //Получение всех кладбищ одной страны
@@ -767,7 +512,6 @@ pub async fn all_place_countries_page(req: HttpRequest, _id: web::Path<i32>) -> 
     let user_id = get_request_user(&req).await;
     if user_id.is_some() {
         let _request_user = user_id.unwrap();
-        if is_desctop {
             #[derive(TemplateOnce)]
             #[template(path = "desctop/place/all_place_countries.stpl")]
             struct Template {
@@ -785,29 +529,8 @@ pub async fn all_place_countries_page(req: HttpRequest, _id: web::Path<i32>) -> 
             .render_once()
             .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
             Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
-        else {
-            #[derive(TemplateOnce)]
-            #[template(path = "desctop/place/all_place_countries.stpl")]
-            struct Template {
-                request_user:     User,
-                country:          Countrie,
-                all_places:       Vec<Place>,
-                services_enabled: bool,
-            }
-            let body = Template {
-                request_user:     _request_user,
-                country:          _country,
-                all_places:       _places,
-                services_enabled: services_enabled,
-            }
-            .render_once()
-            .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
-            Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
     }
     else {
-        if is_desctop {
             #[derive(TemplateOnce)]
             #[template(path = "desctop/place/anon_all_place_countries.stpl")]
             struct Template {
@@ -823,24 +546,6 @@ pub async fn all_place_countries_page(req: HttpRequest, _id: web::Path<i32>) -> 
             .render_once()
             .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
             Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
-        else {
-            #[derive(TemplateOnce)]
-            #[template(path = "desctop/place/anon_all_place_countries.stpl")]
-            struct Template {
-                country:          Countrie,
-                all_places:       Vec<Place>,
-                services_enabled: bool,
-            }
-            let body = Template {
-                country:          _country,
-                all_places:       _places,
-                services_enabled: services_enabled,
-            }
-            .render_once()
-            .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
-            Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
     }
 }
 
@@ -989,10 +694,8 @@ pub async fn create_place_page(req: HttpRequest) -> actix_web::Result<HttpRespon
     let user_id = get_request_user(&req).await;
     if user_id.is_some() { 
         let _request_user = user_id.unwrap();
-
         let country_list = crate::models::Countrie::get_all();
 
-        if is_desctop {
             #[derive(TemplateOnce)]
             #[template(path = "desctop/place/create_place.stpl")]
             struct Template {
@@ -1010,26 +713,6 @@ pub async fn create_place_page(req: HttpRequest) -> actix_web::Result<HttpRespon
             .render_once()
             .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
             Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
-        else {
-            #[derive(TemplateOnce)]
-            #[template(path = "desctop/place/create_place.stpl")]
-            struct Template {
-                request_user:     User,
-                is_ajax:          i32,
-                country_list:     Vec<Countrie>,
-                services_enabled: bool,
-            }
-            let body = Template {
-                request_user:     _request_user,
-                is_ajax:          is_ajax,
-                country_list:     country_list,
-                services_enabled: services_enabled,
-            }
-            .render_once()
-            .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
-            Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
     }
     else {
         Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body("anon"))
@@ -1062,7 +745,6 @@ pub async fn edit_place_page(req: HttpRequest, _id: web::Path<i32>) -> actix_web
 
     if user_id.is_some() {
         let _request_user = user_id.unwrap();
-        if is_desctop {
             #[derive(TemplateOnce)]
             #[template(path = "desctop/place/edit_place.stpl")]
             struct Template {
@@ -1088,34 +770,6 @@ pub async fn edit_place_page(req: HttpRequest, _id: web::Path<i32>) -> actix_web
             .render_once()
             .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
             Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
-        else {
-            #[derive(TemplateOnce)]
-            #[template(path = "desctop/place/edit_place.stpl")]
-            struct Template {
-                request_user:     User,
-                place:            Place,
-                is_ajax:          i32,
-                country_list:     Vec<Countrie>,
-                region_list:      Vec<Region>,
-                city_list:        Vec<Citie>,
-                district_list:    Vec<District>,
-                services_enabled: bool,
-            }
-            let body = Template {
-                request_user:     _request_user,
-                place:            _place,
-                is_ajax:          is_ajax,
-                country_list:     country_list,
-                region_list:      region_list,
-                city_list:        city_list,
-                district_list:    district_list,
-                services_enabled: services_enabled,
-            }
-            .render_once()
-            .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
-            Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
     }
     else {
         Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body("anon"))
@@ -1130,7 +784,6 @@ pub async fn create_brave_page(req: HttpRequest) -> actix_web::Result<HttpRespon
         let _request_user = user_id.unwrap();
 
         let country_list = crate::models::Countrie::get_all();
-        if is_desctop {
             #[derive(TemplateOnce)]
             #[template(path = "desctop/place/create_brave.stpl")]
             struct Template {
@@ -1148,26 +801,6 @@ pub async fn create_brave_page(req: HttpRequest) -> actix_web::Result<HttpRespon
             .render_once()
             .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
             Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
-        else {
-            #[derive(TemplateOnce)]
-            #[template(path = "desctop/place/create_brave.stpl")]
-            struct Template {
-                request_user:     User,
-                is_ajax:          i32,
-                country_list:     Vec<Countrie>,
-                services_enabled: bool,
-            }
-            let body = Template {
-                request_user:     _request_user,
-                is_ajax:          is_ajax,
-                country_list:     country_list,
-                services_enabled: services_enabled,
-            }
-            .render_once()
-            .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
-            Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
     }
     else {
         Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body("anon"))
@@ -1200,7 +833,6 @@ pub async fn edit_brave_page(req: HttpRequest, _id: web::Path<i32>) -> actix_web
 
     if user_id.is_some() {
         let _request_user = user_id.unwrap();
-        if is_desctop {
             #[derive(TemplateOnce)]
             #[template(path = "desctop/place/edit_brave.stpl")]
             struct Template {
@@ -1226,34 +858,6 @@ pub async fn edit_brave_page(req: HttpRequest, _id: web::Path<i32>) -> actix_web
             .render_once()
             .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
             Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
-        else {
-            #[derive(TemplateOnce)]
-            #[template(path = "desctop/place/edit_brave.stpl")]
-            struct Template {
-                request_user:     User,
-                brave:            Place,
-                is_ajax:          i32,
-                country_list:     Vec<Countrie>,
-                region_list:      Vec<Region>,
-                city_list:        Vec<Citie>,
-                district_list:    Vec<District>,
-                services_enabled: bool,
-            }
-            let body = Template {
-                request_user:     _request_user,
-                brave:            _brave,
-                is_ajax:          is_ajax,
-                country_list:     country_list,
-                region_list:      region_list,
-                city_list:        city_list,
-                district_list:    district_list,
-                services_enabled: services_enabled,
-            }
-            .render_once()
-            .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
-            Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
     }
     else {
         Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body("anon"))

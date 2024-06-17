@@ -432,7 +432,8 @@ impl Deceased {
             .expect("E.")
             .len();
     }
-    pub fn main_search (
+
+    pub fn main_search2 (
         first_name:   Option<String>, 
         middle_name:  Option<String>,
         last_name:    Option<String>,
@@ -445,7 +446,8 @@ impl Deceased {
         is_famous:    Option<bool>,
         with_photo:   Option<bool>,
         with_cord:    Option<bool>,
-    ) -> (String, Vec<Deceased>) { 
+        page:         Option<i32>,
+    ) -> (String, Vec<Deceased>, usize) { 
         /*
             case switch 
             1 last_name exists
@@ -463,6 +465,16 @@ impl Deceased {
         let mut stack = Vec::new();
         let mut case = 0;
         let mut q = String::New();
+
+        let mut next_page_number = 0;
+        let offset: i64;
+
+        if page > 1 {
+            offset = ((page as i64) - 1) * 100;
+        }
+        else {
+            offset = 0;
+        }
 
         if last_name.is_some() {
             case = 1;
@@ -502,11 +514,15 @@ impl Deceased {
             1  => schema::deceaseds::table
                 .filter(schema::deceaseds::last_name.ilike("%".to_owned() + &last_name.as_deref().unwrap() + "%"))
                 .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
+                .limit(100)
+                .offset(offset)
                 .load::<Deceased>(&_connection)
                 .expect("E."),
             2  => schema::deceaseds::table
                 .filter(schema::deceaseds::place_id.eq(place.unwrap()))
                 .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
+                .limit(100)
+                .offset(offset)
                 .load::<Deceased>(&_connection)
                 .expect("E."),
             3  => { 
@@ -515,93 +531,102 @@ impl Deceased {
                         "eq" => schema::deceaseds::table
                                 .filter(schema::deceaseds::birth_date.eq(birth_date.unwrap()))
                                 .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
+                                .limit(100)
+                                .offset(offset)
                                 .load::<Deceased>(&_connection)
                                 .expect("E."),
                         "lt" => schema::deceaseds::table
                                 .filter(schema::deceaseds::birth_date.lt(birth_date.unwrap()))
                                 .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
+                                .limit(100)
+                                .offset(offset)
                                 .load::<Deceased>(&_connection)
                                 .expect("E."),
                         "gt" => schema::deceaseds::table
                                 .filter(schema::deceaseds::birth_date.gt(birth_date.unwrap()))
                                 .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
+                                .limit(100)
+                                .offset(offset)
                                 .load::<Deceased>(&_connection)
                                 .expect("E."),
-                        _ => schema::deceaseds::table
-                                .filter(schema::deceaseds::birth_date.eq(birth_date.unwrap()))
-                                .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
-                                .load::<Deceased>(&_connection)
-                                .expect("E."),
+                        _ => Vec::new(),
                     }
                 }
                 else {
-                    schema::deceaseds::table
-                        .filter(schema::deceaseds::birth_date.eq(birth_date.unwrap()))
-                        .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
-                        .load::<Deceased>(&_connection)
-                        .expect("E.")
+                    Vec::new()
                 }
             },
-            4  => { if death_filter.is_some() {
+            4  => { 
+                if death_filter.is_some() {
                     match death_filter.as_deref().unwrap() {
                         "eq" => schema::deceaseds::table
                                 .filter(schema::deceaseds::death_date.eq(death_date.unwrap()))
                                 .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
+                                .limit(100)
+                                .offset(offset)
                                 .load::<Deceased>(&_connection)
                                 .expect("E."),
                         "lt" => schema::deceaseds::table
                                 .filter(schema::deceaseds::death_date.lt(death_date.unwrap()))
                                 .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
+                                .limit(100)
+                                .offset(offset)
                                 .load::<Deceased>(&_connection)
                                 .expect("E."),
                         "gt" => schema::deceaseds::table
                                 .filter(schema::deceaseds::death_date.gt(death_date.unwrap()))
                                 .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
+                                .limit(100)
+                                .offset(offset)
                                 .load::<Deceased>(&_connection)
                                 .expect("E."),
-                        _ => schema::deceaseds::table
-                                .filter(schema::deceaseds::death_date.eq(death_date.unwrap()))
-                                .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
-                                .load::<Deceased>(&_connection)
-                                .expect("E."),
+                        _ => Vec::new(),
                     }
                 }
                 else {
-                    schema::deceaseds::table
-                        .filter(schema::deceaseds::death_date.eq(death_date.unwrap()))
-                        .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
-                        .load::<Deceased>(&_connection)
-                        .expect("E.")
+                    Vec::new()
                 }
             },
             5  => schema::deceaseds::table
                 .filter(schema::deceaseds::first_name.eq("%".to_owned() + &first_name.as_deref().unwrap() + "%"))
                 .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
+                .limit(100)
+                .offset(offset)
                 .load::<Deceased>(&_connection)
                 .expect("E."),
             6  => schema::deceaseds::table
                 .filter(schema::deceaseds::middle_name.eq("%".to_owned() + &middle_name.as_deref().unwrap() + "%"))
                 .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
+                .limit(100)
+                .offset(offset)
                 .load::<Deceased>(&_connection)
                 .expect("E."),
             7  => schema::deceaseds::table
                 .filter(schema::deceaseds::is_veteran.eq(true))
                 .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
+                .limit(100)
+                .offset(offset)
                 .load::<Deceased>(&_connection)
                 .expect("E."),
             8  => schema::deceaseds::table
                 .filter(schema::deceaseds::is_famous.eq(true))
                 .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
+                .limit(100)
+                .offset(offset)
                 .load::<Deceased>(&_connection)
                 .expect("E."),
             9  => schema::deceaseds::table
                 .filter(schema::deceaseds::image.is_not_null())
                 .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
+                .limit(100)
+                .offset(offset)
                 .load::<Deceased>(&_connection)
                 .expect("E."),
             10 => schema::deceaseds::table
                 .filter(schema::deceaseds::cord.is_not_null())
                 .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
+                .limit(100)
+                .offset(offset)
                 .load::<Deceased>(&_connection)
                 .expect("E."),
             _ => Vec::new(),
@@ -609,26 +634,21 @@ impl Deceased {
        
         for i in list.into_iter() {
             let mut check_exists = false;
-            let mut default = true;
 
             if case != 1 && last_name.is_some() {
                 println!("last_name exists"); 
-                check_exists = i.last_name.contains(last_name.as_deref().unwrap());
-                if !check_exists {
+                if !i.last_name.contains(last_name.as_deref().unwrap()) {
                     continue;
                 }
-                default = false;
                 q.push_str(" ");
                 q.push_str(last_name.as_deref().unwrap());
 
             }
             if case != 5 && first_name.is_some() {
                 println!("first_name exists");
-                check_exists = i.first_name.contains(first_name.as_deref().unwrap());
-                if !check_exists {
+                if !i.first_name.contains(first_name.as_deref().unwrap()) {
                     continue;
                 }
-                default = false;
                 q.push_str(" ");
                 q.push_str(first_name.as_deref().unwrap());
             }
@@ -639,11 +659,9 @@ impl Deceased {
                 else {
                     println!("middle_name exists");
                     let i_middle_name = i.middle_name.as_deref().unwrap();
-                    check_exists = i_middle_name.contains(middle_name.as_deref().unwrap());
-                    if !check_exists {
+                    if !i_middle_name.contains(middle_name.as_deref().unwrap()) {
                         continue;
                     }
-                    default = false;
                     q.push_str(" ");
                     q.push_str(middle_name.as_deref().unwrap());
                 }
@@ -664,7 +682,6 @@ impl Deceased {
                 if !check_exists {
                     continue;
                 }
-                default = false;
             }
             if case != 4 && death_date.is_some() {
                 println!("death_date exists");
@@ -682,52 +699,41 @@ impl Deceased {
                 if !check_exists {
                     continue;
                 } 
-                default = false;
             }
             if case != 9 && with_photo.is_some() {
                 println!("image exists");
-                check_exists = i.image.is_some();
-                if !check_exists {
+                if i.image.is_none() {
                     continue;
                 }
-                default = false;
             }
             if case != 2 && place.is_some() {
                 println!("place exists");
-                check_exists = i.place_id == place.unwrap();
-                if !check_exists {
+                if i.place_id != place.unwrap() {
                     continue;
                 }
-                default = false;
             }
             if case != 7 && is_veteran.is_some() {
                 println!("veteran exists");
-                check_exists = i.is_veteran;
-                if !check_exists {
+                if check_exists != i.is_veteran {
                     continue;
                 }
-                default = false; 
             }
             if case != 8 && is_famous.is_some() {
                 println!("famous exists");
-                check_exists = i.is_famous;
-                if !check_exists {
+                if check_exists != i.is_famous {
                     continue;
                 }
-                default = false;
             }
             if case != 10 && with_cord.is_some() {
                 println!("cord exists");
-                check_exists = i.cord.is_some();
-                if !check_exists {
+                if i.cord.is_none() {
                     continue;
                 }
-                default = false;
             }
 
             stack.push(i);
         }
-        return (q, stack);
+        return (q, stack, count);
     }
 
     pub fn get_all (

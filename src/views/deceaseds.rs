@@ -56,7 +56,6 @@ pub async fn deceased_page(req: HttpRequest, _id: web::Path<i32>) -> actix_web::
     let user_id = get_request_user(&req).await;
     if user_id.is_some() { 
         let _request_user = user_id.unwrap();
-        if is_desctop {
             #[derive(TemplateOnce)]
             #[template(path = "desctop/deceased/deceased.stpl")]
             struct Template {
@@ -74,29 +73,8 @@ pub async fn deceased_page(req: HttpRequest, _id: web::Path<i32>) -> actix_web::
             .render_once()
             .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
             Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
-        else {
-            #[derive(TemplateOnce)]
-            #[template(path = "desctop/deceased/deceased.stpl")]
-            struct Template {
-                request_user:     User,
-                deceased:         Deceased,
-                is_ajax:          i32,
-                services_enabled: bool,
-            }
-            let body = Template {
-                request_user:     _request_user,
-                deceased:         _deceased,
-                is_ajax:          is_ajax,
-                services_enabled: services_enabled,
-            }
-            .render_once()
-            .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
-            Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
     }
     else {
-        if is_desctop {
             #[derive(TemplateOnce)]
             #[template(path = "desctop/deceased/anon_deceased.stpl")]
             struct Template {
@@ -112,24 +90,6 @@ pub async fn deceased_page(req: HttpRequest, _id: web::Path<i32>) -> actix_web::
             .render_once()
             .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
             Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
-        else {
-            #[derive(TemplateOnce)]
-            #[template(path = "desctop/deceased/anon_deceased.stpl")]
-            struct Template {
-                deceased:         Deceased,
-                is_ajax:          i32,
-                services_enabled: bool,
-            }
-            let body = Template {
-                deceased:         _deceased,
-                is_ajax:          is_ajax,
-                services_enabled: services_enabled,
-            }
-            .render_once()
-            .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
-            Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
     }
 }
 
@@ -157,8 +117,6 @@ pub async fn create_deceased_page(req: HttpRequest) -> actix_web::Result<HttpRes
     let user_id = get_request_user(&req).await;
     if user_id.is_some() { 
         let _request_user = user_id.unwrap();
-
-        if is_desctop {
             #[derive(TemplateOnce)]
             #[template(path = "desctop/deceased/create_deceased.stpl")]
             struct Template {
@@ -174,24 +132,6 @@ pub async fn create_deceased_page(req: HttpRequest) -> actix_web::Result<HttpRes
             .render_once()
             .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
             Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
-        else {
-            #[derive(TemplateOnce)]
-            #[template(path = "desctop/deceased/create_deceased.stpl")]
-            struct Template {
-                request_user:     User,
-                is_ajax:          i32,
-                services_enabled: bool,
-            }
-            let body = Template {
-                request_user:     _request_user,
-                is_ajax:          is_ajax,
-                services_enabled: services_enabled,
-            }
-            .render_once()
-            .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
-            Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
     }
     else {
         Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body("anon"))
@@ -210,7 +150,6 @@ pub async fn edit_deceased_page(req: HttpRequest, _id: web::Path<i32>) -> actix_
         if !_request_user.is_admin() {
             return Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body("403"));
         }
-        if is_desctop {
             #[derive(TemplateOnce)]
             #[template(path = "desctop/deceased/edit_deceased.stpl")]
             struct Template {
@@ -230,28 +169,7 @@ pub async fn edit_deceased_page(req: HttpRequest, _id: web::Path<i32>) -> actix_
             .render_once()
             .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
             Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
-        else {
-            #[derive(TemplateOnce)]
-            #[template(path = "desctop/deceased/edit_deceased.stpl")]
-            struct Template {
-                request_user:     User,
-                deceased:         Deceased,
-                place:            Place,
-                is_ajax:          i32,
-                services_enabled: bool,
-            }
-            let body = Template {
-                request_user:     _request_user,
-                deceased:         _deceased,
-                place:            _place,
-                is_ajax:          is_ajax,
-                services_enabled: services_enabled,
-            }
-            .render_once()
-            .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
-            Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
+            pResponse::Ok().content_type("text/html; charset=utf-8").body(body))
     }
     else {
         Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body("anon"))
@@ -351,7 +269,6 @@ pub async fn wall_page(req: HttpRequest) -> actix_web::Result<HttpResponse> {
 
     if user_id.is_some() { 
         let _request_user = user_id.unwrap();
-        if is_desctop {
             #[derive(TemplateOnce)]
             #[template(path = "desctop/deceased/wall.stpl")]
             struct Template {
@@ -371,31 +288,8 @@ pub async fn wall_page(req: HttpRequest) -> actix_web::Result<HttpResponse> {
             .render_once()
             .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
             Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
-        else {
-            #[derive(TemplateOnce)]
-            #[template(path = "desctop/deceased/wall.stpl")]
-            struct Template {
-                request_user:     User,
-                object_list:      Vec<Deceased>,
-                next_page_number: i32,
-                is_ajax:          i32,
-                services_enabled: bool,
-            }
-            let body = Template {
-                request_user:     _request_user,
-                object_list:      object_list,
-                next_page_number: next_page_number,
-                is_ajax:          is_ajax,
-                services_enabled: services_enabled,
-            }
-            .render_once()
-            .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
-            Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
     }
     else {
-        if is_desctop {
             #[derive(TemplateOnce)]
             #[template(path = "desctop/deceased/anon_wall.stpl")]
             struct Template {
@@ -413,25 +307,5 @@ pub async fn wall_page(req: HttpRequest) -> actix_web::Result<HttpResponse> {
             .render_once()
             .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
             Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
-        else {
-            #[derive(TemplateOnce)]
-            #[template(path = "desctop/deceased/anon_wall.stpl")]
-            struct Template {
-                object_list:      Vec<Deceased>,
-                next_page_number: i32,
-                is_ajax:          i32,
-                services_enabled: bool,
-            }
-            let body = Template {
-                object_list:      object_list,
-                next_page_number: next_page_number,
-                is_ajax:          is_ajax,
-                services_enabled: services_enabled,
-            }
-            .render_once()
-            .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
-            Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-        }
     }
 }

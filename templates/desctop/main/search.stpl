@@ -1,35 +1,96 @@
-<h2 class="text-center mb-4">Результтаты поиска по запросу <%= q %></h2>
+<% include!("../header.stpl"); %>
 
-<div class="mx-0 front-icons row">
+<div class="text-center front-hero jumbotron">
+    <h1>Общедоступная база захоронений</h1>
+    <p class="lead">Социальный проект по поиску захоронений<br>и уходу за ними</p>
+</div>
+<div class="container">
 
-    <% for i in object_list.iter() { %>
-        <div class="d-flex col-sm-12 col-md-6 col-lg-3">
-            <div class="border rounded p-3 mb-4 text-center flex-grow-1">
-                <a href="/deceased/<%= i.id %>/">
-                    <img src="<%= i.get_image() %>" alt="Захоронение ID <%= i.id %>" class="mw-100">
-                    <div class="font-weight-bold"><%= i.get_fio() %></div>
+        <% include!("../generic/form.stpl"); %>
+
+        <div class="row">
+            <div class="mb-3 col-sm-12 col-md-6 col-lg-3">
+                <a class="rubric-item text-decoration-none text-center" href="/famous">
+                    <img src="/static/images/famous.jpg" alt="Известные личности" class="d-none d-md-block">
+                    <div class="rubric-item__title text-uppercase mt-4">Известные личности</div>
                 </a>
-                <div class="front-wall-date">
-                    <div>
-                        <strong class="text-dark">Годы жизни: </strong>
-                        <span>
-                            <% if i.birth_date.is_some() { %>
-                                <%= i.birth_date.unwrap().format("%d-%m-%Y").to_string() %>
-                            <% } %>
-                            <br>
-                            <% if i.death_date.is_some() { %>
-                                <%= i.death_date.unwrap().format("%d-%m-%Y").to_string() %>
-                            <% } %>
-                        </span>
-                    </div>
-                </div>
-                <div class="p-2">
-                    <% if i.memory_words.is_some() { %>
-                    <%= i.memory_words.as_deref().unwrap() %>
-                    <% } %>
-                </div>
+            </div>
+            <div class="mb-3 col-sm-12 col-md-6 col-lg-3">
+                <a class="rubric-item text-decoration-none text-center pointer this_day_deceased">
+                    <img src="/static/images/this-day.jpg" alt="Умерли в этот день" class="d-none d-md-block">
+                    <div class="rubric-item__title text-uppercase mt-4">Умерли в этот день</div>
+                </a>
+            </div>
+            <div class="mb-3 col-sm-12 col-md-6 col-lg-3">
+                <a class="rubric-item text-decoration-none text-center" href="/interesting-monuments">
+                    <img src="/static/images/interest.jpg" alt="Интересные памятники" class="d-none d-md-block">
+                    <div class="rubric-item__title text-uppercase mt-4">Интересные памятники</div>
+                </a>
+            </div>
+            <div class="mb-3 col-sm-12 col-md-6 col-lg-3">
+                <a class="rubric-item text-decoration-none text-center" href="/epitaphs">
+                    <img src="/static/images/epitaph.jpg" alt="Эпитафии" class="d-none d-md-block">
+                    <div class="rubric-item__title text-uppercase mt-4">Эпитафии</div>
+                </a>
             </div>
         </div>
-    <% } %>
-
 </div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-lg-9">
+            <div class="border-bottom mb-3 results">
+                <% for i in object_list.iter() { %>
+                <div class="py-4 border-top d-sm-flex burial-teaser">
+                    <div class="mr-4 burial-teaser__image">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-center" style="width: 165px; height: 134px;">
+                            <img src="<%= i.get_image() %>" 
+                            alt="img" class="mw-100">
+                        </div>
+                    </div>
+                    <div class="burial-teaser__content flex-grow-1">
+                        <div class="d-flex justify-content-between mb-2">
+                            <a class="burial-teaser__title" href="/deceased/<%= i.id %>/"><%= i.get_fio() %></a>
+                        </div>
+                        <div><strong class="text-dark">Годы жизни: </strong>
+                            <% if i.birth_date.is_some() { %>
+                                <%= i.birth_date.unwrap().format("%d-%m-%Y").to_string() %> 
+                            <% } %> 
+                            - 
+                            <% if i.death_date.is_some() { %>
+                                <%= i.death_date.unwrap().format("%d-%m-%Y").to_string() %> 
+                            <% } %>
+                        </div>
+                        <div>
+                            <strong class="text-dark">
+                                Место захоронения:&nbsp;
+                            </strong>
+                            <span><%= i.get_place() %></span>
+                        </div>
+                        <div>
+                            <strong class="text-dark">
+                                Адрес / координаты:&nbsp;
+                            </strong>
+                            <a href="/deceased/<%= i.id %>/">посмотреть</a>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+            </div>
+        </div>
+        <div class="col-sm-12 col-lg-3">
+            <a href="/create_deceased/" type="button" class="add-burial btn btn-primary">
+                <i class="icon-plus"></i><strong>Добавить<br> захоронение</strong>
+            </a>
+            <div class="jumbo-teaser jumbotron" style="background-image: url(&quot;/static/content/sidebar/search.jpg&quot;);">
+                <h2 class="jumbo-title text-white">Поиск захоронений</h2>
+                <p class="lead"><a tabindex="0" class="btn btn-outline-primary">Подробнее</a></p>
+            </div>
+            <div class="jumbo-teaser jumbotron" style="background-image: url(&quot;/static/banners/investor-2.jpeg&quot;);">
+                <h2 class="jumbo-title text-white">Инвестируй в проект</h2>
+                <p class="lead"><a tabindex="0" class="btn btn-outline-primary">Подробнее</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
