@@ -65,7 +65,7 @@
                             <strong class="text-dark">
                                 Место захоронения:&nbsp;
                             </strong>
-                            <span><%= i.get_place() %></span>
+                            <span><%= i.get_place().title %></span>
                         </div>
                         <div>
                             <strong class="text-dark">

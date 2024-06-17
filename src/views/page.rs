@@ -138,7 +138,7 @@ pub async fn main_search_page(req: HttpRequest) -> actix_web::Result<HttpRespons
     if params_some.is_ok() {
         let params = params_some.unwrap();
         let user_id = get_request_user(&req).await;
-        let (q, object_list) = Deceased::main_search ( 
+        let (q, object_list) = Deceased::main_search2 ( 
             params.first_name.clone(),  
             params.middle_name.clone(),
             params.last_name.clone(),
@@ -152,7 +152,6 @@ pub async fn main_search_page(req: HttpRequest) -> actix_web::Result<HttpRespons
             params.with_photo,
             params.with_coordinates,
             params.page,
-            20,
         );
         if user_id.is_some() {
             let _request_user = user_id.unwrap();
