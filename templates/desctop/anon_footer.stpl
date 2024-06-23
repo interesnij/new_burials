@@ -127,6 +127,38 @@
 <div id="fullscreens_container"></div>
 <div id="modal_container"></div>
 
+<script src="/static/scripts/polyfills-bb8b8034e06a609ceb9d.js"></script>
+<script src="/static/scripts/main-aa4681db5f478e665d74.js"></script>
+<script src="/static/scripts/webpack-d7b2fb72fb7257504a38.js"></script>
+<script src="/static/scripts/framework.b11cd6ab3c62dae3dfb8.js"></script>
+<script src="/static/scripts/706548a9.70f6708ad96325ddbdc8.js"></script>
+<script src="/static/scripts/64662cc4e0cd80db74f42c98f513d9b8f946ba6d.b3cf127ccfbae388a63d.js"></script>
+<script src="/static/scripts/3f18425e70aa83d054adf7d1bc52fed81c4195fa.049782b65e9ccbd71280.js"></script>
+<script src="/static/scripts/7a53dc7f572e2c098062692dcf3c8968db536324.9d1628305eb1bccfff69.js"></script>
+<script src="/static/scripts/1db083d6f926f393aa328b78941a00b833e0fc30.d184f0ae10673814c71c.js"></script>
+<script src="/static/scripts/df053b46bca73463ef6a242e3154a5171c531120.f145fa9610ff2d7ab462.js"></script>
+<script src="/static/scripts/30c78628a89d47955c01c097a45deba98aeb5efc.138956f0effdbfb6bc68.js"></script>
+<script src="/static/scripts/29fa23c9114df064f0f704ba8a0bff5a133eb354.f738813d629b1a659a6e.js"></script>
+<script src="/static/scripts/574a4b266c53b3d595c1225caa0f7498e7e130bc.d96291fd721178a6988d.js"></script>
+<script src="/static/scripts/70fd5db78a375fe0cdc38cb03fe170f333aaea80.2d7dfabd93d247b0e435.js"></script>
+<script src="/static/scripts/41cd4a661ade1a7c7b73bf4edaf8e882cb194429.390d18a9ed2e2e1d463c.js"></script>
+<script src="/static/scripts/633b2b5238c1b65592a574face72f84a51aef1c8.1218ebf957dceda312cd.js"></script>
+<script src="/static/scripts/8c8a126fe48b8c0a919a1fe6cb14641c1c3ca292.3a63654af0218e8204c1.js"></script>
+<script src="/static/scripts/a0152b360334dbb2a20abf28485bab487b92b091.189713111551bebef7f1.js"></script>
+<script src="/static/scripts/a0afaa25e5d0e9a8fbd1ca358603b56134dc3bd3.29c8d9e4c7241359a26d.js"></script>
+<script src="/static/scripts/7622d147e43ab1cd326ab5213440351a225afc66.467f228e659cbc68a8ac.js"></script>
+<script src="/static/scripts/styles.03039a2a83bfdac7f08d.js"></script>
+<script src="/static/scripts/_app-d5868bbe5e2eba19ff3b.js"></script>
+<script src="/static/scripts/75fc9c18.4e04b708e69a2dcc3c61.js"></script>
+<script src="/static/scripts/22b3a38a.c9c497053703d6275828.js"></script>
+<script src="/static/scripts/3a2b1f73c7281926f3d5ab47b4c3c4d8d0d4795f.d486e6d897a0d6e0ce7d.js"></script>
+<script src="/static/scripts/990cf8e5d873c8dcb91c504bfc2d4053d0c7ce4c.690bcb1c16026687135d.js"></script>
+<script src="/static/scripts/b292a85050f17f10d0d4560e903758dba1d74002.6e3064dd4d12dea8f0c4.js"></script>
+<script src="/static/scripts/28998d34564e80de8c462263e7acacc4e5569d2b.d68c9fa04081ba4fe67c.js"></script>
+<script src="/static/scripts/4b93e1c5e1893b14c7567631e210f34c571c79bf.5e8da8d9c600e0a8da5c.js"></script>
+<script src="/static/scripts/index-e929be72c6fd3da36302.js"></script>
+<script src="/static/scripts/_buildManifest.js"></script>
+<script src="/static/scripts/_ssgManifest.js"></script>
 
 <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=f24c512a-4137-4c65-a9e6-39f5d7cd0ebe&suggest_apikey=6d98461b-030b-42e8-9a8b-0ad3c4bea025" type="text/javascript"></script>
 <script src="/static/scripts/main8.js?ver5"></script>
