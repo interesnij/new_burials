@@ -127,38 +127,235 @@
 <div id="fullscreens_container"></div>
 <div id="modal_container"></div>
 
-<script src="/static/scripts/polyfills-bb8b8034e06a609ceb9d.js"></script>
-<script src="/static/scripts/main-aa4681db5f478e665d74.js"></script>
-<script src="/static/scripts/webpack-d7b2fb72fb7257504a38.js"></script>
-<script src="/static/scripts/framework.b11cd6ab3c62dae3dfb8.js"></script>
-<script src="/static/scripts/706548a9.70f6708ad96325ddbdc8.js"></script>
-<script src="/static/scripts/64662cc4e0cd80db74f42c98f513d9b8f946ba6d.b3cf127ccfbae388a63d.js"></script>
-<script src="/static/scripts/3f18425e70aa83d054adf7d1bc52fed81c4195fa.049782b65e9ccbd71280.js"></script>
-<script src="/static/scripts/7a53dc7f572e2c098062692dcf3c8968db536324.9d1628305eb1bccfff69.js"></script>
-<script src="/static/scripts/1db083d6f926f393aa328b78941a00b833e0fc30.d184f0ae10673814c71c.js"></script>
-<script src="/static/scripts/df053b46bca73463ef6a242e3154a5171c531120.f145fa9610ff2d7ab462.js"></script>
-<script src="/static/scripts/30c78628a89d47955c01c097a45deba98aeb5efc.138956f0effdbfb6bc68.js"></script>
-<script src="/static/scripts/29fa23c9114df064f0f704ba8a0bff5a133eb354.f738813d629b1a659a6e.js"></script>
-<script src="/static/scripts/574a4b266c53b3d595c1225caa0f7498e7e130bc.d96291fd721178a6988d.js"></script>
-<script src="/static/scripts/70fd5db78a375fe0cdc38cb03fe170f333aaea80.2d7dfabd93d247b0e435.js"></script>
-<script src="/static/scripts/41cd4a661ade1a7c7b73bf4edaf8e882cb194429.390d18a9ed2e2e1d463c.js"></script>
-<script src="/static/scripts/633b2b5238c1b65592a574face72f84a51aef1c8.1218ebf957dceda312cd.js"></script>
-<script src="/static/scripts/8c8a126fe48b8c0a919a1fe6cb14641c1c3ca292.3a63654af0218e8204c1.js"></script>
-<script src="/static/scripts/a0152b360334dbb2a20abf28485bab487b92b091.189713111551bebef7f1.js"></script>
-<script src="/static/scripts/a0afaa25e5d0e9a8fbd1ca358603b56134dc3bd3.29c8d9e4c7241359a26d.js"></script>
-<script src="/static/scripts/7622d147e43ab1cd326ab5213440351a225afc66.467f228e659cbc68a8ac.js"></script>
-<script src="/static/scripts/styles.03039a2a83bfdac7f08d.js"></script>
-<script src="/static/scripts/_app-d5868bbe5e2eba19ff3b.js"></script>
-<script src="/static/scripts/75fc9c18.4e04b708e69a2dcc3c61.js"></script>
-<script src="/static/scripts/22b3a38a.c9c497053703d6275828.js"></script>
-<script src="/static/scripts/3a2b1f73c7281926f3d5ab47b4c3c4d8d0d4795f.d486e6d897a0d6e0ce7d.js"></script>
-<script src="/static/scripts/990cf8e5d873c8dcb91c504bfc2d4053d0c7ce4c.690bcb1c16026687135d.js"></script>
-<script src="/static/scripts/b292a85050f17f10d0d4560e903758dba1d74002.6e3064dd4d12dea8f0c4.js"></script>
-<script src="/static/scripts/28998d34564e80de8c462263e7acacc4e5569d2b.d68c9fa04081ba4fe67c.js"></script>
-<script src="/static/scripts/4b93e1c5e1893b14c7567631e210f34c571c79bf.5e8da8d9c600e0a8da5c.js"></script>
-<script src="/static/scripts/index-e929be72c6fd3da36302.js"></script>
-<script src="/static/scripts/_buildManifest.js"></script>
-<script src="/static/scripts/_ssgManifest.js"></script>
+<script id="__NEXT_DATA__" type="application/json">
+    {
+        "props": {
+            "isServer": true,
+            "initialState": {
+                "country": {
+                    "country": "ru"
+                },
+                "captcha": {
+                    "captcha": false
+                },
+                "formValues": {
+                    "findBurialForm": null,
+                    "locationOptions": []
+                },
+                "user": {
+                    "data": {}
+                },
+                "location": {
+                    "latitude": 53,
+                    "longitude": 27,
+                    "accuracy": 0
+                },
+                "cart": {
+                    "products": [],
+                    "profile": {}
+                },
+                "globalConfig": {
+                    "countries": {},
+                    "exchangeRates": {},
+                    "ads": false,
+                    "oneAll": null,
+                    "informationRequest": null
+                },
+                "currency": {
+                    "currency": "RUB"
+                },
+                "_persist": {
+                    "version": -1,
+                    "rehydrated": true
+                }
+            },
+            "initialProps": {
+                "store": {
+                    "sagaTask": {
+                        "@@redux-saga/TASK": true,
+                        "id": 235663,
+                        "meta": {
+                            "name": "rootSaga"
+                        },
+                        "isRoot": true,
+                        "context": {},
+                        "joiners": null,
+                        "queue": {}
+                    }
+                },
+                "asPath": "/",
+                "globalConfig": {
+                    "countries": {
+                        "by": "142",
+                        "ua": "145",
+                        "ru": "728"
+                    },
+                    "helpVideoText": "",
+                    "exchangeRates": {
+                        "EUR": 0.293746,
+                        "USD": 0.314822,
+                        "UAH": 12.764708,
+                        "RUB": 26.612023
+                    },
+                    "oneAll": {
+                        "providers": ["facebook", "google", "instagram"],
+                        "apiSubdomain": "pomnim"
+                    },
+                    "informationRequest": {
+                        "id": "59",
+                        "price": {
+                            "number": "60.000000",
+                            "currency": "BYN"
+                        }
+                    }
+                },
+                "loggedIn": false,
+                "users": [],
+                "statusCode": 200,
+                "transparentHeader": true,
+                "countries": {},
+                "icons": [{
+                    "icon": "/static/images/cemeteries.svg",
+                    "title": "Кладбища",
+                    "url": "/places/"
+                }, {
+                    "icon": "/static/images/burials.svg",
+                    "title": "Захоронения",
+                    "url": "/search/"
+                }, {
+                    "icon": "/static/images/mass-graves.svg",
+                    "title": "Братские могилы",
+                    "url": "/braves/"
+                }, {
+                    "icon": "/static/images/query.svg",
+                    "title": "Запрос на поиск",
+                    "url": "/search/"
+                }],
+                "text": {
+                    "title": "",
+                    "html": "",
+                    "link": null
+                },
+                "support": {
+                    "title": "Нас поддерживают",
+                    "items": []
+                },
+                "bottomLinks": [{
+                    "img": "/static/images/famous.jpg",
+                    "title": "Известные личности",
+                    "url": "/famous/"
+                }, {
+                    "img": "/static/images/this-day.jpg",
+                    "title": "Умерли в этот день",
+                    "url": "/this-day/"
+                }, {
+                    "img": "/static/images/interest.jpg",
+                    "title": "Интересные памятники",
+                    "url": "/interesting-monuments/"
+                }, {
+                    "img": "/static/images/epitaph.jpg",
+                    "title": "Эпитафии",
+                    "url": "/epitaphs/"
+                }],
+                "meta": {
+                    "title": "Поиск захоронений в России онлайн, поиск могилы по фамилии, месту или дате смерти",
+                    "description": "\"Проект Напогосте\" - самая большая база захоронений в России с фотографиями и координатами могил. Поможем найти Вам захоронение родственника даже если его нет в нашей базе."
+                },
+                "metatagsRu": "a:2:{s:5:\"title\";s:148:\"Поиск захоронений в России онлайн, поиск могилы по фамилии, месту или дате смерти\";s:11:\"description\";s:308:\"\"Проект Напогосте\" - самая большая база захоронений в России с фотографиями и координатами могил. Поможем найти Вам захоронение родственника даже если его нет в нашей базе.\";}",
+                "metatagsUa": "a:2:{s:5:\"title\";s:150:\"Поиск захоронений в Украине онлайн, поиск могилы по фамилии, месту или дате смерти\";s:11:\"description\";s:310:\"\"Проект Напогосте\" - самая большая база захоронений в Украине с фотографиями и координатами могил. Поможем найти Вам захоронение родственника даже если его нет в нашей базе.\";}",
+                "wall": {
+                    "results": [],
+                    "total": 0
+                }
+            }
+        },
+        "page": "/",
+        "query": {},
+        "buildId": "zXb__rzRZPgw28qI6hTSS",
+        "runtimeConfig": {
+            "BACKEND_URL": "https://b.pomnim.online",
+            "COUNTRY_ENV": "ru",
+            "TESTS_BACKEND_URL": "http://drupal.docker.local",
+            "CLIENT_SECRET": "HrbLqwD9yTwLeaCB",
+            "CLIENT_ID": "61f9cc63-9293-490f-8743-f0a3e39691b2"
+        },
+        "isFallback": false,
+        "customServer": true,
+        "gip": true,
+        "appGip": true,
+        "head": [
+            ["meta", {
+                "charSet": "utf-8"
+            }],
+            ["meta", {
+                "name": "viewport",
+                "content": "width=device-width, initial-scale=1"
+            }],
+            ["meta", {
+                "name": "format-detection",
+                "content": "telephone=no"
+            }],
+            ["meta", {
+                "name": "yandex-verification",
+                "content": "42babc2d812b7320"
+            }],
+            ["meta", {
+                "httpEquiv": "X-UA-Compatible",
+                "content": "IE=edge"
+            }],
+            ["link", {
+                "rel": "shortcut icon",
+                "href": "/static/images/favicon.ico",
+                "type": "image/vnd.microsoft.icon"
+            }],
+            ["script", {
+                "dangerouslySetInnerHTML": {
+                    "__html": ""
+                }
+            }],
+            ["title", {
+                "children": "Поиск захоронений в России онлайн, поиск могилы по фамилии, месту или дате смерти"
+            }],
+            ["meta", {
+                "name": "description",
+                "content": "\"Проект Напогосте\" - самая большая база захоронений в России с фотографиями и координатами могил. Поможем найти Вам захоронение родственника даже если его нет в нашей базе."
+            }]
+        ]
+    }
+</script>
+
+<script src="/static/scripts/polyfills-bb8b8034e06a609ceb9d.js" nomodule=""></script>
+<script src="/static/scripts/main-aa4681db5f478e665d74.js" async=""></script>
+<script src="/static/scripts/webpack-d7b2fb72fb7257504a38.js" async=""></script>
+<script src="/static/scripts/framework.b11cd6ab3c62dae3dfb8.js" async=""></script>
+<script src="/static/scripts/706548a9.70f6708ad96325ddbdc8.js" async=""></script>
+<script src="/static/scripts/64662cc4e0cd80db74f42c98f513d9b8f946ba6d.b3cf127ccfbae388a63d.js" async=""></script>
+<script src="/static/scripts/3f18425e70aa83d054adf7d1bc52fed81c4195fa.049782b65e9ccbd71280.js" async=""></script>
+<script src="/static/scripts/7a53dc7f572e2c098062692dcf3c8968db536324.9d1628305eb1bccfff69.js" async=""></script>
+<script src="/static/scripts/1db083d6f926f393aa328b78941a00b833e0fc30.d184f0ae10673814c71c.js" async=""></script>
+<script src="/static/scripts/df053b46bca73463ef6a242e3154a5171c531120.f145fa9610ff2d7ab462.js" async=""></script>
+<script src="/static/scripts/30c78628a89d47955c01c097a45deba98aeb5efc.138956f0effdbfb6bc68.js" async=""></script>
+<script src="/static/scripts/29fa23c9114df064f0f704ba8a0bff5a133eb354.f738813d629b1a659a6e.js" async=""></script>
+<script src="/static/scripts/574a4b266c53b3d595c1225caa0f7498e7e130bc.d96291fd721178a6988d.js" async=""></script>
+<script src="/static/scripts/70fd5db78a375fe0cdc38cb03fe170f333aaea80.2d7dfabd93d247b0e435.js" async=""></script>
+<script src="/static/scripts/41cd4a661ade1a7c7b73bf4edaf8e882cb194429.390d18a9ed2e2e1d463c.js" async=""></script>
+<script src="/static/scripts/633b2b5238c1b65592a574face72f84a51aef1c8.1218ebf957dceda312cd.js" async=""></script>
+<script src="/static/scripts/8c8a126fe48b8c0a919a1fe6cb14641c1c3ca292.3a63654af0218e8204c1.js" async=""></script>
+<script src="/static/scripts/a0152b360334dbb2a20abf28485bab487b92b091.189713111551bebef7f1.js" async=""></script>
+<script src="/static/scripts/a0afaa25e5d0e9a8fbd1ca358603b56134dc3bd3.29c8d9e4c7241359a26d.js" async=""></script>
+<script src="/static/scripts/7622d147e43ab1cd326ab5213440351a225afc66.467f228e659cbc68a8ac.js" async=""></script>
+<script src="/static/scripts/styles.03039a2a83bfdac7f08d.js" async=""></script>
+<script src="/static/scripts/_app-d5868bbe5e2eba19ff3b.js" async=""></script>
+<script src="/static/scripts/75fc9c18.4e04b708e69a2dcc3c61.js" async=""></script>
+<script src="/static/scripts/22b3a38a.c9c497053703d6275828.js" async=""></script>
+<script src="/static/scripts/3a2b1f73c7281926f3d5ab47b4c3c4d8d0d4795f.d486e6d897a0d6e0ce7d.js" async=""></script>
+<script src="/static/scripts/990cf8e5d873c8dcb91c504bfc2d4053d0c7ce4c.690bcb1c16026687135d.js" async=""></script>
+<script src="/static/scripts/b292a85050f17f10d0d4560e903758dba1d74002.6e3064dd4d12dea8f0c4.js" async=""></script>
+<script src="/static/scripts/28998d34564e80de8c462263e7acacc4e5569d2b.d68c9fa04081ba4fe67c.js" async=""></script>
+<script src="/static/scripts/4b93e1c5e1893b14c7567631e210f34c571c79bf.5e8da8d9c600e0a8da5c.js" async=""></script>
+<script src="/static/scripts/index-e929be72c6fd3da36302.js" async=""></script>
+<script src="/static/scripts/_buildManifest.js" async=""></script>
+<script src="/static/scripts/_ssgManifest.js" async=""></script>
 
 <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=f24c512a-4137-4c65-a9e6-39f5d7cd0ebe&suggest_apikey=6d98461b-030b-42e8-9a8b-0ad3c4bea025" type="text/javascript"></script>
 <script src="/static/scripts/main8.js?ver5"></script>
