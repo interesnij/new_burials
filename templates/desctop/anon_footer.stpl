@@ -127,6 +127,7 @@
 <div id="fullscreens_container"></div>
 <div id="modal_container"></div>
 
+<!--
 <script id="__NEXT_DATA__" type="application/json">
     {
         "props": {
@@ -356,7 +357,7 @@
 <script src="/static/scripts/index-e929be72c6fd3da36302.js" async=""></script>
 <script src="/static/scripts/_buildManifest.js" async=""></script>
 <script src="/static/scripts/_ssgManifest.js" async=""></script>
-
+-->
 <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=f24c512a-4137-4c65-a9e6-39f5d7cd0ebe&suggest_apikey=6d98461b-030b-42e8-9a8b-0ad3c4bea025" type="text/javascript"></script>
 <script src="/static/scripts/main8.js?ver5"></script>
 <script src="/static/scripts/map.js"></script>
