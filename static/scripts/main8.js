@@ -131,8 +131,8 @@ function elementInViewport(el){var bounds = el.getBoundingClientRect();return ((
 
 
 window.onscroll = function() {
-  console.log(window.innerHeight);
-  if (window.innerHeight > 2000) {
+  console.log(window.pageYOffset);
+  if (window.pageYOffset > 100) {
     console.log("> 2000!")
     document.body.classList.add("sticky-header")
   }
