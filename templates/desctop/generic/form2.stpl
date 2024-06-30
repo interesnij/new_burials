@@ -41,23 +41,6 @@
 				</div>
 
                 <div class="col-sm-12 col-md-6">
-                    <div class="form-group">
-                        <div class="blur input-group">
-                            <input type="number" name="deathYear" value="" id="deathYear" class="form-control">
-                            <div class="input-group-append">
-                                <button type="button" aria-haspopup="true" aria-expanded="false" class="btn-lg btn btn-outline-primary">
-                                    <span>=</span>
-                                </button>
-                                <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu">
-                                    <button type="button" tabindex="0" role="menuitem" class="dropdown-item active">Точно</button>
-                                    <button type="button" tabindex="0" role="menuitem" class="dropdown-item">До</button>
-                                    <button type="button" tabindex="0" role="menuitem" class="dropdown-item">После</button>
-                                </div>
-                            </div>
-                        </div><label for="deathYear" class="">Год смерти</label>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-6">
 					<div class="form-group">
                         <label for="death_date" class="">Год смерти</label>
 						<div class="blur input-group">

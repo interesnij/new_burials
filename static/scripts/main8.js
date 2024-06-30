@@ -1,92 +1,5 @@
 function on(elSelector, eventName, selector, fn) {var element = document.querySelector(elSelector);element.addEventListener(eventName, function(event) {var possibleTargets = element.querySelectorAll(selector);var target = event.target;for (var i = 0, l = possibleTargets.length; i < l; i++) {var el = target;var p = possibleTargets[i];while (el && el !== element) {if (el === p) {return fn.call(p, event);}el = el.parentNode;}}});};
 
-function get_active_btn() {
-  nav = document.querySelector(".navigation-menu");
-  items = nav.querySelectorAll("li");
-  for (let i = 0; i < items.length; i++) {
-    items[i].classList.remove("active")
-  }; 
-
-  path = document.location.pathname;
-
-  if (path == "/wall/") {
-    nav.querySelector(".main").parentElement.classList.add("active");
-  }
-  else if (path.includes("places")) {
-    nav.querySelector(".places").parentElement.classList.add("active");
-  }
-  else if (path.includes("/organization")) {
-    nav.querySelector(".organizations").parentElement.classList.add("active");
-  }
-  else if (path == "/about/") {
-    nav.querySelector(".about").parentElement.classList.add("active");
-  }
-  else if (path == "/faq/") {
-    nav.querySelector(".faq").parentElement.classList.add("active");
-  }
-  else if (path == "/create_service/") {
-    nav.querySelector(".create_service").classList.add("active");
-    nav.querySelector(".admin").classList.add("active");
-  }
-  else if (path == "/create_country/") {
-    nav.querySelector(".create_country").classList.add("active");
-    nav.querySelector(".admin").classList.add("active");
-  }
-  else if (path == "/create_region/") {
-    nav.querySelector(".create_region").classList.add("active");
-    nav.querySelector(".admin").classList.add("active");
-  }
-  else if (path == "/create_district/") {
-    nav.querySelector(".create_district").classList.add("active");
-    nav.querySelector(".admin").classList.add("active");
-  }
-  else if (path == "/lists/") {
-    nav.querySelector(".lists").classList.add("active");
-    nav.querySelector(".admin").classList.add("active");
-  }
-  else if (path == "/create_place/") {
-    if (nav.querySelector(".admin")) {
-      link = nav.querySelector(".admin");
-    }
-    else {
-      link = nav.querySelector(".create_link");
-    }
-    nav.querySelector(".create_place").classList.add("active");
-    link.classList.add("active");
-  }
-  else if (path == "/create_brave/") {
-    if (nav.querySelector(".admin")) {
-      link = nav.querySelector(".admin");
-    }
-    else {
-      link = nav.querySelector(".create_link");
-    }
-    nav.querySelector(".create_brave").classList.add("active");
-    link.classList.add("active");
-  }
-  else if (path == "/create_deceased/") {
-    if (nav.querySelector(".admin")) {
-      link = nav.querySelector(".admin");
-    }
-    else {
-      link = nav.querySelector(".create_link");
-    }
-    nav.querySelector(".create_deceased").classList.add("active");
-    link.classList.add("active");
-  }
-  else if (path == "/create_organization/") {
-    if (nav.querySelector(".admin")) {
-      link = nav.querySelector(".admin");
-    }
-    else {
-      link = nav.querySelector(".create_link");
-    }
-    nav.querySelector(".create_organization").classList.add("active");
-    link.classList.add("active");
-  }
-
-};
-
 function getCookie(name) {
   const cookies = document.cookie.split(';');
   for (let i = 0; i < cookies.length; i++) {
@@ -213,6 +126,18 @@ function toast_warning(text) {
     var toasts = new ToastManager();
     toasts.showWarning(text)
 }
+
+function elementInViewport(el){var bounds = el.getBoundingClientRect();return ((bounds.top + bounds.height > 0) && (window.innerHeight - bounds.top > 0));}
+
+
+window.onscroll = function() {
+  if (window.innerHeight > 2000) {
+    document.body.classList.add("sticky-header")
+  }
+  else {
+    document.body.classList.remove("sticky-header")
+  }
+};
 
 on('body', 'click', '#logg', function() {
     _this = this;
@@ -568,7 +493,7 @@ on('body', 'click', '.place_click', function() {
 });
 
 on('body', 'click', '.show_dop_search_form', function() {
-  block = this.parentElement.parentElement.parentElement.parentElement.nextElementSibling;
+  block = this.parentElement.parentElement.nextElementSibling;
   if (block.classList.contains("hidden")) {
     block.classList.remove("hidden")
   } 
