@@ -1204,5 +1204,20 @@ on('body', 'click', '.show_org_map', function() {
   create_fullscreen ("/organization/" + this.getAttribute("data-pk") + "/map/" , "photo_fullsvreen", false, false, true, this.getAttribute("data-cord"))
 });
 
- 
-get_active_btn();
+on('body', 'click', 'button', function() {
+  let block = this.nextElementSibling;
+  if (block.classList.contains("dropdown-menu")) {
+    if (block.classList.contains("show")) {
+      block.classList.remove("show");
+    }
+    else {
+      block.classList.add("show");
+    }
+  }
+  else {
+    list = document.body.querySelectorAll(".dropdown-menu");
+    for (var i = 0, len = list.length; i < len; i++) {
+      list[i].classList.remove("show");
+    }
+  }
+});

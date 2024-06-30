@@ -1,27 +1,26 @@
 <form class="find-burial-form py-4 px-md-5 px-3 row">
-	
-	<div class="row">
-		<div class="col-md-12 col-lg-4">
-			<div class="form-group">
-                <label for="id_last_name" class="">Искомая фамилия</label>
-                <input name="last_name" id="id_last_name" type="text" class="form-control">
-            </div>
-		</div>
-		<div class="col-md-12 col-lg-4">
-			<div class="form-group">
-                <label for="id_first_name" class="">Искомое имя</label>
-                <input name="first_name" id="id_first_name" type="text" class="form-control">
-            </div>
-		</div>
+    <div class="row">
         <div class="col-md-12 col-lg-4">
-			<div class="form-group">
-                <label for="id_middle_name" class="">Искомое отчество</label>
-                <input name="middle_name" id="id_middle_name" type="text" class="form-control">
+            <div class="form-group">
+                <input name="last_name" id="id_last_name" type="text" class="form-control">
+                <label for="id_last_name" class="">Искомая фамилия</label>
             </div>
-		</div>
-		<div class="col-sm-12 col-md-12 col-lg-4">
-			<div class="row">
-				<div class="col-sm-12 col-md-6">
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="form-group">
+                <input name="first_name" id="id_first_name" type="text" class="form-control">
+                <label for="id_first_name" class="">Имя</label>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="form-group">
+                <input name="middle_name" id="id_middle_name" type="text" class="form-control">
+                <label for="id_middle_name" class="">Отчество</label>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-4">
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
 					<div class="form-group">
                         <label for="birth_date" class="">Год рождения</label>
 						<div class="blur input-group">
@@ -40,7 +39,25 @@
 						</div> 
 					</div>
 				</div>
-				<div class="col-sm-12 col-md-6">
+
+                <div class="col-sm-12 col-md-6">
+                    <div class="form-group">
+                        <div class="blur input-group">
+                            <input type="number" name="deathYear" value="" id="deathYear" class="form-control">
+                            <div class="input-group-append">
+                                <button type="button" aria-haspopup="true" aria-expanded="false" class="btn-lg btn btn-outline-primary">
+                                    <span>=</span>
+                                </button>
+                                <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu">
+                                    <button type="button" tabindex="0" role="menuitem" class="dropdown-item active">Точно</button>
+                                    <button type="button" tabindex="0" role="menuitem" class="dropdown-item">До</button>
+                                    <button type="button" tabindex="0" role="menuitem" class="dropdown-item">После</button>
+                                </div>
+                            </div>
+                        </div><label for="deathYear" class="">Год смерти</label>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
 					<div class="form-group">
                         <label for="death_date" class="">Год смерти</label>
 						<div class="blur input-group">
@@ -59,12 +76,9 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-sm-12">
-					<div class="small mb-3"></div>
-				</div>
-			</div>
-		</div>
-		<div class="d-flex col-md-12 col-lg-4">
+            </div>
+        </div>
+        <div class="d-flex col-md-12 col-lg-4">
 			<div class="flex-grow-1 form-group">
                 <label for="location-input" class="">Кладбище</label>
 				<input type="hidden" id="id_place" name="place">
@@ -73,21 +87,18 @@
 					<p>Начинайте вводить текст</p>
 				</div>  
 			</div>  
-		</div>  
-		<div class="submit-col col-md-12 col-lg-4">
-			<div class="row">
-				<div class="col-md-4">
-            		<button style="margin-top: 23px;" type="button" class="search search_deceaseds search-form-button btn btn-primary">Искать</button>
-					<input id="id_types" type="hidden" value="main">
-				</div>  
-				<div class="col-md-8">
-					<div style="margin-top: 30px;font-size: x-large;" class="pointer show_dop_search_form text-uppercase btn btn-link">+ доп. парамерты </div>
-				</div> 
-			</div>
-        </div>
-	</div> 
+		</div> 
 
-	<div class="border-top mt-3 pt-3 row hidden"> 
+        <div class="submit-col col-md-12 col-lg-2">
+            <button type="button" class="search search_deceaseds search-form-button btn btn-primary"><i class="icon-search"></i><span>Найти</span></button>
+            <input id="id_types" type="hidden" value="main">
+        </div>
+        <div class="submit-col col-md-12 col-lg-2">
+            <button type="button" class="text-uppercase btn show_dop_search_form btn-link"><span>+Доп.параметры</span></button>
+        </div>
+    </div>
+
+    <div class="border-top mt-3 pt-3 row hidden"> 
 		<div class="d-flex flex-column justify-content-end col-sm-12 col-md-6 col-lg-4">
 			<div class="mb-3 form-check">
 				<label for="is_veteran" class="form-check-label">
@@ -114,4 +125,3 @@
 		</div>
 	</div>
 </form>
-<div class=""></div>
