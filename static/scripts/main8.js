@@ -1132,7 +1132,7 @@ on('body', 'click', '.show_org_map', function() {
 
 on('body', 'click', 'button', function() {
   let block = this.nextElementSibling;
-  if (block.classList.contains("dropdown-menu")) {
+  if (block && block.classList.contains("dropdown-menu")) {
     if (block.classList.contains("show")) {
       block.classList.remove("show");
     }
