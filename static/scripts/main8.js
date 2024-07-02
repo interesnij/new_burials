@@ -131,9 +131,7 @@ function elementInViewport(el){var bounds = el.getBoundingClientRect();return ((
 
 
 window.onscroll = function() {
-  console.log(window.pageYOffset);
   if (window.pageYOffset > 100) {
-    console.log("> 2000!")
     document.body.classList.add("sticky-header")
   }
   else {
@@ -185,6 +183,7 @@ on('body', 'click', '#logg', function() {
   });
 
 on('body', 'click', '.login_window', function() {
+  console.log(document.body.querySelector("#modal_container"));
   document.body.querySelector("#modal_container").innerHTML = '<div tabindex="-1" style="position: relative; z-index: 1050; display: block;"><div class="modal fade show" role="dialog" tabindex="-1" style="display: block;"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title"></h5><button type="button" class="close modal_close" aria-label="Close"><span aria-hidden="true">×</span></button></div><div class="modal-body"><div class="always-float"><form class="my-5"><h3 class="text-white text-center mb-3">Авторизация</h3><div class="form-group"><input id="id_username" name="username" type="text" class="form-input" /><label for="id_username" class="">Логин</label><span class="required-mark">*</span></div><div class="form-group"><input id="id_password" name="password" type="password" class="form-input" /><label for="id_password" class="">Пароль</label><span class="required-mark">*</span></div><p class="api_response"></p><button type="button" class="py-2 mb-3 w-100 btn btn-primary" id="logg"><i class="icon-user"></i><span>Вход</span></button></form></div></div></div></div></div><div class="modal-backdrop fade show"></div></div>';
 });
 

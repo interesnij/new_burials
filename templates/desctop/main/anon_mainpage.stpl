@@ -7,7 +7,7 @@
 </div>
 <div class="container">
 
-    <% include!("../generic/form.stpl"); %>
+    <% include!("../generic/form2.stpl"); %>
 
     <div class="mx-0 front-icons row">
         <div class="p-0 front-icons__item col-sm-12 col-md-6 col-lg-3">
