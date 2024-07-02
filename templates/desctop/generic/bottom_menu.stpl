@@ -1,0 +1,30 @@
+<div class="py-5 border-top rubrics">
+    <div class="container">
+        <div class="row">
+            <div class="mb-3 col-sm-12 col-md-6 col-lg-3">
+                <a class="rubric-item text-decoration-none text-center" href="/famous">
+                    <img src="/static/images/famous.jpg" alt="Известные личности" class="d-none d-md-block">
+                    <div class="rubric-item__title text-uppercase mt-4">Известные личности</div>
+                </a>
+            </div>
+            <div class="mb-3 col-sm-12 col-md-6 col-lg-3">
+                <a class="rubric-item text-decoration-none text-center pointer this_day_deceased">
+                    <img src="/static/images/this-day.jpg" alt="Умерли в этот день" class="d-none d-md-block">
+                    <div class="rubric-item__title text-uppercase mt-4">Умерли в этот день</div>
+                </a>
+            </div>
+            <div class="mb-3 col-sm-12 col-md-6 col-lg-3">
+                <a class="rubric-item text-decoration-none text-center" href="/interesting-monuments">
+                    <img src="/static/images/interest.jpg" alt="Интересные памятники" class="d-none d-md-block">
+                    <div class="rubric-item__title text-uppercase mt-4">Интересные памятники</div>
+                </a>
+            </div>
+            <div class="mb-3 col-sm-12 col-md-6 col-lg-3">
+                <a class="rubric-item text-decoration-none text-center" href="/epitaphs">
+                    <img src="/static/images/epitaph.jpg" alt="Эпитафии" class="d-none d-md-block">
+                    <div class="rubric-item__title text-uppercase mt-4">Эпитафии</div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

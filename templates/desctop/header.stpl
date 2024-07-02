@@ -47,13 +47,13 @@
                                     <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu">
                                         <ul class="menu-main d-block nav">
                                             <li class="nav-item"><a class="nav-link" href="/">Главная</a></li> 
-                                            <li class="nav-item"><a class="nav-link" href="/braves/">Братские могилы</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="/braves">Братские могилы</a></li>
                                             <li class="nav-item"><a class="nav-link" href="/wall">Стена памяти</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="/places/">Кладбища</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="/places">Кладбища</a></li>
                                             <% if services_enabled { %>
                                                 <li class="nav-item"><a class="nav-link" href="/services">Уборка могил</a></li>
                                             <% } %>
-                                            <li class="nav-item"><a class="nav-link" href="/organizations_country/1/">Организации</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="/organizations_country/1">Организации</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -93,44 +93,44 @@
                                 </button>
                                 <div tabindex="-1" role="menu" aria-hidden="true" class="add-menu dropdown-menu"> 
                                     <% if request_user.is_superuser() { %>
-                                        <a href="/create_country/" class="create_country border-bottom dropdown-item d-flex align-items-center">
+                                        <a href="/create_country" class="create_country border-bottom dropdown-item d-flex align-items-center">
                                             <span>Страну</span>
                                         </a>
-                                        <a href="/create_region/" class="create_region border-bottom dropdown-item d-flex align-items-center">
+                                        <a href="/create_region" class="create_region border-bottom dropdown-item d-flex align-items-center">
                                             <span>Регион</span>
                                         </a>
-                                        <a href="/create_district/" class="create_district border-bottom dropdown-item d-flex align-items-center">
+                                        <a href="/create_district" class="create_district border-bottom dropdown-item d-flex align-items-center">
                                             <span>Район</span>
                                         </a>
-                                        <a href="/create_city/" class="create_city border-bottom dropdown-item d-flex align-items-center">
+                                        <a href="/create_city" class="create_city border-bottom dropdown-item d-flex align-items-center">
                                             <span>Город</span>
                                         </a>
-                                        <a class="border-bottom dropdown-item d-flex align-items-center" href="/create_deceased/">
+                                        <a class="border-bottom dropdown-item d-flex align-items-center" href="/create_deceased">
                                             <span>Захоронение</span>
                                         </a>
-                                        <a class="border-bottom dropdown-item d-flex align-items-center" href="/create_place/">
+                                        <a class="border-bottom dropdown-item d-flex align-items-center" href="/create_place">
                                             <span>Кладбище</span>
                                         </a>
-                                        <a class="border-bottom dropdown-item d-flex align-items-center" href="/create_brave/">
+                                        <a class="border-bottom dropdown-item d-flex align-items-center" href="/create_brave">
                                             <span>Братскую могилу</span>
                                         </a>
-                                        <a class="border-bottom dropdown-item d-flex align-items-center" href="/create_organization/">
+                                        <a class="border-bottom dropdown-item d-flex align-items-center" href="/create_organization">
                                             <span>Организацию</span>
                                         </a>
-                                        <a class="border-bottom dropdown-item d-flex align-items-center lists" href="/lists/">
+                                        <a class="border-bottom dropdown-item d-flex align-items-center lists" href="/lists">
                                             <span>Списки</span>
                                         </a>
                                     <% } else { %>
-                                        <a class="border-bottom dropdown-item d-flex align-items-center" href="/create_deceased/">
+                                        <a class="border-bottom dropdown-item d-flex align-items-center" href="/create_deceased">
                                             <i class="icon-burial"></i><span>Захоронение</span>
                                         </a>
-                                        <a class="border-bottom dropdown-item d-flex align-items-center" href="/create_place/">
+                                        <a class="border-bottom dropdown-item d-flex align-items-center" href="/create_place">
                                             <i class="icon-cemetery"></i><span>Кладбище</span>
                                         </a>
-                                        <a class="border-bottom dropdown-item d-flex align-items-center" href="/create_brave/">
+                                        <a class="border-bottom dropdown-item d-flex align-items-center" href="/create_brave">
                                             <i class="icon-mass-grave"></i><span>Братскую могилу</span>
                                         </a>
-                                        <a class="border-bottom dropdown-item d-flex align-items-center" href="/create_organization/">
+                                        <a class="border-bottom dropdown-item d-flex align-items-center" href="/create_organization">
                                             <i class="icon-office"></i><span>Организацию</span>
                                         </a>
                                     <% } %>
@@ -155,13 +155,13 @@
                 <div class="container">
                     <ul class="menu-main justify-content-between nav">
                         <li class="py-3 nav-item"><a class="nav-link" href="/">Главная</a></li>
-                        <li class="py-3 nav-item"><a class="nav-link" href="/braves/">Братские могилы</a></li>
-                        <li class="py-3 nav-item"><a class="nav-link" href="/wall/">Стена памяти</a></li>
-                        <li class="py-3 nav-item"><a class="nav-link" href="/places/">Кладбища</a></li>
+                        <li class="py-3 nav-item"><a class="nav-link" href="/braves">Братские могилы</a></li>
+                        <li class="py-3 nav-item"><a class="nav-link" href="/wall">Стена памяти</a></li>
+                        <li class="py-3 nav-item"><a class="nav-link" href="/places">Кладбища</a></li>
                         <% if services_enabled { %>
                             <li class="py-3 nav-item"><a class="nav-link" href="/services">Уборка могил</a></li>
                         <% } %>
-                        <li class="py-3 nav-item"><a class="nav-link" href="/organizations_country/1/">Организации</a></li>
+                        <li class="py-3 nav-item"><a class="nav-link" href="/organizations_country/1">Организации</a></li>
                     </ul>
                 </div>
             </div>

@@ -50,7 +50,7 @@
                     </div>
                     <div class="burial-teaser__content flex-grow-1">
                         <div class="d-flex justify-content-between mb-2">
-                            <a class="burial-teaser__title" href="/deceased/<%= i.id %>/"><%= i.get_fio() %></a>
+                            <a class="burial-teaser__title" href="/deceased/<%= i.id %>"><%= i.get_fio() %></a>
                         </div>
                         <div><strong class="text-dark">Годы жизни: </strong>
                             <% if i.birth_date.is_some() { %>
@@ -76,7 +76,7 @@
                             <strong class="text-dark">
                                 Адрес / координаты:&nbsp;
                             </strong>
-                            <a href="/deceased/<%= i.id %>/">посмотреть</a>
+                            <a href="/deceased/<%= i.id %>">посмотреть</a>
                         </div>
                     </div>
                 </div>
@@ -84,7 +84,7 @@
             </div>
         </div>
         <div class="col-sm-12 col-lg-3">
-            <a href="/create_deceased/" type="button" class="add-burial btn btn-primary">
+            <a href="/create_deceased" type="button" class="add-burial btn btn-primary">
                 <i class="icon-plus"></i><strong>Добавить<br> захоронение</strong>
             </a>
             <div class="jumbo-teaser jumbotron" style="background-image: url(&quot;/static/content/sidebar/search.jpg&quot;);">

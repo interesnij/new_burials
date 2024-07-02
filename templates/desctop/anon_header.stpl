@@ -96,16 +96,16 @@
                                     <i class="icon-plus"></i><span>Добавить</span>
                                 </button>
                                 <div tabindex="-1" role="menu" aria-hidden="true" class="add-menu dropdown-menu"> 
-                                    <a class="border-bottom dropdown-item d-flex align-items-center" href="/create_deceased/">
+                                    <a class="border-bottom dropdown-item d-flex align-items-center" href="/create_deceased">
                                         <i class="icon-burial"></i><span>Захоронение</span>
                                     </a>
-                                    <a class="border-bottom dropdown-item d-flex align-items-center" href="/create_place/">
+                                    <a class="border-bottom dropdown-item d-flex align-items-center" href="/create_place">
                                         <i class="icon-cemetery"></i><span>Кладбище</span>
                                     </a>
-                                    <a class="border-bottom dropdown-item d-flex align-items-center" href="/create_brave/">
+                                    <a class="border-bottom dropdown-item d-flex align-items-center" href="/create_brave">
                                         <i class="icon-mass-grave"></i><span>Братскую могилу</span>
                                     </a>
-                                    <a class="border-bottom dropdown-item d-flex align-items-center" href="/create_organization/">
+                                    <a class="border-bottom dropdown-item d-flex align-items-center" href="/create_organization">
                                         <i class="icon-office"></i><span>Организацию</span>
                                     </a>
                                 </div>
