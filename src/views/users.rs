@@ -29,8 +29,8 @@ use std::borrow::BorrowMut;
 
 
 pub fn user_routes(config: &mut web::ServiceConfig) {
-    config.route("/profile/", web::get().to(profile_page));
-    config.route("/edit_profile/", web::post().to(edit_profile));
+    config.route("/profile", web::get().to(profile_page));
+    config.route("/edit_profile", web::post().to(edit_profile));
 }
 
 

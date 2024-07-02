@@ -36,16 +36,16 @@ use std::borrow::BorrowMut;
 
 
 pub fn deceased_routes(config: &mut web::ServiceConfig) {
-    config.route("/deceased/{id}/", web::get().to(deceased_page));
-    config.route("/deceased/{id}/map/", web::get().to(deceased_map));
-    config.route("/create_deceased/", web::get().to(create_deceased_page));
-    config.route("/edit_deceased/{id}/", web::get().to(edit_deceased_page));
+    config.route("/deceased/{id}", web::get().to(deceased_page));
+    config.route("/deceased/{id}/map", web::get().to(deceased_map));
+    config.route("/create_deceased", web::get().to(create_deceased_page));
+    config.route("/edit_deceased/{id}", web::get().to(edit_deceased_page));
 
-    config.route("/create_deceased/", web::post().to(create_deceased));
-    config.route("/edit_deceased/{id}/", web::post().to(edit_deceased));
-    config.route("/delete_deceased/", web::post().to(delete_deceased));
+    config.route("/create_deceased", web::post().to(create_deceased));
+    config.route("/edit_deceased/{id}", web::post().to(edit_deceased));
+    config.route("/delete_deceased", web::post().to(delete_deceased));
 
-    config.route("/wall/", web::get().to(wall_page));
+    config.route("/wall", web::get().to(wall_page));
 }
 
 

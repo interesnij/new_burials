@@ -37,25 +37,25 @@ use crate::models::{
 
 
 pub fn place_routes(config: &mut web::ServiceConfig) {
-    config.route("/places/", web::get().to(all_places_page));
-    config.route("/braves/", web::get().to(all_braves_page));
-    config.route("/search_places/", web::get().to(search_places_page));
-    config.route("/search_braves/", web::get().to(search_braves_page)); 
-    config.route("/place/{id}/map/", web::get().to(place_map));
-    config.route("/create_place/", web::get().to(create_place_page));
-    config.route("/edit_place/{id}/", web::get().to(edit_place_page));
-    config.route("/create_brave/", web::get().to(create_brave_page));
-    config.route("/edit_brave/{id}/", web::get().to(edit_brave_page));
+    config.route("/places", web::get().to(all_places_page));
+    config.route("/braves", web::get().to(all_braves_page));
+    config.route("/search_places", web::get().to(search_places_page));
+    config.route("/search_braves", web::get().to(search_braves_page)); 
+    config.route("/place/{id}/map", web::get().to(place_map));
+    config.route("/create_place", web::get().to(create_place_page));
+    config.route("/edit_place/{id}", web::get().to(edit_place_page));
+    config.route("/create_brave", web::get().to(create_brave_page));
+    config.route("/edit_brave/{id}", web::get().to(edit_brave_page));
 
-    config.route("/create_place/", web::post().to(create_place));
-    config.route("/edit_place/{id}/", web::post().to(edit_place));
-    config.route("/create_brave/", web::post().to(create_brave));
-    config.route("/edit_brave/{id}/", web::post().to(edit_brave));
-    config.route("/delete_place/", web::post().to(delete_place));
-    config.route("/place/publish/", web::post().to(publish_place));
-    config.route("/place/unpublish/", web::post().to(unpublish_place));
-    config.route("/place/{id}/", web::get().to(all_deceased_place_page));
-    config.route("/brave/{id}/", web::get().to(all_deceased_brave_page));
+    config.route("/create_place", web::post().to(create_place));
+    config.route("/edit_place/{id}", web::post().to(edit_place));
+    config.route("/create_brave", web::post().to(create_brave));
+    config.route("/edit_brave/{id}", web::post().to(edit_brave));
+    config.route("/delete_place", web::post().to(delete_place));
+    config.route("/place/publish", web::post().to(publish_place));
+    config.route("/place/unpublish", web::post().to(unpublish_place));
+    config.route("/place/{id}", web::get().to(all_deceased_place_page));
+    config.route("/brave/{id}", web::get().to(all_deceased_brave_page));
 }
 
 pub async fn all_deceased_place_page(req: HttpRequest, _id: web::Path<i32>) -> actix_web::Result<HttpResponse> {

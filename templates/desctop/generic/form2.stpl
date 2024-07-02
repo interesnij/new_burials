@@ -24,7 +24,7 @@
 					<div class="form-group">
                         <label for="birth_date" class="">Дата рождения</label>
 						<div class="blur input-group">
-                            <input id="id_birth_date" name="birth_date" type="local" class="form-control">
+                            <input id="id_birth_date" name="birth_date" type="date" class="form-control">
 							<input class="_filter" name="birth_filter" type="hidden">
 							<div class="input-group-append">
                                 <button type="button" aria-haspopup="true" aria-expanded="false" class="btn-lg btn btn-outline-primary">
@@ -44,7 +44,7 @@
 					<div class="form-group">
                         <label for="death_date" class="">Дата смерти</label>
 						<div class="blur input-group">
-                            <input id="id_death_date" name="death_date" type="local" class="form-control">
+                            <input id="id_death_date" name="death_date" type="date" class="form-control">
 							<input class="_filter" name="death_filter" type="hidden">
 							<div class="input-group-append">
                                 <button type="button" aria-haspopup="true" aria-expanded="false" class="btn-lg btn btn-outline-primary">

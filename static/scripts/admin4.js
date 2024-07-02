@@ -28,7 +28,7 @@ on('body', 'click', '#create_service', function() {
   form_data = new FormData(form);
   
   link = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject( 'Microsoft.XMLHTTP' );
-  link.open( 'POST', "/create_service/", true );
+  link.open( 'POST', "/create_service", true );
   link.onreadystatechange = function () {
   if ( link.readyState == 4 && link.status == 200 ) {
       location.reload()
@@ -53,7 +53,7 @@ on('body', 'click', '#edit_service', function() {
     form_data = new FormData(form);
   
     link = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject( 'Microsoft.XMLHTTP' );
-    link.open( 'POST', "/edit_service/" + _this.getAttribute("data-pk") + "/", true );
+    link.open( 'POST', "/edit_service/" + _this.getAttribute("data-pk"), true );
     link.onreadystatechange = function () {
     if ( link.readyState == 4 && link.status == 200 ) {
       location.reload()
@@ -75,7 +75,7 @@ on('body', 'click', '#create_country', function() {
       form_data = new FormData(form);
     
       link = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject( 'Microsoft.XMLHTTP' );
-      link.open( 'POST', "/create_country/", true );
+      link.open( 'POST', "/create_country", true );
       link.onreadystatechange = function () {
       if ( link.readyState == 4 && link.status == 200 ) {
         location.reload()
@@ -97,7 +97,7 @@ on('body', 'click', '#edit_country', function() {
       form_data = new FormData(form);
     
       link = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject( 'Microsoft.XMLHTTP' );
-      link.open( 'POST', "/edit_country/" + _this.getAttribute("data-pk") + "/", true );
+      link.open( 'POST', "/edit_country/" + _this.getAttribute("data-pk"), true );
       link.onreadystatechange = function () {
       if ( link.readyState == 4 && link.status == 200 ) {
         location.reload()
@@ -134,7 +134,7 @@ on('body', 'click', '#create_region', function() {
     form_data = new FormData(form);
   
     link = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject( 'Microsoft.XMLHTTP' );
-    link.open( 'POST', "/create_region/", true );
+    link.open( 'POST', "/create_region", true );
     link.onreadystatechange = function () {
     if ( link.readyState == 4 && link.status == 200 ) {
       location.reload()
@@ -165,7 +165,7 @@ on('body', 'click', '#edit_region', function() {
     form_data = new FormData(form);
   
     link = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject( 'Microsoft.XMLHTTP' );
-    link.open( 'POST', "/edit_region/" + _this.getAttribute("data-pk") + "/", true );
+    link.open( 'POST', "/edit_region/" + _this.getAttribute("data-pk"), true );
     link.onreadystatechange = function () {
     if ( link.readyState == 4 && link.status == 200 ) {
       location.reload()
@@ -202,7 +202,7 @@ on('body', 'click', '#create_city', function() {
     form_data = new FormData(form);
   
     link = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject( 'Microsoft.XMLHTTP' );
-    link.open( 'POST', "/create_city/", true );
+    link.open( 'POST', "/create_city", true );
     link.onreadystatechange = function () {
     if ( link.readyState == 4 && link.status == 200 ) {
       location.reload()
@@ -233,7 +233,7 @@ on('body', 'click', '#edit_city', function() {
     form_data = new FormData(form);
   
     link = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject( 'Microsoft.XMLHTTP' );
-    link.open( 'POST', "/edit_city/" + _this.getAttribute("data-pk") + "/", true );
+    link.open( 'POST', "/edit_city/" + _this.getAttribute("data-pk"), true );
     link.onreadystatechange = function () {
     if ( link.readyState == 4 && link.status == 200 ) {
       location.reload()
@@ -269,7 +269,7 @@ on('body', 'click', '#create_district', function() {
     form_data = new FormData(form);
   
     link = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject( 'Microsoft.XMLHTTP' );
-    link.open( 'POST', "/create_district/", true );
+    link.open( 'POST', "/create_district", true );
     link.onreadystatechange = function () {
     if ( link.readyState == 4 && link.status == 200 ) {
       location.reload()
@@ -300,7 +300,7 @@ on('body', 'click', '#edit_district', function() {
     form_data = new FormData(form);
   
     link = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject( 'Microsoft.XMLHTTP' );
-    link.open( 'POST', "/edit_district/" + _this.getAttribute("data-pk") + "/", true );
+    link.open( 'POST', "/edit_district/" + _this.getAttribute("data-pk"), true );
     link.onreadystatechange = function () {
     if ( link.readyState == 4 && link.status == 200 ) {
       location.reload()
@@ -337,7 +337,7 @@ on('body', 'click', '#edit_place', function() {
   form_data = new FormData(form);
   
     link = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject( 'Microsoft.XMLHTTP' );
-    link.open( 'POST', "/edit_place/" + _this.getAttribute("data-pk") + "/", true );
+    link.open( 'POST', "/edit_place/" + _this.getAttribute("data-pk"), true );
     link.onreadystatechange = function () {
     if ( link.readyState == 4 && link.status == 200 ) {
       location.reload()
@@ -369,7 +369,7 @@ on('body', 'click', '#edit_brave', function() {
   form_data = new FormData(form);
   
     link = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject( 'Microsoft.XMLHTTP' );
-    link.open( 'POST', "/edit_brave/" + _this.getAttribute("data-pk") + "/", true );
+    link.open( 'POST', "/edit_brave/" + _this.getAttribute("data-pk"), true );
     link.onreadystatechange = function () {
     if ( link.readyState == 4 && link.status == 200 ) {
       location.reload()
@@ -428,7 +428,7 @@ on('body', 'click', '#edit_deceased', function() {
   form_data = new FormData(form);
   
     link = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject( 'Microsoft.XMLHTTP' );
-    link.open( 'POST', "/edit_deceased/" + _this.getAttribute("data-pk") + "/", true );
+    link.open( 'POST', "/edit_deceased/" + _this.getAttribute("data-pk"), true );
     link.onreadystatechange = function () {
     if ( link.readyState == 4 && link.status == 200 ) {
       location.reload()

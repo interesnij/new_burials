@@ -6,7 +6,7 @@
 </div>
 <div class="container">
 
-        <% include!("../generic/form.stpl"); %>
+        <% include!("../generic/form2.stpl"); %>
 
         <div class="row">
             <div class="mb-3 col-sm-12 col-md-6 col-lg-3">

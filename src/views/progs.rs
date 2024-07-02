@@ -25,7 +25,7 @@ use crate::errors::Error;
 
 pub fn progs_routes(config: &mut web::ServiceConfig) {
     //config.route("/feedback/", web::post().to(create_feedback));
-    config.route("/delete_file/", web::post().to(delete_file));
+    config.route("/delete_file", web::post().to(delete_file));
 }
 
 pub async fn delete_file(req: HttpRequest, mut payload: Multipart) -> impl Responder {

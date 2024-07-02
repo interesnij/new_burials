@@ -37,22 +37,22 @@ use std::borrow::BorrowMut;
 
 
 pub fn organization_routes(config: &mut web::ServiceConfig) {
-    config.route("/organizations_country/{id}/", web::get().to(all_organization_country_page));
-    config.route("/organization/{id}/", web::get().to(organization_page));
+    config.route("/organizations_country/{id}", web::get().to(all_organization_country_page));
+    config.route("/organization/{id}", web::get().to(organization_page));
 
-    config.route("/create_organization/", web::get().to(create_organization_page));
-    config.route("/edit_organization/{id}/", web::get().to(edit_organization_page));
-    config.route("/create_organization/", web::post().to(create_organization));
-    config.route("/edit_organization/{id}/", web::post().to(edit_organization));
-    config.route("/delete_organization/", web::post().to(delete_organization));
+    config.route("/create_organization", web::get().to(create_organization_page));
+    config.route("/edit_organization/{id}", web::get().to(edit_organization_page));
+    config.route("/create_organization", web::post().to(create_organization));
+    config.route("/edit_organization/{id}", web::post().to(edit_organization));
+    config.route("/delete_organization", web::post().to(delete_organization));
 
-    config.route("/create_loc/{id}/", web::get().to(create_loc_page));
-    config.route("/edit_loc/{id}/", web::get().to(edit_loc_page));
-    config.route("/create_loc/{id}/", web::post().to(create_loc));
-    config.route("/edit_loc/{id}/", web::post().to(edit_loc));
-    config.route("/delete_loc/", web::post().to(delete_loc));
+    config.route("/create_loc/{id}", web::get().to(create_loc_page));
+    config.route("/edit_loc/{id}", web::get().to(edit_loc_page));
+    config.route("/create_loc/{id}", web::post().to(create_loc));
+    config.route("/edit_loc/{id}", web::post().to(edit_loc));
+    config.route("/delete_loc", web::post().to(delete_loc));
 
-    config.route("/services/{id}/", web::get().to(service_page));
+    config.route("/services/{id}", web::get().to(service_page));
 }
 
 

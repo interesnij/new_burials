@@ -141,7 +141,7 @@ window.onscroll = function() {
 
 on('body', 'click', '#logg', function() {
     _this = this;
-    form = _this.parentElement.parentElement;
+    form = _this.parentElement;
     response = form.querySelector(".api_response");
   
     if (!form.querySelector("#id_username").value){
@@ -162,7 +162,7 @@ on('body', 'click', '#logg', function() {
   
     form_data = new FormData(form);
     link = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject( 'Microsoft.XMLHTTP' );
-    link.open( 'POST', "/login/", true );
+    link.open( 'POST', "/login", true );
     //link.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
   
     link.onreadystatechange = function () {
@@ -215,7 +215,7 @@ on('body', 'click', '.search_sorted', function() {
   
 on('body', 'click', '#signup', function() {
     _this = this;
-    form = _this.parentElement.parentElement;
+    form = _this.parentElement;
     response = form.querySelector(".api_response");
     console.log(form.querySelector("#id_username"));
     if (!form.querySelector("#id_username").value){
@@ -258,7 +258,7 @@ on('body', 'click', '#signup', function() {
   
     form_data = new FormData(form);
     link = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject( 'Microsoft.XMLHTTP' );
-    link.open( 'POST', "/signup/", true );
+    link.open( 'POST', "/signup", true );
   
     link.onreadystatechange = function () {
     if ( link.readyState == 4 && link.status == 200 ) {
@@ -386,7 +386,7 @@ on('body', 'change', '.load_region_items', function() {
     block.innerHTML = "";
   } else {
     var link = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject( 'Microsoft.XMLHTTP' );
-    link.open( 'GET', "/load_region_geo_items/" + val + "/", true );
+    link.open( 'GET', "/load_region_geo_items/" + val, true );
     link.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
     link.onreadystatechange = function () {
       if ( link.readyState == 4 ) { 
@@ -409,7 +409,7 @@ on('body', 'change', '.load_regions', function() {
     block.innerHTML = "";
   } else {
       var link = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject( 'Microsoft.XMLHTTP' );
-      link.open( 'GET', "/load_regions/" + val + "/", true );
+      link.open( 'GET', "/load_regions/" + val, true );
       link.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
       link.onreadystatechange = function () {
         if ( link.readyState == 4 ) { 
@@ -434,7 +434,7 @@ on('body', 'input', '.place_search', function() {
     _this.previousElementSibling.value = "";
   } else {
       var link = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject( 'Microsoft.XMLHTTP' );
-      link.open( 'GET', "/search_places/?name=" + val, true );
+      link.open( 'GET', "/search_places?name=" + val, true );
       link.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
       link.onreadystatechange = function () {
         if ( link.readyState == 4 ) { 
@@ -461,7 +461,7 @@ on('body', 'input', '.braves_search', function() {
     _this.previousElementSibling.value = "";
   } else {
       var link = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject( 'Microsoft.XMLHTTP' );
-      link.open( 'GET', "/search_braves/?name=" + val, true );
+      link.open( 'GET', "/search_braves?name=" + val, true );
       link.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
       link.onreadystatechange = function () {
         if ( link.readyState == 4 ) { 
@@ -537,10 +537,10 @@ on('body', 'click', '#create_organization', function() {
   form_data = new FormData(form);
   
     link = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject( 'Microsoft.XMLHTTP' );
-    link.open( 'POST', "/create_organization/", true );
+    link.open( 'POST', "/create_organization", true );
     link.onreadystatechange = function () {
     if ( link.readyState == 4 && link.status == 200 ) {
-      window.location.href = '/organization/' + link.responseText + "/";
+      window.location.href = '/organization/' + link.responseText;
     }};
     link.send(form_data);
 });
@@ -568,7 +568,7 @@ on('body', 'click', '#create_place', function() {
   form_data = new FormData(form);
   
     link = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject( 'Microsoft.XMLHTTP' );
-    link.open( 'POST', "/create_place/", true );
+    link.open( 'POST', "/create_place", true );
     link.onreadystatechange = function () {
     if ( link.readyState == 4 && link.status == 200 ) {
       location.reload()
@@ -599,7 +599,7 @@ on('body', 'click', '#create_brave', function() {
   form_data = new FormData(form);
   
     link = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject( 'Microsoft.XMLHTTP' );
-    link.open( 'POST', "/create_brave/", true );
+    link.open( 'POST', "/create_brave", true );
     link.onreadystatechange = function () {
     if ( link.readyState == 4 && link.status == 200 ) {
       location.reload()
@@ -639,7 +639,7 @@ on('body', 'click', '#create_deceased', function() {
   form_data = new FormData(form);
   
     link = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject( 'Microsoft.XMLHTTP' );
-    link.open( 'POST', "/create_deceased/", true );
+    link.open( 'POST', "/create_deceased", true );
     link.onreadystatechange = function () {
     if ( link.readyState == 4 && link.status == 200 ) {
       location.reload()
@@ -683,7 +683,7 @@ on('body', 'click', '#edit_organization', function() {
   form_data = new FormData(form);
   
     link = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject( 'Microsoft.XMLHTTP' );
-    link.open( 'POST', "/edit_organization/" + _this.getAttribute("data-pk") + "/", true );
+    link.open( 'POST', "/edit_organization/" + _this.getAttribute("data-pk"), true );
     link.onreadystatechange = function () {
     if ( link.readyState == 4 && link.status == 200 ) {
       window.location.href = '/organization/' + link.responseText + "/";
@@ -714,10 +714,10 @@ on('body', 'click', '#create_loc', function() {
   form_data = new FormData(form);
   
     link = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject( 'Microsoft.XMLHTTP' );
-    link.open( 'POST', "/create_loc/" + this.getAttribute("data-pk") + "/", true );
+    link.open( 'POST', "/create_loc/" + this.getAttribute("data-pk"), true );
     link.onreadystatechange = function () {
     if ( link.readyState == 4 && link.status == 200 ) {
-      window.location.href = '/organization/' + link.responseText + "/";
+      window.location.href = '/organization/' + link.responseText;
     }};
     link.send(form_data);
 });
@@ -746,10 +746,10 @@ on('body', 'click', '#edit_loc', function() {
   form_data = new FormData(form);
   
     link = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject( 'Microsoft.XMLHTTP' );
-    link.open( 'POST', "/edit_loc/" + _this.getAttribute("data-pk") + "/", true );
+    link.open( 'POST', "/edit_loc/" + _this.getAttribute("data-pk"), true );
     link.onreadystatechange = function () {
     if ( link.readyState == 4 && link.status == 200 ) {
-      window.location.href = '/organization/' + link.responseText + "/";
+      window.location.href = '/organization/' + link.responseText;
     }};
     link.send(form_data);
 });
@@ -783,7 +783,7 @@ on('body', 'click', '#create_service', function() {
   form_data = new FormData(form);
   
     link = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject( 'Microsoft.XMLHTTP' );
-    link.open( 'POST', "/create_service/" + this.getAttribute("data-pk") + "/", true );
+    link.open( 'POST', "/create_service/" + this.getAttribute("data-pk"), true );
     link.onreadystatechange = function () {
     if ( link.readyState == 4 && link.status == 200 ) {
       window.location.href = '/organization/' + link.responseText + "/";
@@ -821,10 +821,10 @@ on('body', 'click', '#edit_service', function() {
   form_data = new FormData(form);
   
     link = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject( 'Microsoft.XMLHTTP' );
-    link.open( 'POST', "/edit_service/" + _this.getAttribute("data-pk") + "/", true );
+    link.open( 'POST', "/edit_service/" + _this.getAttribute("data-pk"), true );
     link.onreadystatechange = function () {
     if ( link.readyState == 4 && link.status == 200 ) {
-      window.location.href = '/organization/' + link.responseText + "/";
+      window.location.href = '/organization/' + link.responseText;
     }};
     link.send(form_data);
 });
@@ -925,7 +925,7 @@ on('body', 'click', '#edit_profile', function() {
   form_data = new FormData(form);
   
     link = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject( 'Microsoft.XMLHTTP' );
-    link.open( 'POST', "/edit_profile/", true );
+    link.open( 'POST', "/edit_profile", true );
     link.onreadystatechange = function () {
     if ( link.readyState == 4 && link.status == 200 ) {
       location.reload()
@@ -1121,13 +1121,13 @@ link.send();
  
 
 on('body', 'click', '.show_deceased_map', function() {
-  create_fullscreen ("/deceased/" + this.getAttribute("data-pk") + "/map/" , "photo_fullsvreen", true, false, false, this.getAttribute("data-cord"))
+  create_fullscreen ("/deceased/" + this.getAttribute("data-pk") + "/map" , "photo_fullsvreen", true, false, false, this.getAttribute("data-cord"))
 });
 on('body', 'click', '.show_place_map', function() {
-  create_fullscreen ("/place/" + this.getAttribute("data-pk") + "/map/" , "photo_fullsvreen", false, true, false, this.getAttribute("data-cord"))
+  create_fullscreen ("/place/" + this.getAttribute("data-pk") + "/map" , "photo_fullsvreen", false, true, false, this.getAttribute("data-cord"))
 }); 
 on('body', 'click', '.show_org_map', function() {
-  create_fullscreen ("/organization/" + this.getAttribute("data-pk") + "/map/" , "photo_fullsvreen", false, false, true, this.getAttribute("data-cord"))
+  create_fullscreen ("/organization/" + this.getAttribute("data-pk") + "/map" , "photo_fullsvreen", false, false, true, this.getAttribute("data-cord"))
 });
 
 on('body', 'click', 'button', function() {
@@ -1139,6 +1139,9 @@ on('body', 'click', 'button', function() {
     else {
       block.classList.add("show");
     }
+  }
+  else if (this.classList.contains("modal_close")) {
+    this.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.innerHTML = "";
   }
   else {
     list = document.body.querySelectorAll(".dropdown-menu");

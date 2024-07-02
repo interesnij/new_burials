@@ -28,8 +28,8 @@ use crate::utils::{
 
 pub fn page_routes(config: &mut web::ServiceConfig) {
     config.route("/", web::get().to(index_page));
-    config.route("/search/", web::get().to(search_page));
-    config.route("/image/{id}/", web::get().to(image_page));
+    config.route("/search", web::get().to(search_page));
+    config.route("/image/{id}", web::get().to(image_page));
     config.route("/org_search", web::get().to(org_search_page));
 }
 

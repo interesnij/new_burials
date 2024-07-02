@@ -28,15 +28,15 @@ use actix_web::http::header::Header;
 
 
 pub fn auth_routes(config: &mut web::ServiceConfig) {
-    config.service(web::resource("/login/")
+    config.service(web::resource("/login")
         .route(web::get().to(login_page))
         .route(web::post().to(login))
     );
-    config.service(web::resource("/signup/")
+    config.service(web::resource("/signup")
         .route(web::get().to(signup_page))
         .route(web::post().to(process_signup))
     );
-    config.route("/logout/", web::get().to(logout_page));
+    config.route("/logout", web::get().to(logout_page));
 }
 
 

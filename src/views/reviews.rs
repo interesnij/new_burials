@@ -30,11 +30,11 @@ use crate::utils::{
 use std::borrow::BorrowMut;
 
 pub fn reviews_routes(config: &mut web::ServiceConfig) {
-    config.route("/create_review/", web::post().to(create_review));
-    config.route("/edit_review/{id}/", web::post().to(edit_review));
-    config.route("/delete_review/", web::post().to(delete_review));
-    config.route("/review/publish/", web::post().to(publish_review));
-    config.route("/review/unpublish/", web::post().to(unpublish_review));
+    config.route("/create_review", web::post().to(create_review));
+    config.route("/edit_review/{id}", web::post().to(edit_review));
+    config.route("/delete_review", web::post().to(delete_review));
+    config.route("/review/publish", web::post().to(publish_review));
+    config.route("/review/unpublish", web::post().to(unpublish_review));
 }
 
 pub async fn create_review(req: HttpRequest, mut payload: Multipart) -> impl Responder {

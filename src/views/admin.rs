@@ -37,78 +37,78 @@ use crate::models::{
 };
 
 pub fn admin_routes(config: &mut web::ServiceConfig) {
-    config.route("/lists/", web::get().to(lists_page));
-    config.route("/load_countries/", web::get().to(load_countries));
-    config.route("/load_regions/{id}/", web::get().to(load_regions));
-    config.route("/load_region_districts/{id}/", web::get().to(load_region_districts));
-    config.route("/load_country_districts/{id}/", web::get().to(load_country_districts));
-    config.route("/load_region_cities/{id}/", web::get().to(load_region_cities));
-    config.route("/load_country_cities/{id}/", web::get().to(load_country_cities));
-    config.route("/load_region_geo_items/{id}/", web::get().to(load_region_geo_items));
+    config.route("/lists", web::get().to(lists_page));
+    config.route("/load_countries", web::get().to(load_countries));
+    config.route("/load_regions/{id}", web::get().to(load_regions));
+    config.route("/load_region_districts/{id}", web::get().to(load_region_districts));
+    config.route("/load_country_districts/{id}", web::get().to(load_country_districts));
+    config.route("/load_region_cities/{id}", web::get().to(load_region_cities));
+    config.route("/load_country_cities/{id}", web::get().to(load_country_cities));
+    config.route("/load_region_geo_items/{id}", web::get().to(load_region_geo_items));
 
-    config.route("/create_country/", web::get().to(create_country_page));
-    config.route("/edit_country/{id}/", web::get().to(edit_country_page));
-    config.route("/create_region/", web::get().to(create_region_page));
-    config.route("/edit_region/{id}/", web::get().to(edit_region_page));
-    config.route("/create_district/", web::get().to(create_district_page));
-    config.route("/edit_district/{id}/", web::get().to(edit_district_page));
-    config.route("/create_city/", web::get().to(create_city_page));
-    config.route("/edit_city/{id}/", web::get().to(edit_city_page));
-    //config.route("/create_service/", web::get().to(create_service_page));
-    //config.route("/edit_service/{id}/", web::get().to(edit_service_page));
+    config.route("/create_country", web::get().to(create_country_page));
+    config.route("/edit_country/{id}", web::get().to(edit_country_page));
+    config.route("/create_region", web::get().to(create_region_page));
+    config.route("/edit_region/{id}", web::get().to(edit_region_page));
+    config.route("/create_district", web::get().to(create_district_page));
+    config.route("/edit_district/{id}", web::get().to(edit_district_page));
+    config.route("/create_city", web::get().to(create_city_page));
+    config.route("/edit_city/{id}", web::get().to(edit_city_page));
+    //config.route("/create_service", web::get().to(create_service_page));
+    //config.route("/edit_service/{id}", web::get().to(edit_service_page));
 
-    config.route("/lists/all_organizations/", web::get().to(all_organizations_page));
-    config.route("/lists/suggested_organizations/", web::get().to(suggested_organizations_page));
-    config.route("/lists/deleted_organizations/", web::get().to(deleted_organizations_page));
+    config.route("/lists/all_organizations", web::get().to(all_organizations_page));
+    config.route("/lists/suggested_organizations", web::get().to(suggested_organizations_page));
+    config.route("/lists/deleted_organizations", web::get().to(deleted_organizations_page));
     
-    config.route("/lists/all_places/", web::get().to(all_places_page)); 
-    config.route("/lists/suggested_places/", web::get().to(suggested_places_page)); 
-    config.route("/lists/deleted_places/", web::get().to(deleted_places_page));
+    config.route("/lists/all_places", web::get().to(all_places_page)); 
+    config.route("/lists/suggested_places", web::get().to(suggested_places_page)); 
+    config.route("/lists/deleted_places", web::get().to(deleted_places_page));
 
-    config.route("/lists/all_braves/", web::get().to(all_braves_page)); 
-    config.route("/lists/suggested_braves/", web::get().to(suggested_braves_page)); 
-    config.route("/lists/deleted_braves/", web::get().to(deleted_braves_page));
+    config.route("/lists/all_braves", web::get().to(all_braves_page)); 
+    config.route("/lists/suggested_braves", web::get().to(suggested_braves_page)); 
+    config.route("/lists/deleted_braves", web::get().to(deleted_braves_page));
 
-    config.route("/lists/all_deceaseds/", web::get().to(all_deceaseds_page));
-    config.route("/lists/suggested_deceaseds/", web::get().to(suggested_deceaseds_page));
-    config.route("/lists/deleted_deceaseds/", web::get().to(deleted_deceaseds_page));
-    config.route("/lists/all_logs/", web::get().to(all_logs_page));
+    config.route("/lists/all_deceaseds", web::get().to(all_deceaseds_page));
+    config.route("/lists/suggested_deceaseds", web::get().to(suggested_deceaseds_page));
+    config.route("/lists/deleted_deceaseds", web::get().to(deleted_deceaseds_page));
+    config.route("/lists/all_logs", web::get().to(all_logs_page));
 
-    config.route("/lists/all_users/", web::get().to(all_users_list));
-    config.route("/lists/deleted_users/", web::get().to(deleted_users_list));
+    config.route("/lists/all_users", web::get().to(all_users_list));
+    config.route("/lists/deleted_users", web::get().to(deleted_users_list));
 
-    config.route("/create_country/", web::post().to(create_country));
-    config.route("/edit_country/{id}/", web::post().to(edit_country));
-    config.route("/delete_country/", web::post().to(delete_country));
-    config.route("/create_region/", web::post().to(create_region));
-    config.route("/edit_region/{id}/", web::post().to(edit_region));
-    config.route("/delete_region/", web::post().to(delete_region));
-    config.route("/create_district/", web::post().to(create_district));
-    config.route("/edit_district/{id}/", web::post().to(edit_district));
-    config.route("/delete_district/", web::post().to(delete_district));
-    config.route("/create_city/", web::post().to(create_city));
-    config.route("/edit_city/{id}/", web::post().to(edit_city));
-    config.route("/delete_city/", web::post().to(delete_city));
+    config.route("/create_country", web::post().to(create_country));
+    config.route("/edit_country/{id}", web::post().to(edit_country));
+    config.route("/delete_country", web::post().to(delete_country));
+    config.route("/create_region", web::post().to(create_region));
+    config.route("/edit_region/{id}", web::post().to(edit_region));
+    config.route("/delete_region", web::post().to(delete_region));
+    config.route("/create_district", web::post().to(create_district));
+    config.route("/edit_district/{id}", web::post().to(edit_district));
+    config.route("/delete_district", web::post().to(delete_district));
+    config.route("/create_city", web::post().to(create_city));
+    config.route("/edit_city/{id}", web::post().to(edit_city));
+    config.route("/delete_city", web::post().to(delete_city));
 
-    config.route("/users/create_admin/", web::post().to(create_admin));
-    config.route("/users/remove_staff/", web::post().to(remove_staff));
+    config.route("/users/create_admin", web::post().to(create_admin));
+    config.route("/users/remove_staff", web::post().to(remove_staff));
 
-    config.route("/organization/publish/", web::post().to(publish_organization));
-    config.route("/organization/unpublish/", web::post().to(unpublish_organization));
-    config.route("/place/publish/", web::post().to(publish_place));
-    config.route("/place/unpublish/", web::post().to(unpublish_place));
-    config.route("/deceased/publish/", web::post().to(publish_deceased));
-    config.route("/deceased/unpublish/", web::post().to(unpublish_deceased));
-    config.route("/deceased/wall/", web::post().to(wall_deceased));
-    config.route("/deceased/unwall/", web::post().to(unwall_deceased));
+    config.route("/organization/publish", web::post().to(publish_organization));
+    config.route("/organization/unpublish", web::post().to(unpublish_organization));
+    config.route("/place/publish", web::post().to(publish_place));
+    config.route("/place/unpublish", web::post().to(unpublish_place));
+    config.route("/deceased/publish", web::post().to(publish_deceased));
+    config.route("/deceased/unpublish", web::post().to(unpublish_deceased));
+    config.route("/deceased/wall", web::post().to(wall_deceased));
+    config.route("/deceased/unwall", web::post().to(unwall_deceased));
 
-    //config.route("/create_service/", web::post().to(create_service));
-    //config.route("/edit_service/{id}/", web::post().to(edit_service));
-    //config.route("/delete_service/", web::post().to(delete_service));
+    //config.route("/create_service", web::post().to(create_service));
+    //config.route("/edit_service/{id}", web::post().to(edit_service));
+    //config.route("/delete_service", web::post().to(delete_service));
 
-    config.route("/parser/pomnim/deceaseds/", web::get().to(parser_pomnim_deceaseds));
-    //config.route("/parser/pomnim/places/", web::get().to(parser_pomnim_places));
-    //config.route("/parser/pomnim/braves/", web::get().to(parser_pomnim_braves));
+    config.route("/parser/pomnim/deceaseds", web::get().to(parser_pomnim_deceaseds));
+    //config.route("/parser/pomnim/places", web::get().to(parser_pomnim_places));
+    //config.route("/parser/pomnim/braves", web::get().to(parser_pomnim_braves));
 }
 
 pub async fn lists_page(req: HttpRequest) -> actix_web::Result<HttpResponse> {
