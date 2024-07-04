@@ -1,6 +1,8 @@
+    <!--
     <div class="bg-light p-5 text-center cursor-pointer">
-    <img class="mw-100" src="/static/images/investor-1.jpeg" alt="Инвестируй в Проект">
+        <img class="mw-100" src="/static/images/investor-1.jpeg" alt="Инвестируй в Проект">
     </div>
+    -->
 </div>
 <div>
     <div class="footer border-top py-5">
@@ -26,20 +28,16 @@
                 <div class="d-none d-lg-block col-12 col-sm">
                     <h4 class="text-uppercase mb-4">Меню</h4>
                     <ul class="footer__menu">
-                        <li><a target="_self" href="/cemeteries">Кладбища</a></li>
+                        <li><a target="_self" href="/places">Кладбища</a></li>
                         <li><a target="_self" href="/search">Захоронения</a></li>
-                        <li><a target="_self" href="/mass-graves">Братские могилы</a></li>
-                        <li><a target="_self" href="/find">Заказать поиск</a></li>
-                        <li><a target="_self" href="/services">Услуги</a></li>
-                        <li><a target="_self" href="/blog">Блог</a></li>
-                        <li><a target="_self" href="/faq">Вопрос-ответ</a></li>
+                        <li><a target="_self" href="/braves">Братские могилы</a></li>
                     </ul>
                 </div>
                 <div class="col-12 col-sm">
                     <h4 class="text-uppercase mb-4 d-none d-sm-block">Документы</h4>
                     <ul class="footer__menu">
-                        <li><a target="_blank" href="/agreement">Пользовательское соглашение</a></li>
-                        <li><a target="_blank" href="/confidence">Политика конфиденциальности</a></li>
+                        <li><a target="_blank" href="/terms-of-use">Пользовательское соглашение</a></li>
+                        <li><a target="_blank" href="/private_policy">Политика конфиденциальности</a></li>
                         <li><a target="_blank" href="/requisites">Реквизиты</a></li>
                         <li><a target="_blank" href="/contract">Публичный договор</a></li>
                     </ul>
@@ -48,10 +46,12 @@
                         <li><a target="_self" href="/page/investor">Инвестируй в Проект</a></li>
                     </ul>
                 </div>
+                <!--
                 <div class="col-12 col-sm">
                     <h4 class="text-uppercase mb-4 d-none d-sm-block">Мы принимаем</h4>
                     <img src="/static/images/payments2.png" alt="Принимаем к оплате">
                 </div>
+                -->
             </div>
             <div class="pt-4 row">
                 <div class="col-12 col-sm">
@@ -82,6 +82,7 @@
                         <div class="px-3"><a href="mailto:info@напогосте.рф">info@напогосте.рф</a></div>
                     </div>
                 </div>
+                <!--
                 <div class="col-auto col">
                     <div class="country-switcher dropdown">
                         <button type="button" aria-haspopup="true" aria-expanded="false" class="d-flex align-items-center btn btn-link">
@@ -108,6 +109,7 @@
                         </div>
                     </div>
                 </div>
+                -->
             </div>
         </div>
     </div>
@@ -120,7 +122,9 @@
     </div>
 </div>
 <div class="cart-block empty"></div>
+<!--
 <div class="help-button"><button type="button">?</button></div>
+-->
 <div class="s-alert-wrapper"></div>
 </div>
 

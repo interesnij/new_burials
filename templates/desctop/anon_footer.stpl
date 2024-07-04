@@ -1,6 +1,8 @@
+    <!--
     <div class="bg-light p-5 text-center cursor-pointer">
-    <img class="mw-100" src="/static/images/investor-1.jpeg" alt="Инвестируй в Проект">
+        <img class="mw-100" src="/static/images/investor-1.jpeg" alt="Инвестируй в Проект">
     </div>
+    -->
 </div>
 <div>
     <div class="footer border-top py-5">
@@ -85,6 +87,7 @@
                         <div class="px-3"><a href="mailto:info@напогосте.рф">info@напогосте.рф</a></div>
                     </div>
                 </div>
+                <!--
                 <div class="col-auto col">
                     <div class="country-switcher dropdown">
                         <button type="button" aria-haspopup="true" aria-expanded="false" class="d-flex align-items-center btn btn-link">
@@ -111,6 +114,7 @@
                         </div>
                     </div>
                 </div>
+                -->
             </div>
         </div>
     </div>
@@ -123,7 +127,9 @@
     </div>
 </div>
 <div class="cart-block empty"></div>
+<!--
 <div class="help-button"><button type="button">?</button></div>
+-->
 <div class="s-alert-wrapper"></div>
 </div>
 

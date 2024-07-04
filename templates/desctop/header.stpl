@@ -20,9 +20,10 @@
                     <div class="align-items-md-center flex-md-nowrap row">
                         <div class="col-auto logo-col col">
                             <a class="logo" href="/">
-                                Напогосте.рф
+                                НАПОГОСТЕ.РФ
                             </a>
                         </div>
+                        <!--
                         <div class="currency-col col">
                             <div class="dropdown">
                                 <button type="button" aria-haspopup="true" aria-expanded="false" class="px-1 border-0 bg-transparent btn btn-secondary">
@@ -37,6 +38,7 @@
                                 </div>
                             </div>
                         </div>
+                        -->
                         <div class="col-auto order-9 order-xl-0 d-xl-none burger col">
                             <div class="burger-menu">
                                 <div class="dropdown">
@@ -59,6 +61,8 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!--
                         <div class="border-right col-auto order-3 oder-md-0 col">
                             <div class="country-switcher dropdown">
                                 <button type="button" aria-haspopup="true" aria-expanded="false" class="d-flex align-items-center btn btn-link">
@@ -85,6 +89,7 @@
                                 </div>
                             </div>
                         </div>
+                        -->
                         <div class="border-right col-auto contacts-col col"></div>
                         <div class="border-right col-auto order-4 oder-md-0 add-col col">
                             <div class="dropdown">
@@ -139,12 +144,16 @@
                         </div>
                         <div class="col-auto order-5 oder-md-0 col">
                             <div class="dropdown">
-                                <button type="button" aria-haspopup="true" aria-expanded="false" class="user-toggle btn btn-link">
-                                    <i class="icon-user"></i><span class="d-none d-xl-inline">Вход и регистрация</span>
-                                </button>
-                                <div tabindex="-1" role="menu" aria-hidden="true" class="cabinet-menu dropdown-menu">
-                                    <button type="button" tabindex="0" role="menuitem" class="dropdown-item login_window">Войти</button>
-                                    <button type="button" tabindex="0" role="menuitem" class="dropdown-item signup_window">Зарегистрироваться</button>
+                                <div class="dropdown">
+                                    <button type="button" aria-haspopup="true" aria-expanded="false" class="user-toggle btn btn-link">
+                                        <i class="icon-user"></i><span class="d-none d-xl-inline">Личный кабинет</span>
+                                    </button>
+                                    <div tabindex="-1" role="menu" aria-hidden="true" class="cabinet-menu dropdown-menu">
+                                        <a class="border-bottom dropdown-item d-flex align-items-center" href="/profile">
+                                            <span>Кабинет</span>
+                                        </a>
+                                        <button type="button" tabindex="0" role="menuitem" class="dropdown-item logout_hundler">Выйти</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>

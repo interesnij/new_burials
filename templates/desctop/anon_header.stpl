@@ -20,7 +20,7 @@
                     <div class="align-items-md-center flex-md-nowrap row">
                         <div class="col-auto logo-col col">
                             <a class="logo" href="/">
-                                Напогосте.рф
+                                НАПОГОСТЕ.РФ
                             </a>
                         </div>
                         <!--
@@ -114,7 +114,8 @@
                         <div class="col-auto order-5 oder-md-0 col">
                             <div class="dropdown">
                                 <button type="button" aria-haspopup="true" aria-expanded="false" class="user-toggle btn btn-link">
-                                    <i class="icon-user"></i><span class="d-none d-xl-inline">Вход и регистрация</span>
+                                    <i class="icon-user"></i>
+                                    <span class="d-none d-xl-inline">Вход и регистрация</span>
                                 </button>
                                 <div tabindex="-1" role="menu" aria-hidden="true" class="cabinet-menu dropdown-menu">
                                     <button type="button" tabindex="0" role="menuitem" class="dropdown-item login_window">Войти</button>
@@ -136,7 +137,7 @@
                         <% if services_enabled { %>
                             <li class="py-3 nav-item"><a class="nav-link" href="/services">Уборка могил</a></li>
                         <% } %>
-                            <li class="py-3 nav-item"><a class="nav-link" href="/organizations_country/1">Организации</a></li>
+                        <li class="py-3 nav-item"><a class="nav-link" href="/organizations_country/1">Организации</a></li>
                     </ul>
                 </div>
             </div>
