@@ -462,6 +462,7 @@ impl Deceased {
             10 with_cord exists
         */
         let _connection = establish_connection();
+
         let mut stack = Vec::new();
         let mut case = 0;
         let mut q = "".to_string();
@@ -510,6 +511,14 @@ impl Deceased {
             case = 10;
         }
         println!("case {:?}", case);
+        if case == 0 {
+            return (q, schema::deceaseds::table
+                .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
+                .limit(100)
+                .offset(offset)
+                .load::<Deceased>(&_connection)
+                .expect("E."), 0);
+        }
         let list: Vec<Deceased> = match case {
             1  => schema::deceaseds::table
                 .filter(schema::deceaseds::last_name.ilike("%".to_owned() + &last_name.as_deref().unwrap() + "%"))

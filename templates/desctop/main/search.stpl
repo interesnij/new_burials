@@ -8,30 +8,27 @@
 
         <% include!("../generic/form2.stpl"); %>
 
-        <div class="row">
-            <div class="mb-3 col-sm-12 col-md-6 col-lg-3">
-                <a class="rubric-item text-decoration-none text-center" href="/famous">
-                    <img src="/static/images/famous.jpg" alt="Известные личности" class="d-none d-md-block">
-                    <div class="rubric-item__title text-uppercase mt-4">Известные личности</div>
-                </a>
-            </div>
-            <div class="mb-3 col-sm-12 col-md-6 col-lg-3">
-                <a class="rubric-item text-decoration-none text-center pointer this_day_deceased">
-                    <img src="/static/images/this-day.jpg" alt="Умерли в этот день" class="d-none d-md-block">
-                    <div class="rubric-item__title text-uppercase mt-4">Умерли в этот день</div>
-                </a>
-            </div>
-            <div class="mb-3 col-sm-12 col-md-6 col-lg-3">
-                <a class="rubric-item text-decoration-none text-center" href="/interesting-monuments">
-                    <img src="/static/images/interest.jpg" alt="Интересные памятники" class="d-none d-md-block">
-                    <div class="rubric-item__title text-uppercase mt-4">Интересные памятники</div>
-                </a>
-            </div>
-            <div class="mb-3 col-sm-12 col-md-6 col-lg-3">
-                <a class="rubric-item text-decoration-none text-center" href="/epitaphs">
-                    <img src="/static/images/epitaph.jpg" alt="Эпитафии" class="d-none d-md-block">
-                    <div class="rubric-item__title text-uppercase mt-4">Эпитафии</div>
-                </a>
+        <div class="find-top-links border-bottom mb-5">
+            <div class="container">
+                <div class="mb-3 col-12"></div>
+                <div class="m-0 row">
+                    <div class="p-0 find-top-links__col col-sm-6 col-lg-3">
+                        <a class="py-lg-5 py-2 find-top-links__link" href="/famous">
+                            <strong>Известные личности</strong>
+                        </a>
+                    </div>
+                    <div class="p-0 find-top-links__col col-sm-6 col-lg-3">
+                        <a class="py-lg-5 py-2 find-top-links__link" href="/this-day">
+                            <strong>Умерли в этот день</strong>
+                        </a>
+                    </div>
+                    <div class="p-0 find-top-links__col col-sm-6 col-lg-3">
+                        <a class="py-lg-5 py-2 find-top-links__link" href="/interesting-monuments"><strong>Интересные памятники</strong></a>
+                    </div>
+                    <div class="p-0 find-top-links__col col-sm-6 col-lg-3">
+                        <a class="py-lg-5 py-2 find-top-links__link" href="/epitaphs"><strong>Эпитафии</strong></a>
+                    </div>
+                </div>
             </div>
         </div>
 </div>
@@ -47,7 +44,7 @@
                             <img src="<%= i.get_image() %>" 
                             alt="img" class="mw-100">
                         </div>
-                    </div>
+                    </div> 
                     <div class="burial-teaser__content flex-grow-1">
                         <div class="d-flex justify-content-between mb-2">
                             <a class="burial-teaser__title" href="/deceased/<%= i.id %>"><%= i.get_fio() %></a>

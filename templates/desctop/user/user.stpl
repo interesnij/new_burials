@@ -16,9 +16,9 @@
 	<div class="container">
 		
 		<div class="content">
-		<form>
+		<form >
 			<div class="lg:col-span-9 md:col-span-8">
-				<div class="p-6 bg-white dark:bg-slate-900 shadow dark:shadow-gray-700 rounded-md">
+				<div class="p-6 bg-white dark:bg-slate-900 shadow dark:shadow-gray-700 rounded-md" style="padding: 10px;">
 					<h5 class="text-lg font-semibold mb-4">Изменить данные:</h5>
 
                   <div class="md:col-span-3 col-span-12 text-start">

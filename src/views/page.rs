@@ -144,7 +144,7 @@ pub async fn search_page(req: HttpRequest) -> actix_web::Result<HttpResponse> {
     if params_some.is_ok() {
         let params = params_some.unwrap();
         let page = crate::utils::get_page(&req);
-        let user_id = get_request_user(&req).await;
+        let user_id = get_request_user(&req).await; 
         let (q, object_list, count) = Deceased::main_search2 ( 
             params.first_name.clone(),  
             params.middle_name.clone(),
