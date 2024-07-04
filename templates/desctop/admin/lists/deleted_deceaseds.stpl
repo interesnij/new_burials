@@ -10,7 +10,7 @@
                                 <div class="flex items-center">
                                     <img src="<%= i.get_image() %>" class="list_fit shadow" alt="img">
                                     <div class="ms-3 flex-1">
-                                        <a href="/deceased/<%= i.id %>/"><%= i.get_full_name() %></a>
+                                        <a href="/deceased/<%= i.id %>"><%= i.get_full_name() %></a>
                                         <p class="small"> 
                                             <a class="pointer toggle_remove_deceaseds remove" data-pk="<%= i.id %>">
                                                 Восстановить

@@ -8,7 +8,7 @@
                         <div class="flex items-center">
                             <div class="ms-3 flex-1">
                                 <p>  
-                                    <a href="/users/<%= i.user.id %>/" ><%= i.user.get_full_name() %></a> <%- i.text %>
+                                    <a href="/users/<%= i.user.id %>" ><%= i.user.get_full_name() %></a> <%- i.text %>
                                 </p>
                                 <p class="small"><%= i.created.format("%d-%m-%Y в %H:%M").to_string() %></p>
                             </div>

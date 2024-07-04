@@ -1,3 +1,117 @@
 <% include!("../header.stpl"); %>
 
+        <section class="relative table w-full py-32 lg:py-40 bg-gradient-to-br to-orange-600/20 via-fuchsia-600/20 from-indigo-600/20">
+            <div class="container relative">
+                <div class="grid grid-cols-1 text-center mt-10">
+                    <h3 class="text-3xl leading-normal font-medium">Регистрация братской могилы</h3>
+                </div>
+            </div>
+        </section>
+
+        <section class="relative md:py-24 py-16">
+            <form>
+            <div class="container">
+                <div class="content">
+
+                <div class="lg:col-span-9 md:col-span-8">
+                    <div class="p-6 bg-white dark:bg-slate-900 shadow dark:shadow-gray-700 rounded-md">
+                            <div class="grid lg:grid-cols-2 grid-cols-1 gap-5">
+                                <div>
+                                    <label class="form-label font-medium">Название : <span class="text-red-600">*</span></label>
+                                    <input 
+                                        type="text" 
+                                        class="form-control w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 
+                                        dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 
+                                        dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0 mt-2" 
+                                        placeholder="Название" 
+                                        id="id_title"
+                                        name="title" 
+                                    >
+                                </div>
+                            </div>                                    
+
+                            <div class="md:col-span-6 col-span-12 text-start">
+                                <label class="font-semibold">Страна:</label>
+                                <select id="id_country" name="country_id" class="form-select load_regions form-control mt-2 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0">
+                                    <option value="">Выберите страну</option>
+                                    <% for i in country_list.iter() { %>
+                                        <option value="<%= i.id %>"><%= i.name %></option>
+                                    <% } %> 
+                                </select>  
+                            </div> 
+                            <div class="md:col-span-6 col-span-12 text-start load_items"></div>
+						    <span></span>
+                            
+                            <div class="grid grid-cols-12 gap-4 mt-4">
+                                <div class="col-span-12 text-start">
+                                    <label class="font-semibold" for="Address">Адрес:</label>
+                                    <input id="id_address" 
+                                        type="text" name="address"
+                                        class="form-control mt-2 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 
+                                        dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 
+                                        dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0" 
+                                    >
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1">
+                                <div class="mt-5">
+                                    <label class="form-label font-medium">Описание : </label>
+                                    <input id="id_description" name="description" type="text" class="form-control mt-3" />
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1">
+                                <label class="font-semibold" for="id_cord">Координаты:</label>
+                                <input id="id_cord" name="cord" type="text" class="form-control mt-3" />
+						    </div>
+
+                            <div class="grid grid-cols-1">
+                                <label class="font-semibold" for="id_count">Количество захоронений:</label>
+                                <input id="id_count" name="count" type="number" class="form-control mt-3" />
+						    </div>
+
+                            <div class="grid grid-cols-1">
+                                <label class="font-semibold" for="id_cadastral_number">Номер братской могилы:</label>
+                                <input id="id_cadastral_number" name="cadastral_number" type="text" class="form-control mt-3" />
+						    </div>
+
+                            <br>
+                            <div class="grid lg:grid-cols-2 grid-cols-1 gap-5" >
+                                <div class="profile-pic w-[112px]">
+                                    <label class="font-semibold">Основное изображение: </label>
+                                    <input id="pro-img" accept="image/*" name="image" type="file" class="hidden" onchange="loadFile(event)" />
+                                    <div>
+                                        <div class="relative h-28 w-28 rounded-full shadow-md dark:shadow-gray-800 ring-4 ring-slate-50 dark:ring-slate-800 overflow-hidden">
+                                            <img src="/static/images/upload.png" class="rounded-full" id="image" alt="img">
+                                            <div class="absolute inset-0 group-hover:bg-slate-900/10 duration-500"></div>
+                                            <label class="absolute inset-0 cursor-pointer" for="pro-img"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <label class="font-semibold">Дополнительные фото: </label>
+                                    <input id="pro-images" accept="image/*" multiple name="files[]" type="file" class="hidden" />
+                                    <div id="images_container" style="border: 1px solid grey; cursor: pointer; width: 200px; text-align: center;margin-top: 10px">
+                                        <h4 style="font-weight:bold;font-size:30px;color:grey" class="photos_upload_response">Нажмите сюда</h4>
+                                    </div>
+                                </div> 
+                            </div>
+
+                            <br><br>
+                            <div class="d-flex justify-content-center border-top p-4">
+                                <button type="button" id="create_brave" name="send" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-indigo-600 
+                                    hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 rounded-md mt-5">
+                                    Добавить
+                                </button> 
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            </form>
+        </section>
+
+
 <% include!("../footer.stpl"); %>

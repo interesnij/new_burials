@@ -13,7 +13,7 @@
                                 </div>
                                 <div class="text-holder">
                                     <h3> 
-                                        <a style="text-decoration: underline" href="/organization/<%= i.id %>/"><%=i.name %></a>
+                                        <a style="text-decoration: underline" href="/organization/<%= i.id %>"><%=i.name %></a>
                                     </h3>
                                     <p class="small"> 
                                         <a class="pointer toggle_remove_ord remove" data-pk="<%= i.id %>">

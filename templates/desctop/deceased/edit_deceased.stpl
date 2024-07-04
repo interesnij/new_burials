@@ -1,3 +1,152 @@
-<% include!("../header.stpl"); %>
-      
+<% include!("../header.stpl"); %> 
+<!-- Start -->
+<section class="relative md:py-24 py-16">
+	<div class="container">
+		
+		<div class="content">
+		<form>
+			<div class="lg:col-span-9 md:col-span-8">
+				<div class="p-6 bg-white dark:bg-slate-900 shadow dark:shadow-gray-700 rounded-md">
+					<h5 class="text-lg font-semibold mb-4">Данные усопшего:</h5>
+					
+						<div class="grid lg:grid-cols-2 grid-cols-1 gap-5">
+							<div>
+								<label class="form-label font-medium">Фамилия : <span class="text-red-600">*</span></label>
+								<input name="last_name" id="id_last_name" type="text" class="form-control w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900
+                                     dark:text-slate-200 rounded outline-none border border-gray-200 
+                                     focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0 mt-2"
+                                     value="<%= deceased.last_name %>"
+                                >
+							</div>
+							<div>
+								<label class="form-label font-medium">Имя : <span class="text-red-600">*</span></label>
+								<input type="text" class="form-control w-full py-2 px-3 h-10 bg-transparent 
+                                    dark:bg-slate-900 dark:text-slate-200 rounded 
+                                    outline-none border border-gray-200 focus:border-indigo-600  
+                                    dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0 mt-2"
+                                    value="<%= deceased.first_name %>" 
+                                    id="id_first_name" name="first_name"
+                                >
+							</div>
+							
+							<div>
+								<label class="form-label font-medium">Отчество : </label>
+								<input name="middle_name" id="id_middle_name" type="text" class="form-control w-full py-2 px-3 h-10 bg-transparent 
+                                    dark:bg-slate-900 dark:text-slate-200 rounded outline-none border 
+                                    border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0 mt-2"
+                                    <% if deceased.middle_name.is_some() { %>
+                                        value="<%= deceased.middle_name.as_deref().unwrap() %>"
+                                    <% } %>
+                                >
+							</div>
+						</div>
+
+						<br>
+						<div class="md:col-span-3 col-span-12 text-start">
+							<label class="font-semibold md:invisible md:block hidden">Дата рождения: <span class="text-red-600">*</span></label>
+							<div class="relative mt-1">
+								<input type="date" class="form-control ps-12 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 
+                                        rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0" 
+                                    id="id_birth_date" name="birth_date"
+									<% if deceased.birth_date.is_some() { %>
+                                        value='<%= deceased.birth_date.unwrap().format("%Y-%m-%d").to_string() %>'
+                                    <% } %>
+								>
+							</div>
+						</div>
+						<br>
+						<div class="md:col-span-3 col-span-12 text-start">
+							<label class="font-semibold md:invisible md:block hidden">Дата смерти: <span class="text-red-600">*</span></label>
+							<div class="relative mt-1">
+								<input type="date" class="form-control ps-12 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 
+                                        rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0" 
+                                    id="id_death_date" name="death_date"
+									<% if deceased.death_date.is_some() { %>
+                                        value='<%= deceased.death_date.unwrap().format("%Y-%m-%d").to_string() %>'
+                                    <% } %>
+                                >
+							</div> 
+						</div>
+                        <div class="md:col-span-3 col-span-12 text-start">
+							<label class="font-semibold md:invisible md:block hidden">Слова памяти:</label>
+							<input <% if deceased.memory_words.is_some() { %>value="<%= deceased.memory_words.as_deref().unwrap() %>"<% } %>  
+                                id="id_memory_words" 
+                                name="memory_words" 
+                                type="text" 
+                                class="form-control mt-3" 
+                            />
+						</div>
+						<div class="md:col-span-6 col-span-12 text-start">
+                            <label class="font-semibold">Место захоронения: <span class="text-red-600">*</span></label>
+							<input type="hidden" id="id_place" value="<%= deceased.place_id %>" name="place_id">
+                            <input type="text" value="<%= place.title %> (<%= place.get_loc() %>)" class="form-control mt-3 place_search place_click" />
+							<div style="max-height:600px;position: absolute;z-index: 1000;background: white;border: 1px solid grey;" class="hidden">
+								<p>Начинайте вводить текст</p>
+							</div>
+                        </div>
+
+						<div class="md:col-span-6 col-span-12 text-start">
+							<label class="font-semibold" for="id_cord">Координаты:</label>
+							<input 
+								id="id_cord" 
+								name="cord" 
+								type="text" 
+								class="form-control mt-3"
+								<% if deceased.cord.is_some() { %>
+                                	value="<%= deceased.cord.as_deref().unwrap() %>"
+                            	<% } %>
+							/>
+						</div>
+
+						<br>
+						<div class="grid lg:grid-cols-2 grid-cols-1 gap-5" >
+							<div class="profile-pic w-[112px]">
+								<label class="font-semibold">Портрет покойника: </label>
+								<input id="pro-img" accept="image/*" name="image" type="file" class="hidden" onchange="loadFile(event)" />
+								<div> 
+									<div class="relative h-28 w-28 rounded-full shadow-md dark:shadow-gray-800 ring-4 ring-slate-50 dark:ring-slate-800 overflow-hidden">
+										<img src="<%= deceased.get_image() %>" class="rounded-full" id="image" alt="img">
+										<div class="absolute inset-0 group-hover:bg-slate-900/10 duration-500"></div>
+										<label class="absolute inset-0 cursor-pointer" for="pro-img"></label>
+									</div>
+								</div>
+							</div>
+							<div class="">
+								<label class="font-semibold">Дополнительные фото: </label>
+								<input id="pro-images" accept="image/*" multiple name="files[]" type="file" class="hidden" />
+								<div id="images_container" style="border: 1px solid grey; cursor: pointer; width: 200px; text-align: center;margin-top: 10px">
+									<h4 style="font-weight:bold;font-size:30px;color:grey" class="photos_upload_response">Нажмите сюда</h4>
+								</div>
+							</div>
+
+						</div>
+						
+						<br>
+						<% if deceased.get_images().len() > 0 { %>
+							<hr />
+								<label style="font-size: x-large;margin-top:20px" class="font-semibold">Добавленные фото: </label>
+								<div class="grid lg:grid-cols-3 grid-cols-1 gap-5">
+									<% for i in deceased.get_images().iter() { %>
+									<div class="show_image" data-pk="<%= i.id %>" style="margin-bottom:15px">
+										<img src="<%= i.src %>" class="image_fit_300" alt="img">
+										<a class="pointer small remove_file" style="margin-top:10px" data-pk="<%= i.id %>">Удалить</a>
+									</div> 
+									<% } %>
+								</div>
+						<% } %>
+
+						<br><br>
+
+						<button type="button" data-pk="<%= deceased.id %>" id="edit_deceased" name="send" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-indigo-600 
+                                hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 rounded-md mt-5">
+                                Изменить
+                        </button>
+				</div>
+			</div>
+			</form>
+		</div>
+
+	</div>
+
+</section>
 <% include!("../footer.stpl"); %>

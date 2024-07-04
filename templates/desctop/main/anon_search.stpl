@@ -88,11 +88,11 @@
                 <i class="icon-plus"></i><strong>Добавить<br> захоронение</strong>
             </a>
             <div class="jumbo-teaser jumbotron" style="background-image: url(&quot;/static/content/sidebar/search.jpg&quot;);">
-                <h2 class="jumbo-title text-white">Поиск захоронений</h2>
+                <h2 class="jumbo-title">Поиск захоронений</h2>
                 <p class="lead"><a tabindex="0" class="btn btn-outline-primary">Подробнее</a></p>
             </div>
             <div class="jumbo-teaser jumbotron" style="background-image: url(&quot;/static/banners/investor-2.jpeg&quot;);">
-                <h2 class="jumbo-title text-white">Инвестируй в проект</h2>
+                <h2 class="jumbo-title">Инвестируй в проект</h2>
                 <p class="lead"><a tabindex="0" class="btn btn-outline-primary">Подробнее</a></p>
             </div>
         </div>

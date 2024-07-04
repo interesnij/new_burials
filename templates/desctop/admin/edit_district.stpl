@@ -43,8 +43,8 @@
                             	<% } %>
 							/>
 						</div>
-						<div class="md:col-span-6 col-span-12 text-start">
-							<button type="button" data-pk="<%= object.id %>" id="edit_district" class="btn bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-md w-full" >
+						<div class="d-flex justify-content-center border-top p-4">
+							<button type="button" data-pk="<%= object.id %>" id="edit_district" class="btn bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 rounded-md w-full" >
 								Изменить
 							</button> 
 						</div>
@@ -55,7 +55,7 @@
 		<div class="">
             <% for object in district_list.iter() { %>
             <p><%= object.name %>
-                | <a class="ajax" href="/edit_district/<%= object.id %>/">Изменить</a>
+                | <a class="ajax" href="/edit_district/<%= object.id %>">Изменить</a>
                 | <a class="pointer remove_district" data-pk="<%= object.id %>">Удалить</a>
             </p>
             <% } %>

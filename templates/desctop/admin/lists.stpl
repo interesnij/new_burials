@@ -9,9 +9,9 @@
                 <div class="flex items-center justify-between">
                     <div class="flex items-center">
                         <div class="m-3 flex-1">
-                            <a href="/lists/all_users/">Пользователи (<%= main_stat_model.users_count %>)</a>
+                            <a href="/lists/all_users">Пользователи (<%= main_stat_model.users_count %>)</a>
                             &nbsp;|&nbsp; 
-                            <a href="/lists/deleted_users/">Удаленные пользователи (<%= main_stat_model.deleted_users_count %>)</a>
+                            <a href="/lists/deleted_users">Удаленные пользователи (<%= main_stat_model.deleted_users_count %>)</a>
                         </div>
                     </div>
                 </div>
@@ -21,11 +21,11 @@
                 <div class="flex items-center justify-between">
                     <div class="flex items-center">
                         <div class="m-3 flex-1">
-                            <a href="/lists/all_organizations/">Организации (<%= main_stat_model.orgs_count %>)</a>
+                            <a href="/lists/all_organizations">Организации (<%= main_stat_model.orgs_count %>)</a>
                             &nbsp;|&nbsp;
-                            <a href="/lists/suggested_organizations/">Предложка организаций (<%= main_stat_model.suggested_orgs_count %>)</a>
+                            <a href="/lists/suggested_organizations">Предложка организаций (<%= main_stat_model.suggested_orgs_count %>)</a>
                             &nbsp;|&nbsp;
-                            <a href="/lists/deleted_organizations/">Удаленные организации (<%= main_stat_model.deleted_orgs_count %>)</a>
+                            <a href="/lists/deleted_organizations">Удаленные организации (<%= main_stat_model.deleted_orgs_count %>)</a>
                         </div>
                     </div>
                 </div>
@@ -35,11 +35,11 @@
                 <div class="flex items-center justify-between">
                     <div class="flex items-center">
                         <div class="m-3 flex-1">
-                            <a href="/lists/all_places/">Кладбища (<%= main_stat_model.places_count %>)</a>
+                            <a href="/lists/all_places">Кладбища (<%= main_stat_model.places_count %>)</a>
                             &nbsp;|&nbsp;
-                            <a href="/lists/suggested_places/">Предложка кладбищ (<%= main_stat_model.suggested_places_count %>)</a>
+                            <a href="/lists/suggested_places">Предложка кладбищ (<%= main_stat_model.suggested_places_count %>)</a>
                             &nbsp;|&nbsp;
-                            <a href="/lists/deleted_places/">Удаленные кладбища (<%= main_stat_model.deleted_places_count %>)</a>
+                            <a href="/lists/deleted_places">Удаленные кладбища (<%= main_stat_model.deleted_places_count %>)</a>
                         </div>
                     </div>
                 </div>
@@ -49,11 +49,11 @@
                 <div class="flex items-center justify-between">
                     <div class="flex items-center">
                         <div class="m-3 flex-1">
-                            <a href="/lists/all_deceaseds/">Усопшие (<%= main_stat_model.deceaseds_count %>)</a>
+                            <a href="/lists/all_deceaseds">Усопшие (<%= main_stat_model.deceaseds_count %>)</a>
                             &nbsp;|&nbsp;
-                            <a href="/lists/suggested_deceaseds/">Предложка усопших (<%= main_stat_model.suggested_deceaseds_count %>)</a>
+                            <a href="/lists/suggested_deceaseds">Предложка усопших (<%= main_stat_model.suggested_deceaseds_count %>)</a>
                             &nbsp;|&nbsp;
-                            <a href="/lists/deleted_deceaseds/">Удаленные усопшие (<%= main_stat_model.deleted_deceaseds_count %>)</a>
+                            <a href="/lists/deleted_deceaseds">Удаленные усопшие (<%= main_stat_model.deleted_deceaseds_count %>)</a>
                         </div> 
                     </div>
                 </div>
@@ -63,7 +63,7 @@
                 <div class="flex items-center justify-between">
                     <div class="flex items-center">
                         <div class="m-3 flex-1">
-                            <a href="/lists/all_logs/">Логи</a>
+                            <a href="/lists/all_logs">Логи</a>
                         </div> 
                     </div>
                 </div>
