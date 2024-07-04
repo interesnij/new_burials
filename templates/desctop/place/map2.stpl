@@ -6,12 +6,12 @@
                         <br /> 
                         <div>
                             <label class="font-semibold" for="suggest1">Адрес отправления:</label>
-                            <input type="text" id="suggest1" class="input form-input">
+                            <input type="text" id="suggest1" class="input form-control">
                             <span id="notice1"></span>
                         </div> 
                         <div>
                             <label class="font-semibold" for="suggest2">Адрес назначения:</label>
-                              <input value="" type="text" id="suggest2" class="input form-input">
+                              <input value="" type="text" id="suggest2" class="input form-control">
                             <p id="notice2"></p>
                             <br />
                         </div>

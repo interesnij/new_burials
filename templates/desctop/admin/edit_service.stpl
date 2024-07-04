@@ -4,17 +4,17 @@
 <section class="md:h-screen py-36 flex items-center">
 	<div class="container">
 		<div class="flex justify-center">
-			<div class="max-w-[400px] w-full m-auto p-6 bg-white dark:bg-slate-900 shadow-md dark:shadow-gray-800 rounded-md">
+			<div class="content">
 				<h5 class="my-6 text-xl font-semibold api_response">Создание услуги</h5> 
 				<form class="text-left">
 					<div class="grid grid-cols-1">
 						<div class="mb-4">
 							<label class="font-semibold" for="id_username">Название:</label>
-							<input id="id_title" value="<%= object.title %>" name="title" type="text" class="form-input mt-3" placeholder="" />
+							<input id="id_title" value="<%= object.title %>" name="title" type="text" class="form-control mt-3" placeholder="" />
 						</div>
                         <div class="mb-4">
 							<label class="font-semibold" for="id_username">Позиция:</label>
-							<input id="id_position" name="position" type="number" value="<%= object.position %>" class="form-input mt-3" placeholder="" />
+							<input id="id_position" name="position" type="number" value="<%= object.position %>" class="form-control mt-3" placeholder="" />
 						</div>
 						<div class="mb-4">
 							<label class="font-semibold" for="id_description">Описание:</label>
@@ -22,7 +22,7 @@
 								id="id_description" 
 								name="description" 
 								type="text"
-								class="form-input mt-3"
+								class="form-control mt-3"
 								<% if object.description.is_some() { %>
 									value="<%= object.description.as_deref().unwrap() %>"
 								<% } else { %>
