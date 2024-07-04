@@ -1,5 +1,6 @@
 <% include!("../anon_header.stpl"); %>
-      
+
+<% let _place = deceased.get_place().expect("E."); %>
 <div class="bg-secondary text-white py-5">
     <div class="container">
         <div class="row">
@@ -137,7 +138,7 @@
                     <div class="col-sm-8">
                         <a href="/place/<%= _place.id %>/"><%= _place.title %> (<%=_place.get_loc() %>)</a>
                     </div>
-                </div>
+                </div> 
                 <% if deceased.cord.is_some() { %>
                 <div class="mb-2 row">
                     <div class="col-sm-4"><strong>Координаты GPS:</strong></div>
