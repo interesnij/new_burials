@@ -1,3 +1,66 @@
+
 <% include!("../header.stpl"); %>
-      
+
+<section class="md:h-screen py-36 flex items-center">
+	<div class="container">
+		<div class="flex justify-center">
+			<div class="max-w-[400px] w-full m-auto p-6 bg-white dark:bg-slate-900 shadow-md dark:shadow-gray-800 rounded-md">
+				<h5 class="my-6 text-xl font-semibold api_response">Изменение города</h5> 
+				<form class="text-left">
+					<div class="grid grid-cols-1">
+						<div class="md:col-span-6 col-span-12 text-start">
+							<label class="font-semibold" for="id_username">Название:</label>
+							<input id="id_name" value="<%= object.name %>" name="name" type="text" class="form-input mt-3" placeholder="" />
+						</div>
+                        <div class="md:col-span-6 col-span-12 text-start">
+                            <label class="font-semibold">Страна:</label>
+                            <select id="id_country" name="country_id" class="form-select form-input mt-2 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0">
+                                <option value="">Выберите страну</option>
+								<% for i in country_list.iter() { %>
+                                    <option <% if i.id == object.country_id { %>selected="selected"<% } %> value="<%= i.id %>"><%= i.name %></option>
+                                <% } %>
+                            </select>
+                        </div>
+						<div class="md:col-span-6 col-span-12 text-start load_items">
+                            <label class="font-semibold">Регион:</label>
+							<select id="region_id" name="region_id" class="form-select form-input mt-2 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0">
+								<% for i in region_list.iter() { %>
+									<option <% if object.region_id.is_some() && object.region_id.unwrap() == i.id { %>selected="selected"<% } %> value="<%= i.id %>"><%= i.name %></option>
+								<% } %>
+							</select> 
+						</div>
+						<span class="span no_region_items"></span>
+						<div class="md:col-span-6 col-span-12 text-start">
+							<label class="font-semibold" for="id_cord">Координаты:</label>
+							<input 
+								id="id_cord" 
+								name="cord" 
+								type="text" 
+								class="form-input mt-3"
+								<% if object.cord.is_some() { %>
+                                	value="<%= object.cord.as_deref().unwrap() %>"
+                            	<% } %>
+							/>
+						</div>
+						
+						<div class="md:col-span-6 col-span-12 text-start">
+							<button type="button" data-pk="<%= object.id %>" id="edit_city" class="btn bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-md w-full" >
+								Изменить
+							</button> 
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="">
+            <% for i in city_list.iter() { %>
+            <p><%= i.name %>
+                | <a class="ajax" href="/edit_city/<%= i.id %>/">Изменить</a>
+                | <a class="pointer remove_city" data-pk="<%= i.id %>">Удалить</a>
+            </p>
+            <% } %>
+        </div>
+	</div>
+</section>
+
 <% include!("../footer.stpl"); %>

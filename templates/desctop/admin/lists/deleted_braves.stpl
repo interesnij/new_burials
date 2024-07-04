@@ -1,3 +1,37 @@
 <% include!("../../header.stpl"); %>
-      
+      <section class="property-five" style="margin-top:100px;height: 100vh;">
+        <div class="container">
+            <h4 style="text-decoration: underline">Удаленные братские могилы</h4>
+            <% if braves_list.len() > 0 { %>
+            <div class="row">
+                <% for i in braves_list.iter() { %>
+                    <div class="col-xl-3 col-lg-3 col-md-12">
+                        <div style="margin-bottom:10px">
+                            <div class="single-properties-box-style1" style="border: #ccc solid 1px;padding: 5px;">
+                                <div class="img-holder">
+                                    <img class="image_fit_200" src="<%= i.get_image() %>" alt="img">
+                                </div>
+                                <div class="text-holder">
+                                    <h3> 
+                                        <a style="text-decoration: underline" href="/place/<%= i.id %>/"><%=i.title %></a>
+                                    </h3>
+                                    <p class="small"> 
+                                        <a class="pointer toggle_remove_place remove" data-pk="<%= i.id %>">
+                                            Восстановить
+                                        </a> 
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                <% } %>
+            </div>
+            <% } else { %>
+                <div style="margin-top: 100px;text-align: center;font-size: x-large;">
+                    <p>Пока ничего нет</p>
+                </div>
+            <% } %>
+        </div>
+      </section>
+
 <% include!("../../footer.stpl"); %>

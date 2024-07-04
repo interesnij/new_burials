@@ -1,3 +1,22 @@
 <% include!("../../header.stpl"); %>
-      
+    <h5 class="my-6 text-xl font-semibold api_response">Логи</h5> 
+    <section class="property-five" style="margin-top:100px;height: 100vh;">
+        <div class="container">
+            <% for i in logs_list.iter() { %>
+                <div style="margin-bottom:10px;border-bottom: 1px solid grey;">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <div class="ms-3 flex-1">
+                                <p>  
+                                    <a href="/users/<%= i.user.id %>/" ><%= i.user.get_full_name() %></a> <%- i.text %>
+                                </p>
+                                <p class="small"><%= i.created.format("%d-%m-%Y в %H:%M").to_string() %></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </section>
+
 <% include!("../../footer.stpl"); %>

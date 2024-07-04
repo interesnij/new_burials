@@ -1,4 +1,4 @@
-<% include!("../header.stpl"); %>
+<% include!("../anon_header.stpl"); %>
 
 <div class="text-center front-hero jumbotron">
     <h1>Общедоступная база захоронений</h1>
@@ -98,4 +98,6 @@
         </div>
     </div>
 </div>
+
+<% include!("../anon_footer.stpl"); %>
 

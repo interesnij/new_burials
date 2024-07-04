@@ -1,3 +1,64 @@
+
 <% include!("../header.stpl"); %>
-      
+
+<section class="md:h-screen py-36 flex items-center">
+	<div class="container">
+		<div class="flex justify-center">
+			<div class="max-w-[400px] w-full m-auto p-6 bg-white dark:bg-slate-900 shadow-md dark:shadow-gray-800 rounded-md">
+				<h5 class="my-6 text-xl font-semibold api_response">Создание услуги</h5> 
+				<form class="text-left">
+					<div class="grid grid-cols-1">
+						<div class="mb-4">
+							<label class="font-semibold" for="id_username">Название:</label>
+							<input id="id_title" value="<%= object.title %>" name="title" type="text" class="form-input mt-3" placeholder="" />
+						</div>
+                        <div class="mb-4">
+							<label class="font-semibold" for="id_username">Позиция:</label>
+							<input id="id_position" name="position" type="number" value="<%= object.position %>" class="form-input mt-3" placeholder="" />
+						</div>
+						<div class="mb-4">
+							<label class="font-semibold" for="id_description">Описание:</label>
+							<input 
+								id="id_description" 
+								name="description" 
+								type="text"
+								class="form-input mt-3"
+								<% if object.description.is_some() { %>
+									value="<%= object.description.as_deref().unwrap() %>"
+								<% } else { %>
+									value=""
+								<% } %>
+							/>
+						</div>
+						<div class="mb-4 profile-pic w-[112px]">
+							<label class="font-semibold">Иконка услуги: </label>
+							<input id="pro-img" accept="image/*" name="image" type="file" class="hidden" onchange="loadFile(event)" />
+							<div>
+								<div class="relative h-28 w-28 rounded-full shadow-md dark:shadow-gray-800 ring-4 ring-slate-50 dark:ring-slate-800 overflow-hidden">
+									<img src="<%= object.get_image() %>" class="rounded-full" id="image" alt="img">
+									<div class="absolute inset-0 group-hover:bg-slate-900/10 duration-500"></div>
+									<label class="absolute inset-0 cursor-pointer" for="pro-img"></label>
+								</div>
+							</div>
+						</div>
+						<div class="mb-4">
+							<button data-pk="<%= object.id %>" type="button" id="edit_service" class="btn bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-md w-full" >
+								Изменить
+							</button> 
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="">
+            <% for object in service_list.iter() { %>
+            <p><%= object.title %>
+                | <a class="ajax" href="/edit_service/<%= object.id %>/">Изменить</a>
+                | <a class="pointer remove_service" data-pk="<%= object.id %>">Удалить</a>
+            </p>
+            <% } %>
+        </div>
+	</div>
+</section>
+
 <% include!("../footer.stpl"); %>

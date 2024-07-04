@@ -1,3 +1,33 @@
 <% include!("../../header.stpl"); %>
-      
+      <section class="property-five" style="margin-top:100px;height: 100vh;">
+        <div class="container">
+            <h4 style="text-decoration: underline">Удаленные усопшие</h4>
+            <% if deceaseds_list.len() > 0 { %>
+                <div class="row">
+                    <% for i in deceaseds_list.iter() { %>
+                        <div style="margin-bottom:10px">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <img src="<%= i.get_image() %>" class="list_fit shadow" alt="img">
+                                    <div class="ms-3 flex-1">
+                                        <a href="/deceased/<%= i.id %>/"><%= i.get_full_name() %></a>
+                                        <p class="small"> 
+                                            <a class="pointer toggle_remove_deceaseds remove" data-pk="<%= i.id %>">
+                                                Восстановить
+                                            </a>
+                                        </p>  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
+            <% } else { %>
+                <div style="margin-top: 100px;text-align: center;font-size: x-large;">
+                    <p>Пока никого нет</p>
+                </div>
+            <% } %>
+        </div>
+      </section>
+
 <% include!("../../footer.stpl"); %>
