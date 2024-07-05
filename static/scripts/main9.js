@@ -882,7 +882,7 @@ on('body', 'change', '#pro-images', function() {
 });
 
 on('body', 'change', '#pro-image', function() {
-  document.body.querySelector(".photos_upload_response").innerHTML = "Фотография выбрана";
+  document.body.querySelector(".photo_upload_response").innerHTML = "Фотография выбрана";
 }); 
 
 on('body', 'click', '.remove_file', function() {

@@ -84,7 +84,7 @@
 								<div id="image_container" style="border: 1px solid grey; cursor: pointer; width: 200px; text-align: center;margin-top: 10px">
 									<h4 style="font-weight:bold;font-size:30px;color:grey" class="photo_upload_response">Нажмите сюда</h4>
 								</div>
-							</div>
+							</div> 
 							<div class="">
 								<label class="font-semibold">Дополнительные фото: </label>
 								<input id="pro-images" accept="image/*" multiple name="files[]" type="file" class="hidden" />
