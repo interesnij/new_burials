@@ -131,6 +131,7 @@ function elementInViewport(el){var bounds = el.getBoundingClientRect();return ((
 
 
 window.onscroll = function() {
+  console.log("onscroll");
   if (window.pageYOffset > 100) {
     document.body.classList.add("sticky-header")
   }
@@ -879,7 +880,7 @@ on('body', 'change', '#pro-images', function() {
   }
 
   document.body.querySelector(".photos_upload_response").innerHTML = word;
-});
+}); 
 
 on('body', 'change', '#pro-image', function() {
   document.body.querySelector(".photo_upload_response").innerHTML = "Фотография выбрана";
