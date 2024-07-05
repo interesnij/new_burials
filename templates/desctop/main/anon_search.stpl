@@ -1,8 +1,7 @@
 <% include!("../anon_header.stpl"); %>
 
 <div class="text-center front-hero jumbotron">
-    <h1>Общедоступная база захоронений</h1>
-    <p class="lead">Социальный проект по поиску захоронений<br>и уходу за ними</p>
+    <h1>База захоронений</h1>
 </div>
 <div class="container">
 
