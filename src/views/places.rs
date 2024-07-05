@@ -45,7 +45,7 @@ pub fn place_routes(config: &mut web::ServiceConfig) {
     config.route("/create_place", web::get().to(create_place_page));
     config.route("/edit_place/{id}", web::get().to(edit_place_page));
     config.route("/create_brave", web::get().to(create_brave_page));
-    config.route("/edit_brave/{id}", web::get().to(edit_brave_page));
+    config.route("/edit_brave/{id}", web::get().to(edit_brave_page)); 
 
     config.route("/create_place", web::post().to(create_place));
     config.route("/edit_place/{id}", web::post().to(edit_place));

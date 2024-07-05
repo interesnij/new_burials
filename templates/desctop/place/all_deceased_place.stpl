@@ -3,24 +3,10 @@
 <div class="bg-secondary text-white py-5">
     <div class="container">
         <div class="row">
-            <div class="col-sm-12 col-lg-5">
-                <div class="position-relative">
-                    <div class="big-gallery flex-grow-1 d-flex">
-                        <div class="slick-slider main-slider flex-grow-1 d-flex slick-initialized">
-                            <div class="slick-list" style="height: 289px;">
-                                <div class="slick-track" style="width: 385px; opacity: 1; transform: translate3d(0px, 0px, 0px);">
-                                    <div data-index="0" class="slick-slide slick-active slick-current" tabindex="-1" aria-hidden="false" style="outline: none; width: 385px;">
-                                        <div>
-                                            <a class="slide-wrapper" tabindex="-1" style="width: 100%; display: inline-block;">
-                                                <img src="<%= place.get_image() %>" class="img-fluid">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="d-flex flex-column col-sm-12 col-lg-5">
+                <div class="position-relative flex-grow-1 d-flex">
+                    <img src="<%= place.get_image() %>" class="img-fluid" style="object-fit: cover;height: 400px;width: 100%;">
+                </div>                
             </div>
             <div class="col-sm-12 col-lg-7">
                 <h1 class="pb-4 mb-0 border-bottom"><%= place.title %></h1>
@@ -31,7 +17,7 @@
                             <u>Поделиться</u>
                         </button>
                     </div>
-                    <a href="#" class="text-decoration-none"><i class="icon-edit"></i> 
+                    <a href="/edit_place/<%= place.id %>" class="text-decoration-none"><i class="icon-edit"></i> 
                         <u>Изменить/уточнить</u>
                     </a>
                 </div>

@@ -1,6 +1,11 @@
 .hidden {
   display: none !important;
 }
+.list_fit {
+  object-fit: cover;
+  height: 50px;
+  width: 50px;
+}
 @font-face {
     font-family: 'Ubuntu';
     font-style: normal;

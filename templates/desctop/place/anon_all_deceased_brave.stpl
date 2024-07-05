@@ -1,10 +1,152 @@
- <% include!("../anon_header.stpl"); %>
+<% include!("../anon_header.stpl"); %>
 
+<div class="bg-secondary text-white py-5">
+    <div class="container">
+        <div class="row">
+            <div class="d-flex flex-column col-sm-12 col-lg-5">
+                <div class="position-relative flex-grow-1 d-flex">
+                    <img src="<%= brave.get_image() %>" class="img-fluid" style="object-fit: cover;height: 400px;width: 100%;">
+                </div>                
+            </div>
+            <div class="col-sm-12 col-lg-7">
+                <h1 class="pb-4 mb-0 border-bottom"><%= brave.title %></h1>
+                <div class="py-2 border-bottom d-flex align-items-center mb-2 flex-wrap">
+                    <div class="ml-md-auto">
+                        <button type="button" id="share-button" class="text-decoration-none btn btn-link">
+                            <i class="icon-share"></i> 
+                            <u>Поделиться</u>
+                        </button>
+                    </div>
+                    <a href="/edit_brave/<%= brave.id %>" class="text-decoration-none"><i class="icon-edit"></i> 
+                        <u>Изменить/уточнить</u>
+                    </a>
+                </div>
+                <div class="mb-2 row">
+                    <div class="col-sm-4"><strong>Кол-во захоронений:</strong></div>
+                    <div class="col-sm-8"><%= brave.count %></div>
+                </div>
+                <div class="mb-2 row">
+                    <div class="col-sm-4"><strong>Расположение:</strong></div>
+                    <div class="col-sm-8"><%= brave.get_loc() %></div>
+                </div>
+                <% if brave.cord.is_some() { %>
+                    <div class="mb-2 row">
+                        <div class="col-sm-4"><strong>Координаты GPS:</strong></div>
+                        <div class="col-sm-8">
+                            <span><%= brave.cord.as_deref().unwrap() %> &nbsp;
+                                <a role="button" data-cord="<%= brave.cord.as_deref().unwrap() %>" data-pk="<%= brave.id %>" tabindex="0" class="data-cord text-primary">
+                                    <u>показать на карте</u>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-2 row">
+                        <div class="col-sm-4"><strong>Маршрут:</strong></div>
+                        <div class="col-sm-8">
+                            <span>
+                                <a class="yandex_link" target="_blank" rel="noopener noreferrer">проложить на Яндекс</a>
+                                &nbsp;&nbsp;
+                                <a class="google_link" target="_blank" rel="noopener noreferrer">проложить на Google</a>
+                            </span>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div>
 
- 
- <% include!("../anon_footer.stpl"); %>
+<div class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="mb-3 col-sm-12 col-lg-9">
+                <ul class="nav nav-tabs">
+                    <li class="flex-grow-0 nav-item">
+                        <a class="active nav-link">
+                            <div class="px-4">Братские могилы</div>
+                        </a>
+                    </li>
+                    <li class="flex-grow-0 nav-item">
+                        <a class="nav-link">
+                            <div class="px-4">Описание</div>
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content bg-white border border-top-0">
+                    <div class="tab-pane active">
+                        <% for i in object_list.iter() { %>
+                        <div class="p-3 p-md-5 border-top results">
+                            <div class="py-4 border-top d-sm-flex burial-teaser">
+                                <div class="mr-4 burial-teaser__image">
+                                    <div class="bg-light rounded d-flex align-items-center justify-content-center" style="width: 165px; height: 134px;">
+                                        <img src="<%= i.get_image() %>" alt="Захоронение ID 264809" class="mw-100">
+                                    </div>
+                                </div>
+                                <div class="burial-teaser__content flex-grow-1">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <a class="burial-teaser__title" href="/deceased/<%= i.id %>">
+                                            <%= i.get_fio() %>
+                                        </a>
+                                        <strong class="text-dark">ID: <%= i.id %></strong>
+                                    </div>
+                                    <!--
+                                    <div class="d-flex mb-2">
+                                        <span class="mr-1 badge badge-success">Известная личность</span>
+                                    </div>
+                                    -->
+                                    <div>
+                                        <strong class="text-dark">
+                                            Годы жизни: 
+                                        </strong>
+                                        <span>
+                                            <% if i.birth_date.is_some() { %>
+                                                <%= i.birth_date.unwrap().format("%d-%m-%Y").to_string() %> 
+                                            <% } %> 
+                                            - 
+                                            <% if i.death_date.is_some() { %>
+                                                <%= i.death_date.unwrap().format("%d-%m-%Y").to_string() %> 
+                                            <% } %>
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <strong class="text-dark">Место захоронения:&nbsp;</strong><span>Россия</span>
+                                    </div>
+                                    <div><strong class="text-dark">Адрес / координаты:&nbsp;</strong><a href="/deceased/<%= i.id %>">посмотреть</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <% } %>
+                    </div>
+                    <div class="tab-pane">
+                        <div class="p-3 p-md-5">
+                            <div class="text-uppercase text-dark mb-3"><strong>Описание</strong></div>
+                            <div class="formatted-text">
+                                <% if brave.description.is_some() { %>
+                                    <%= brave.description.as_deref().unwrap() %>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-lg-3">
+                <div role="group" class="bg-white border edit-burial-menu mb-5 btn-group-vertical">
+                    <div class="py-3 text-dark text-uppercase edit-burial-menu__title">
+                        <strong>Изменить или уточнить</strong>
+                    </div>
+                    <button type="button" class="btn btn-light"><i class="icon-data"></i>Основные данные</button>
+                    <button type="button" class="btn btn-light"><i class="icon-stone-photo"></i>Фотографии</button>
+                    <button class="btn btn-light"><i class="icon-add-burial"></i>Добавить захоронение</button>
+                    <button class="btn btn-light"><i class="icon-list"></i>Список захоронений</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
- <script>
+<% include!("../anon_footer.stpl"); %>
+<script>
                         cord = document.body.querySelector(".data-cord").getAttribute("data-cord");
                         cord_S = cord.split(",");
                         lat = cord_S[0];
