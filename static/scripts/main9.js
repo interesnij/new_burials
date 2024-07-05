@@ -129,9 +129,9 @@ function toast_warning(text) {
 
 function elementInViewport(el){var bounds = el.getBoundingClientRect();return ((bounds.top + bounds.height > 0) && (window.innerHeight - bounds.top > 0));}
 
+///////////
 function get_scroll() {
   window.onscroll = function() {
-    console.log("onscroll");
     if (window.pageYOffset > 100) {
       document.body.classList.add("sticky-header")
     }
@@ -141,7 +141,7 @@ function get_scroll() {
   };
 };
 get_scroll();
-
+//////////////
 
 on('body', 'click', '#logg', function() {
     _this = this;
