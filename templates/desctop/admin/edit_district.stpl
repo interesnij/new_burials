@@ -44,7 +44,7 @@
 							/>
 						</div>
 						<div class="d-flex justify-content-center border-top p-4">
-							<button type="button" data-pk="<%= object.id %>" id="edit_district" class="btn bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 rounded-md w-full" >
+							<button type="button" data-pk="<%= object.id %>" id="edit_district" class="text-uppercase py-2 btn btn-primary " >
 								Изменить
 							</button> 
 						</div>
