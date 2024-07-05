@@ -303,7 +303,7 @@
                         google_link = document.body.querySelector(".google_link");
                         let pos;
                         navigator.geolocation.getCurrentPosition(position => {
-                            latitude, longitude = position.coords;
+                            const { latitude, longitude } = position.coords;
                             console.log(latitude);
                             console.log(longitude);
                             pos = latitude + "," + longitude;

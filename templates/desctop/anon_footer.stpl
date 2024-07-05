@@ -137,7 +137,7 @@
 <div id="modal_container"></div>
 
 <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=f24c512a-4137-4c65-a9e6-39f5d7cd0ebe&suggest_apikey=6d98461b-030b-42e8-9a8b-0ad3c4bea025" type="text/javascript"></script>
-<script src="/static/scripts/main8.js?ver5"></script>
+<script src="/static/scripts/main9.js?ver5"></script>
 <script src="/static/scripts/map.js"></script>
 
 </body>

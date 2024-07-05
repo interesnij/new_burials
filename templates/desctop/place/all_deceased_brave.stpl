@@ -1,3 +1,21 @@
 <% include!("../header.stpl"); %>
 
 <% include!("../footer.stpl"); %>
+
+<script>
+                        cord = document.body.querySelector(".data-cord").getAttribute("data-cord");
+                        cord_S = cord.split(",");
+                        lat = cord_S[0];
+                        lon = cord_S[1];
+                        yandex_link = document.body.querySelector(".yandex_link");
+                        google_link = document.body.querySelector(".google_link");
+                        let pos;
+                        navigator.geolocation.getCurrentPosition(position => {
+                            const { latitude, longitude } = position.coords;
+                            console.log(latitude);
+                            console.log(longitude);
+                            pos = latitude + "," + longitude;
+                        });
+                        yandex_link.setAttribute("href", "https://yandex.ru/maps/?rtext=" + pos + "~" + lat + "%2C" + lon);
+                        google_link.setAttribute("href", "https://maps.google.ru/maps?daddr=" + lat + "%2C" + lon + "&amp;hl=ru&amp;t=h&amp;saddr=" + pos);
+</script>
