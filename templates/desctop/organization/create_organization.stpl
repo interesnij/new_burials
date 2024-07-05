@@ -91,17 +91,13 @@
 
                             <br>
                             <div class="grid lg:grid-cols-2 grid-cols-1 gap-5" >
-                                <div class="profile-pic w-[112px]">
-                                    <label class="font-semibold">Основное изображение: </label>
-                                    <input id="pro-img" accept="image/*" name="image" type="file" class="hidden" onchange="loadFile(event)" />
-                                    <div>
-                                        <div class="relative h-28 w-28 rounded-full shadow-md dark:shadow-gray-800 ring-4 ring-slate-50 dark:ring-slate-800 overflow-hidden">
-                                            <img src="/static/images/upload.png" class="rounded-full" id="image" alt="img">
-                                            <div class="absolute inset-0 group-hover:bg-slate-900/10 duration-500"></div>
-                                            <label class="absolute inset-0 cursor-pointer" for="pro-img"></label>
-                                        </div>
+                                <div class="">
+                                    <label class="font-semibold">Фотография: </label>
+                                    <input id="pro-image" accept="image/*" name="image" type="file" class="hidden" />
+                                    <div id="image_container" style="border: 1px solid grey; cursor: pointer; width: 200px; text-align: center;margin-top: 10px">
+                                        <h4 style="font-weight:bold;font-size:30px;color:grey" class="photo_upload_response">Нажмите сюда</h4>
                                     </div>
-                                </div>
+							    </div>
                                 <div class="">
                                     <label class="font-semibold">Дополнительные фото: </label>
                                     <input id="pro-images" accept="image/*" multiple name="files[]" type="file" class="hidden" />

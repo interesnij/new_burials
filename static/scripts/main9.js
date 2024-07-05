@@ -855,6 +855,9 @@ on('body', 'click', '.delete_loc', function() {
 on('body', 'click', '#images_container', function() {
   this.previousElementSibling.click();
 });
+on('body', 'click', '#image_container', function() {
+  this.previousElementSibling.click();
+});
 
 on('body', 'change', '#pro-images', function() {
   len = this.files.length;
@@ -876,6 +879,10 @@ on('body', 'change', '#pro-images', function() {
   }
 
   document.body.querySelector(".photos_upload_response").innerHTML = word;
+});
+
+on('body', 'change', '#pro-image', function() {
+  document.body.querySelector(".photos_upload_response").innerHTML = "Фотография выбрана";
 }); 
 
 on('body', 'click', '.remove_file', function() {
