@@ -1153,9 +1153,13 @@ on('body', 'click', 'button', function() {
 
 function get_header_transparent() {
   path = document.location.pathname;
-  header = document.body.querySelector(".header")
+  header = document.body.querySelector(".header");
   if (path == "/" || path == "/search" || path == "/braves" || path == "/wall" || path == "/places") {
     header.classList.add("transparent");
+    console.log("add transparent");
+  }
+  else {
+    console.log("not transparent");
   }
 };
 

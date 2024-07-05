@@ -14,7 +14,7 @@
 
 <body>
     <div id="main">
-        <div class="header transparent">
+        <div class="header transparent"> 
             <div class="header-first py-md-3">
                 <div class="container">
                     <div class="align-items-md-center flex-md-nowrap row">
