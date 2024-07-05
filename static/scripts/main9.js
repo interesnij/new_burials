@@ -301,7 +301,7 @@ on('body', 'click', '.search_deceaseds', function() {
     return 
   } 
 
-  url = "/search?qw=";
+  url = "/search?&nn=";
   if (form.querySelector("#id_first_name").value) {
     url += "&first_name=" + form.querySelector("#id_first_name").value
   };
