@@ -1159,6 +1159,7 @@ function get_header_transparent() {
     console.log("add transparent");
   }
   else {
+    header.classList.remove("transparent");
     console.log("not transparent");
   }
 };
