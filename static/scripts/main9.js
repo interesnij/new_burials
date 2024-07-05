@@ -301,7 +301,7 @@ on('body', 'click', '.search_deceaseds', function() {
     return 
   } 
 
-  url = "/main_search?qw=";
+  url = "/search?qw=";
   if (form.querySelector("#id_first_name").value) {
     url += "&first_name=" + form.querySelector("#id_first_name").value
   };
@@ -333,16 +333,7 @@ on('body', 'click', '.search_deceaseds', function() {
     url += "&with_coordinates=true"
   };
 
-  var link = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject( 'Microsoft.XMLHTTP' );
-  link.open( 'GET', url, true );
-  link.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-  link.onreadystatechange = function () {
-    if ( this.readyState == 4 && this.status == 200 ) {
-        console.log("success!");
-        block.innerHTML = link.responseText;
-    } else { console.log("status", this.status);  };
-  };
-  link.send( null );
+  window.location.href = url;
 });
 
 
