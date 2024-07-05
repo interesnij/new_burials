@@ -102,7 +102,7 @@
                                 <div class="burial-teaser__content flex-grow-1">
                                     <div class="d-flex justify-content-between mb-2">
                                         <a class="burial-teaser__title" href="/deceased/<%= i.id %>">
-                                            <%= i.last_name %> <%= i.first_name %>
+                                            <%= i.get_fio() %>
                                         </a>
                                         <strong class="text-dark">ID: <%= i.id %></strong>
                                     </div>
