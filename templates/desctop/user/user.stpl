@@ -1,17 +1,5 @@
 <% include!("../header.stpl"); %> 
 
-<section class="relative table w-full py-32 lg:py-40 bg-gradient-to-br to-orange-600/20 via-fuchsia-600/20 from-indigo-600/20">
-	<div class="absolute text-center z-10 bottom-5 start-0 end-0 mx-3">
-		<ul class="tracking-[0.5px] mb-0 inline-block">
-			<li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out hover:text-indigo-600">
-				<a href="/">Главная</a>
-			</li> 
-			<li class="inline-block text-base text-slate-950 dark:text-white mx-0.5 ltr:rotate-0 rtl:rotate-180"><i class="uil uil-angle-right-b"></i></li>
-			<li class="inline-block uppercase text-[13px] font-bold text-indigo-600" aria-current="page">Профиль</li>
-		</ul>
-	</div>
-</section>
-<!-- Start -->
 <section class="relative md:py-24 py-16">
 	<div class="container">
 		
@@ -76,18 +64,13 @@
 
 						<br>
 						<div class="grid lg:grid-cols-2 grid-cols-1 gap-5" >
-							<div class="profile-pic w-[112px]">
-								<label class="font-semibold">Аватар: </label>
-								<input id="pro-img" accept="image/*" name="image" type="file" class="hidden" onchange="loadFile(event)" />
-								<div> 
-									<div class="relative h-28 w-28 rounded-full shadow-md dark:shadow-gray-800 ring-4 ring-slate-50 dark:ring-slate-800 overflow-hidden">
-										<img src="<%= request_user.get_image() %>" class="rounded-full" id="image" alt="img">
-										<div class="absolute inset-0 group-hover:bg-slate-900/10 duration-500"></div>
-										<label class="absolute inset-0 cursor-pointer" for="pro-img"></label>
-									</div> 
+							<div class="">
+								<label class="font-semibold">Фотография: </label>
+								<input id="pro-image" accept="image/*" name="image" type="file" class="hidden" />
+								<div id="image_container" style="border: 1px solid grey; cursor: pointer; width: 200px; text-align: center;margin-top: 10px">
+									<h4 style="font-weight:bold;font-size:30px;color:grey" class="photo_upload_response">Нажмите сюда</h4>
 								</div>
 							</div>
-
 						</div>
 
 						<br><br> 

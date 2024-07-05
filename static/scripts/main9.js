@@ -897,7 +897,7 @@ on('body', 'click', '.remove_file', function() {
 
 on('body', 'click', '#edit_profile', function() {
   _this = this;
-  form = _this.parentElement.parentElement.parentElement;
+  form = _this.parentElement.parentElement.parentElement.parentElement;
   form.querySelector("#id_username").style.setProperty('border', 'inherit', 'important');
   form.querySelector("#id_first_name").style.setProperty('border', 'inherit', 'important');
   form.querySelector("#id_last_name").style.setProperty('border', 'inherit', 'important');
