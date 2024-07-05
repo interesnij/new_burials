@@ -6,20 +6,8 @@
         <div class="row">
             <div class="d-flex flex-column col-sm-12 col-lg-5">
                 <div class="position-relative flex-grow-1 d-flex">
-                    <div class="">
-                        <div class="">
-                            <div>
-                                <div>
-                                    <div>
-                                        <div>
-                                            <img src="<%= deceased.get_image() %>" class="img-fluid" style="object-fit: cover;height: 300px;width: 100%;">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    <img src="<%= deceased.get_image() %>" class="img-fluid" style="object-fit: cover;height: 300px;width: 100%;">
+                </div>                
             </div>
             <div class="col-sm-12 col-lg-7">
                 <h1 class="pb-4 mb-0 border-bottom">
