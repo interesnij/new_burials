@@ -1,6 +1,5 @@
 <% include!("../anon_header.stpl"); %>
 
-<div class="content">
     <div class="text-center front-hero jumbotron">
         <h1>Кладбища</h1>
         <p class="lead">Социальный проект по поиску захоронений<br>и уходу за ними</p>
@@ -39,5 +38,4 @@
 
     <% include!("../generic/bottom_menu.stpl"); %>
 
-</div>
 <% include!("../anon_footer.stpl"); %>
