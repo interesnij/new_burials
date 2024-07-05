@@ -33,7 +33,7 @@
                 <div class="py-2 border-bottom d-flex align-items-center mb-2 flex-wrap">
                     <span>Номер ID: <%= deceased.id %></span>
                      <% if request_user.id == deceased.user_id || request_user.is_admin() { %>
-                    <a href="#" class="ml-md-auto text-decoration-none">
+                    <a href="/edit_deceased/<%= deceased.id %>" class="ml-md-auto text-decoration-none">
                         <i class="icon-edit"></i> 
                         <u>Изменить/уточнить</u>
                     </a>
