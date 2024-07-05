@@ -136,7 +136,7 @@
                 <div class="mb-2 row">
                     <div class="col-sm-4"><strong>Место захоронения:</strong></div>
                     <div class="col-sm-8">
-                        <a href="/place/<%= _place.id %>/"><%= _place.title %> (<%=_place.get_loc() %>)</a>
+                        <a href="/place/<%= _place.id %>"><%= _place.title %> (<%=_place.get_loc() %>)</a>
                     </div>
                 </div> 
                 <% if deceased.cord.is_some() { %>

@@ -32,10 +32,12 @@
                 </h1>
                 <div class="py-2 border-bottom d-flex align-items-center mb-2 flex-wrap">
                     <span>Номер ID: <%= deceased.id %></span>
+                     <% request_user.id == deceased.user_id || request_user.is_admin() { %>
                     <a href="#" class="ml-md-auto text-decoration-none">
                         <i class="icon-edit"></i> 
                         <u>Изменить/уточнить</u>
                     </a>
+                    <% } %>
                 </div>
                 <div class="py-2 border-bottom d-flex align-items-center mb-2 flex-wrap justify-content-between"><strong>Поделиться:</strong>
                     <div class="d-flex share-buttons mb-2">
@@ -136,7 +138,7 @@
                 <div class="mb-2 row">
                     <div class="col-sm-4"><strong>Место захоронения:</strong></div>
                     <div class="col-sm-8">
-                        <a href="/place/<%= _place.id %>/"><%= _place.title %> (<%=_place.get_loc() %>)</a>
+                        <a href="/place/<%= _place.id %>"><%= _place.title %> (<%=_place.get_loc() %>)</a>
                     </div>
                 </div>
                 <% if deceased.cord.is_some() { %>
