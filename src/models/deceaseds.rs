@@ -433,7 +433,7 @@ impl Deceased {
             .len();
     }
 
-    pub fn main_search2 (
+    pub fn main_search2 ( 
         first_name:   Option<String>, 
         middle_name:  Option<String>,
         last_name:    Option<String>,
@@ -447,7 +447,7 @@ impl Deceased {
         with_photo:   Option<bool>,
         with_cord:    Option<bool>,
         page:         i32,
-    ) -> (String, Vec<Deceased>, usize) { 
+    ) -> (String, Vec<Deceased>, i32) { 
         /*
             case switch 
             1 last_name exists
@@ -469,12 +469,15 @@ impl Deceased {
 
         let mut next_page_number = 0;
         let offset: i64;
+        let have_next: i32;
 
         if page > 1 {
             offset = ((page as i64) - 1) * 100;
+            have_next = page * 100 + 1;
         }
         else {
             offset = 0;
+            have_next = 101;
         }
 
         if last_name.is_some() {
@@ -512,6 +515,15 @@ impl Deceased {
         }
         println!("case {:?}", case);
         if case == 0 {
+            if schema::deceaseds::table
+                    .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
+                    .select(schema::deceaseds::id)
+                    .limit(have_next)
+                    .offset(offset)
+                    .first::<i32>(&_connection)
+                    .is_ok() {
+                        next_page_number = page + 1;
+            }
             return (q, schema::deceaseds::table
                 .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
                 .limit(100)
@@ -520,44 +532,104 @@ impl Deceased {
                 .expect("E."), 0);
         }
         let list: Vec<Deceased> = match case {
-            1  => schema::deceaseds::table
-                .filter(schema::deceaseds::last_name.ilike("%".to_owned() + &last_name.as_deref().unwrap() + "%"))
-                .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
-                .limit(100)
-                .offset(offset)
-                .load::<Deceased>(&_connection)
-                .expect("E."),
-            2  => schema::deceaseds::table
-                .filter(schema::deceaseds::place_id.eq(place.unwrap()))
-                .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
-                .limit(100)
-                .offset(offset)
-                .load::<Deceased>(&_connection)
-                .expect("E."),
+            1  => {
+                if schema::deceaseds::table
+                    .filter(schema::deceaseds::last_name.ilike("%".to_owned() + &last_name.as_deref().unwrap() + "%"))
+                    .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
+                    .select(schema::deceaseds::id)
+                    .limit(have_next)
+                    .offset(offset)
+                    .first::<i32>(&_connection)
+                    .is_ok() {
+                        next_page_number = page + 1;
+                }
+                    schema::deceaseds::table
+                        .filter(schema::deceaseds::last_name.ilike("%".to_owned() + &last_name.as_deref().unwrap() + "%"))
+                        .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
+                        .limit(100)
+                        .offset(offset)
+                        .load::<Deceased>(&_connection)
+                        .expect("E.");
+                },
+            2  => {
+                if schema::deceaseds::table
+                    .filter(schema::deceaseds::place_id.eq(place.unwrap()))
+                    .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
+                    .select(schema::deceaseds::id)
+                    .limit(have_next)
+                    .offset(offset)
+                    .first::<i32>(&_connection)
+                    .is_ok() {
+                        next_page_number = page + 1;
+                }
+                schema::deceaseds::table
+                    .filter(schema::deceaseds::place_id.eq(place.unwrap()))
+                    .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
+                    .limit(100)
+                    .offset(offset)
+                    .load::<Deceased>(&_connection)
+                    .expect("E.");
+                },
             3  => { 
                 if birth_filter.is_some() {
                     match birth_filter.as_deref().unwrap() {
-                        "eq" => schema::deceaseds::table
+                        "eq" => {
+                            if schema::deceaseds::table
+                                .filter(schema::deceaseds::birth_date.eq(birth_date.unwrap()))
+                                .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
+                                .select(schema::deceaseds::id)
+                                .limit(have_next)
+                                .offset(offset)
+                                .first::<i32>(&_connection)
+                                .is_ok() {
+                                    next_page_number = page + 1;
+                            }
+                            schema::deceaseds::table
                                 .filter(schema::deceaseds::birth_date.eq(birth_date.unwrap()))
                                 .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
                                 .limit(100)
                                 .offset(offset)
                                 .load::<Deceased>(&_connection)
-                                .expect("E."),
-                        "lt" => schema::deceaseds::table
+                                .expect("E.");
+                        },
+                        "lt" => {
+                            if schema::deceaseds::table
+                                .filter(schema::deceaseds::birth_date.lt(birth_date.unwrap()))
+                                .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
+                                .select(schema::deceaseds::id)
+                                .limit(have_next)
+                                .offset(offset)
+                                .first::<i32>(&_connection)
+                                .is_ok() {
+                                    next_page_number = page + 1;
+                            }
+                            schema::deceaseds::table
                                 .filter(schema::deceaseds::birth_date.lt(birth_date.unwrap()))
                                 .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
                                 .limit(100)
                                 .offset(offset)
                                 .load::<Deceased>(&_connection)
-                                .expect("E."),
-                        "gt" => schema::deceaseds::table
+                                .expect("E.");
+                        },
+                        "gt" => {
+                            if schema::deceaseds::table
+                                .filter(schema::deceaseds::birth_date.gt(birth_date.unwrap()))
+                                .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
+                                .select(schema::deceaseds::id)
+                                .limit(have_next)
+                                .offset(offset)
+                                .first::<i32>(&_connection)
+                                .is_ok() {
+                                    next_page_number = page + 1;
+                            }
+                            schema::deceaseds::table
                                 .filter(schema::deceaseds::birth_date.gt(birth_date.unwrap()))
                                 .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
                                 .limit(100)
                                 .offset(offset)
                                 .load::<Deceased>(&_connection)
-                                .expect("E."),
+                                .expect("E.");
+                        },
                         _ => Vec::new(),
                     }
                 }
@@ -568,27 +640,63 @@ impl Deceased {
             4  => { 
                 if death_filter.is_some() {
                     match death_filter.as_deref().unwrap() {
-                        "eq" => schema::deceaseds::table
+                        "eq" => {
+                            if schema::deceaseds::table
+                                .filter(schema::deceaseds::death_date.eq(death_date.unwrap()))
+                                .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
+                                .select(schema::deceaseds::id)
+                                .limit(have_next)
+                                .offset(offset)
+                                .first::<i32>(&_connection)
+                                .is_ok() {
+                                    next_page_number = page + 1;
+                            }
+                            schema::deceaseds::table
                                 .filter(schema::deceaseds::death_date.eq(death_date.unwrap()))
                                 .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
                                 .limit(100)
                                 .offset(offset)
                                 .load::<Deceased>(&_connection)
-                                .expect("E."),
-                        "lt" => schema::deceaseds::table
+                                .expect("E.");
+                        },
+                        "lt" => {
+                            if schema::deceaseds::table
+                                .filter(schema::deceaseds::death_date.lt(death_date.unwrap()))
+                                .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
+                                .select(schema::deceaseds::id)
+                                .limit(have_next)
+                                .offset(offset)
+                                .first::<i32>(&_connection)
+                                .is_ok() {
+                                    next_page_number = page + 1;
+                            }
+                            schema::deceaseds::table
                                 .filter(schema::deceaseds::death_date.lt(death_date.unwrap()))
                                 .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
                                 .limit(100)
                                 .offset(offset)
                                 .load::<Deceased>(&_connection)
-                                .expect("E."),
-                        "gt" => schema::deceaseds::table
+                                .expect("E.");
+                        },
+                        "gt" => {
+                            if schema::deceaseds::table
+                                .filter(schema::deceaseds::death_date.gt(death_date.unwrap()))
+                                .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
+                                .select(schema::deceaseds::id)
+                                .limit(have_next)
+                                .offset(offset)
+                                .first::<i32>(&_connection)
+                                .is_ok() {
+                                    next_page_number = page + 1;
+                            }
+                            schema::deceaseds::table
                                 .filter(schema::deceaseds::death_date.gt(death_date.unwrap()))
                                 .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
                                 .limit(100)
                                 .offset(offset)
                                 .load::<Deceased>(&_connection)
-                                .expect("E."),
+                                .expect("E.");
+                        },
                         _ => Vec::new(),
                     }
                 }
@@ -596,50 +704,122 @@ impl Deceased {
                     Vec::new()
                 }
             },
-            5  => schema::deceaseds::table
-                .filter(schema::deceaseds::first_name.eq("%".to_owned() + &first_name.as_deref().unwrap() + "%"))
-                .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
-                .limit(100)
-                .offset(offset)
-                .load::<Deceased>(&_connection)
-                .expect("E."),
-            6  => schema::deceaseds::table
-                .filter(schema::deceaseds::middle_name.eq("%".to_owned() + &middle_name.as_deref().unwrap() + "%"))
-                .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
-                .limit(100)
-                .offset(offset)
-                .load::<Deceased>(&_connection)
-                .expect("E."),
-            7  => schema::deceaseds::table
-                .filter(schema::deceaseds::is_veteran.eq(true))
-                .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
-                .limit(100)
-                .offset(offset)
-                .load::<Deceased>(&_connection)
-                .expect("E."),
-            8  => schema::deceaseds::table
-                .filter(schema::deceaseds::is_famous.eq(true))
-                .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
-                .limit(100)
-                .offset(offset)
-                .load::<Deceased>(&_connection)
-                .expect("E."),
-            9  => schema::deceaseds::table
-                .filter(schema::deceaseds::image.is_not_null())
-                .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
-                .limit(100)
-                .offset(offset)
-                .load::<Deceased>(&_connection)
-                .expect("E."),
-            10 => schema::deceaseds::table
-                .filter(schema::deceaseds::cord.is_not_null())
-                .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
-                .limit(100)
-                .offset(offset)
-                .load::<Deceased>(&_connection)
-                .expect("E."),
+            5  => {
+                if schema::deceaseds::table
+                    .filter(schema::deceaseds::first_name.eq("%".to_owned() + &first_name.as_deref().unwrap() + "%"))
+                    .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
+                    .select(schema::deceaseds::id)
+                    .limit(have_next)
+                    .offset(offset)
+                    .first::<i32>(&_connection)
+                    .is_ok() {
+                        next_page_number = page + 1;
+                }
+                schema::deceaseds::table
+                    .filter(schema::deceaseds::first_name.eq("%".to_owned() + &first_name.as_deref().unwrap() + "%"))
+                    .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
+                    .limit(100)
+                    .offset(offset)
+                    .load::<Deceased>(&_connection)
+                    .expect("E.");
+            },
+            6  => {
+                if schema::deceaseds::table
+                    .filter(schema::deceaseds::middle_name.eq("%".to_owned() + &middle_name.as_deref().unwrap() + "%"))
+                    .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
+                    .select(schema::deceaseds::id)
+                    .limit(have_next)
+                    .offset(offset)
+                    .first::<i32>(&_connection)
+                    .is_ok() {
+                        next_page_number = page + 1;
+                }
+                schema::deceaseds::table
+                    .filter(schema::deceaseds::middle_name.eq("%".to_owned() + &middle_name.as_deref().unwrap() + "%"))
+                    .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
+                    .limit(100)
+                    .offset(offset)
+                    .load::<Deceased>(&_connection)
+                    .expect("E.");
+            },
+            7  => {
+                if schema::deceaseds::table
+                    .filter(schema::deceaseds::is_veteran.eq(true))
+                    .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
+                    .select(schema::deceaseds::id)
+                    .limit(have_next)
+                    .offset(offset)
+                    .first::<i32>(&_connection)
+                    .is_ok() {
+                        next_page_number = page + 1;
+                }
+                schema::deceaseds::table
+                    .filter(schema::deceaseds::is_veteran.eq(true))
+                    .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
+                    .limit(100)
+                    .offset(offset)
+                    .load::<Deceased>(&_connection)
+                    .expect("E.");
+            },
+            8  => {
+                if schema::deceaseds::table
+                    .filter(schema::deceaseds::is_famous.eq(true))
+                    .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
+                    .select(schema::deceaseds::id)
+                    .limit(have_next)
+                    .offset(offset)
+                    .first::<i32>(&_connection)
+                    .is_ok() {
+                        next_page_number = page + 1;
+                }
+                schema::deceaseds::table
+                    .filter(schema::deceaseds::is_famous.eq(true))
+                    .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
+                    .limit(100)
+                    .offset(offset)
+                    .load::<Deceased>(&_connection)
+                    .expect("E.");
+            },
+            9  => {
+                if schema::deceaseds::table
+                    .filter(schema::deceaseds::image.is_not_null())
+                    .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
+                    .select(schema::deceaseds::id)
+                    .limit(have_next)
+                    .offset(offset)
+                    .first::<i32>(&_connection)
+                    .is_ok() {
+                        next_page_number = page + 1;
+                }
+                schema::deceaseds::table
+                    .filter(schema::deceaseds::image.is_not_null())
+                    .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
+                    .limit(100)
+                    .offset(offset)
+                    .load::<Deceased>(&_connection)
+                    .expect("E.");
+            },
+            10 => {
+                if schema::deceaseds::table
+                    .filter(schema::deceaseds::cord.is_not_null())
+                    .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
+                    .select(schema::deceaseds::id)
+                    .limit(have_next)
+                    .offset(offset)
+                    .first::<i32>(&_connection)
+                    .is_ok() {
+                        next_page_number = page + 1;
+                }
+                schema::deceaseds::table
+                    .filter(schema::deceaseds::cord.is_not_null())
+                    .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
+                    .limit(100)
+                    .offset(offset)
+                    .load::<Deceased>(&_connection)
+                    .expect("E.");
+            },
             _ => Vec::new(),
-        };
+        }; 
        
         for i in list.into_iter() {
             let mut check_exists = false;
@@ -742,7 +922,7 @@ impl Deceased {
 
             stack.push(i);
         }
-        return (q, stack, 0);
+        return (q, stack, next_page_number);
     }
 
     pub fn get_all (

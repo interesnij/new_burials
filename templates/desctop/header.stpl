@@ -56,7 +56,9 @@
                                             <% if services_enabled { %>
                                                 <li class="nav-item"><a class="nav-link" href="/services">Уборка могил</a></li>
                                             <% } %>
+                                            <!--
                                             <li class="nav-item"><a class="nav-link" href="/organizations_country/1">Организации</a></li>
+                                            -->
                                         </ul>
                                     </div>
                                 </div>
@@ -120,9 +122,11 @@
                                         <a class="border-bottom dropdown-item d-flex align-items-center" href="/create_brave">
                                             <span>Братскую могилу</span>
                                         </a>
+                                        <!--
                                         <a class="border-bottom dropdown-item d-flex align-items-center" href="/create_organization">
                                             <span>Организацию</span>
                                         </a>
+                                        -->
                                         <a class="border-bottom dropdown-item d-flex align-items-center lists" href="/lists">
                                             <span>Списки</span>
                                         </a>
@@ -136,9 +140,11 @@
                                         <a class="border-bottom dropdown-item d-flex align-items-center" href="/create_brave">
                                             <i class="icon-mass-grave"></i><span>Братскую могилу</span>
                                         </a>
+                                        <!--
                                         <a class="border-bottom dropdown-item d-flex align-items-center" href="/create_organization">
                                             <i class="icon-office"></i><span>Организацию</span>
                                         </a>
+                                        -->
                                     <% } %>
                                 </div>
                             </div>
@@ -172,7 +178,9 @@
                         <% if services_enabled { %>
                             <li class="py-3 nav-item"><a class="nav-link" href="/services">Уборка могил</a></li>
                         <% } %>
+                        <!--
                         <li class="py-3 nav-item"><a class="nav-link" href="/organizations_country/1">Организации</a></li>
+                        -->
                     </ul>
                 </div>
             </div>

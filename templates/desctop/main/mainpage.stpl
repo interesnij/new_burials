@@ -109,6 +109,7 @@
     </div>
 </div>
 
+<!--
 <div class="py-5 border-top rubrics">
     <div class="container">
         <div class="row">
@@ -139,7 +140,6 @@
         </div>
     </div>
 </div>
-
-
+-->
 
 <% include!("../footer.stpl"); %>

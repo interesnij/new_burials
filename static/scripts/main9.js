@@ -498,7 +498,7 @@ on('body', 'click', '.show_dop_search_form', function() {
   }
 });
 on('body', 'click', '#create_organization', function() {
-  let form = this.parentElement.parentElement.parentElement.parentElement.parentElement;
+  let form = this.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
 
   form.querySelector("#id_name").style.setProperty('border', 'inherit', 'important');
   form.querySelector("#id_description").style.setProperty('border', 'inherit', 'important');
@@ -541,7 +541,7 @@ on('body', 'click', '#create_organization', function() {
 });
 
 on('body', 'click', '#create_place', function() {
-  let form = this.parentElement.parentElement.parentElement.parentElement.parentElement;
+  let form = this.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
 
   form.querySelector("#id_title").style.setProperty('border', 'inherit', 'important');
   form.querySelector("#id_country").style.setProperty('border', 'inherit', 'important');
@@ -572,7 +572,7 @@ on('body', 'click', '#create_place', function() {
 });
 
 on('body', 'click', '#create_brave', function() {
-  let form = this.parentElement.parentElement.parentElement.parentElement.parentElement;
+  let form = this.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
 
   form.querySelector("#id_title").style.setProperty('border', 'inherit', 'important');
   form.querySelector("#id_country").style.setProperty('border', 'inherit', 'important');
@@ -644,7 +644,7 @@ on('body', 'click', '#create_deceased', function() {
 
 on('body', 'click', '#edit_organization', function() {
   _this = this;
-  form = _this.parentElement.parentElement.parentElement.parentElement.parentElement;
+  form = _this.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
 
   form.querySelector("#id_name").style.setProperty('border', 'inherit', 'important');
   form.querySelector("#id_description").style.setProperty('border', 'inherit', 'important');

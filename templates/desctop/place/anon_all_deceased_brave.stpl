@@ -17,9 +17,6 @@
                             <u>Поделиться</u>
                         </button>
                     </div>
-                    <a href="/edit_brave/<%= brave.id %>" class="text-decoration-none"><i class="icon-edit"></i> 
-                        <u>Изменить/уточнить</u>
-                    </a>
                 </div>
                 <div class="mb-2 row">
                     <div class="col-sm-4"><strong>Кол-во захоронений:</strong></div>
@@ -132,9 +129,6 @@
             </div>
             <div class="col-sm-12 col-lg-3">
                 <div role="group" class="bg-white border edit-burial-menu mb-5 btn-group-vertical">
-                    <div class="py-3 text-dark text-uppercase edit-burial-menu__title">
-                        <strong>Изменить или уточнить</strong>
-                    </div>
                     <button type="button" class="btn btn-light"><i class="icon-data"></i>Основные данные</button>
                     <button type="button" class="btn btn-light"><i class="icon-stone-photo"></i>Фотографии</button>
                     <button class="btn btn-light"><i class="icon-add-burial"></i>Добавить захоронение</button>

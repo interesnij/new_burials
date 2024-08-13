@@ -193,6 +193,231 @@ impl Place {
 
         return loc;
     }
+    pub fn main_search2 (
+        title:       Option<String>,
+        country_id:  Option<i32>,
+        region_id:   Option<i32>,
+        district_id: Option<i32>,
+        city_id:     Option<i32>,
+        page:        i32,
+    ) -> (String, Vec<Place>, i32) {
+        let _connection = establish_connection();
+        let mut q = "".to_string(); 
+
+        let mut next_page_number = 0;
+        let offset: i64;
+        let have_next: i32;
+
+        if page > 1 {
+            offset = ((page as i64) - 1) * 100;
+            have_next = page * 100 + 1;
+        }
+        else {
+            offset = 0;
+            have_next = 101;
+        }
+
+        if title.is_some() {
+            q = title.as_deref().unwrap().to_string();
+            if city_id.is_some() {
+                if schema::places::table
+                    .filter(schema::places::title.ilike("%".to_owned() + &q + "%"))
+                    .filter(schema::places::types.eq_any(vec!(2, 3)))
+                    .filter(schema::places::city_id.eq(city_id))
+                    .select(schema::places::id)
+                    .limit(have_next)
+                    .offset(offset)
+                    .first::<i32>(&_connection)
+                    .is_ok() {
+                        next_page_number = page + 1;
+                }
+                
+                return ( q, schema::places::table
+                    .filter(schema::places::title.ilike("%".to_owned() + &q + "%"))
+                    .filter(schema::places::types.eq_any(vec!(2, 3)))
+                    .filter(schema::places::city_id.eq(city_id))
+                    .limit(100)
+                    .offset(offset)
+                    .load::<Place>(&_connection)
+                    .expect("E."), next_page_number);
+            }
+            else if district_id.is_some() {
+                if schema::places::table
+                    .filter(schema::places::title.ilike("%".to_owned() + &q + "%"))
+                    .filter(schema::places::types.eq_any(vec!(2, 3)))
+                    .filter(schema::places::district_id.eq(district_id))
+                    .select(schema::places::id)
+                    .limit(have_next)
+                    .offset(offset)
+                    .first::<i32>(&_connection)
+                    .is_ok() {
+                        next_page_number = page + 1;
+                }
+                return ( q, schema::places::table
+                    .filter(schema::places::title.ilike("%".to_owned() + &q + "%"))
+                    .filter(schema::places::types.eq_any(vec!(2, 3)))
+                    .filter(schema::places::district_id.eq(district_id))
+                    .limit(100)
+                    .offset(offset)
+                    .load::<Place>(&_connection)
+                    .expect("E."), next_page_number);
+            }
+            else if region_id.is_some() {
+                if schema::places::table
+                    .filter(schema::places::title.ilike("%".to_owned() + &q + "%"))
+                    .filter(schema::places::types.eq_any(vec!(2, 3)))
+                    .filter(schema::places::region_id.eq(region_id))
+                    .select(schema::places::id)
+                    .limit(have_next)
+                    .offset(offset)
+                    .first::<i32>(&_connection)
+                    .is_ok() {
+                        next_page_number = page + 1;
+                }
+                return ( q, schema::places::table
+                    .filter(schema::places::title.ilike("%".to_owned() + &q + "%"))
+                    .filter(schema::places::types.eq_any(vec!(2, 3)))
+                    .filter(schema::places::region_id.eq(region_id))
+                    .limit(100)
+                    .offset(offset)
+                    .load::<Place>(&_connection)
+                    .expect("E."), next_page_number);
+            }
+            else if country_id.is_some() {
+                if schema::places::table
+                    .filter(schema::places::title.ilike("%".to_owned() + &q + "%"))
+                    .filter(schema::places::types.eq_any(vec!(2, 3)))
+                    .filter(schema::places::country_id.eq(country_id))
+                    .select(schema::places::id)
+                    .limit(have_next)
+                    .offset(offset)
+                    .first::<i32>(&_connection)
+                    .is_ok() {
+                        next_page_number = page + 1;
+                }
+                return ( q, schema::places::table
+                    .filter(schema::places::title.ilike("%".to_owned() + &q + "%"))
+                    .filter(schema::places::types.eq_any(vec!(2, 3)))
+                    .filter(schema::places::country_id.eq(country_id))
+                    .limit(100)
+                    .offset(offset)
+                    .load::<Place>(&_connection)
+                    .expect("E."), next_page_number);
+            }
+            else {
+                if schema::places::table
+                    .filter(schema::places::types.eq_any(vec!(2, 3)))
+                    .select(schema::places::id)
+                    .limit(have_next)
+                    .offset(offset)
+                    .first::<i32>(&_connection)
+                    .is_ok() {
+                        next_page_number = page + 1;
+                }
+                return ("".to_string(), schema::places::table
+                    .filter(schema::places::types.eq_any(vec!(2, 3)))
+                    .limit(100)
+                    .offset(offset)
+                    .load::<Place>(&_connection)
+                    .expect("E."), next_page_number);
+            }
+        }
+        else {
+            if city_id.is_some() {
+                if schema::places::table
+                    .filter(schema::places::types.eq_any(vec!(2, 3)))
+                    .filter(schema::places::city_id.eq(city_id))
+                    .select(schema::places::id)
+                    .limit(have_next)
+                    .offset(offset)
+                    .first::<i32>(&_connection)
+                    .is_ok() {
+                        next_page_number = page + 1;
+                }
+                return ("".to_string(), schema::places::table
+                    .filter(schema::places::types.eq_any(vec!(2, 3)))
+                    .filter(schema::places::city_id.eq(city_id))
+                    .limit(100)
+                    .offset(offset)
+                    .load::<Place>(&_connection)
+                    .expect("E."), next_page_number);
+            }
+            else if district_id.is_some() {
+                if schema::places::table
+                    .filter(schema::places::types.eq_any(vec!(2, 3)))
+                    .filter(schema::places::district_id.eq(district_id))
+                    .select(schema::places::id)
+                    .limit(have_next)
+                    .offset(offset)
+                    .first::<i32>(&_connection)
+                    .is_ok() {
+                        next_page_number = page + 1;
+                }
+                return ("".to_string(), schema::places::table
+                    .filter(schema::places::types.eq_any(vec!(2, 3)))
+                    .filter(schema::places::district_id.eq(district_id))
+                    .limit(100)
+                    .offset(offset)
+                    .load::<Place>(&_connection)
+                    .expect("E."), next_page_number);
+            }
+            else if region_id.is_some() {
+                if schema::places::table
+                    .filter(schema::places::types.eq_any(vec!(2, 3)))
+                    .filter(schema::places::region_id.eq(region_id))
+                    .select(schema::places::id)
+                    .limit(have_next)
+                    .offset(offset)
+                    .first::<i32>(&_connection)
+                    .is_ok() {
+                        next_page_number = page + 1;
+                }
+                return ("".to_string(), schema::places::table
+                    .filter(schema::places::types.eq_any(vec!(2, 3)))
+                    .filter(schema::places::region_id.eq(region_id))
+                    .limit(100)
+                    .offset(offset)
+                    .load::<Place>(&_connection)
+                    .expect("E."), next_page_number);
+            }
+            else if country_id.is_some() {
+                if schema::places::table
+                    .filter(schema::places::types.eq_any(vec!(2, 3)))
+                    .filter(schema::places::country_id.eq(country_id))
+                    .select(schema::places::id)
+                    .limit(have_next)
+                    .offset(offset)
+                    .first::<i32>(&_connection)
+                    .is_ok() {
+                        next_page_number = page + 1;
+                }
+                return ("".to_string(), schema::places::table
+                    .filter(schema::places::types.eq_any(vec!(2, 3)))
+                    .filter(schema::places::country_id.eq(country_id))
+                    .limit(100)
+                    .offset(offset)
+                    .load::<Place>(&_connection)
+                    .expect("E."), next_page_number);
+            }
+            else {
+                if schema::places::table
+                    .filter(schema::places::types.eq_any(vec!(2, 3)))
+                    .select(schema::places::id)
+                    .limit(have_next)
+                    .offset(offset)
+                    .first::<i32>(&_connection)
+                    .is_ok() {
+                        next_page_number = page + 1;
+                }
+                return ("".to_string(), schema::places::table
+                    .filter(schema::places::types.eq_any(vec!(2, 3)))
+                    .limit(100)
+                    .offset(offset)
+                    .load::<Place>(&_connection)
+                    .expect("E."), next_page_number);
+            }
+        }
+    }
 
     pub fn get_image(&self) -> String {
         if self.image.is_some() {

@@ -18,10 +18,6 @@
                 </h1>
                 <div class="py-2 border-bottom d-flex align-items-center mb-2 flex-wrap">
                     <span>Номер ID: <%= deceased.id %></span>
-                    <a href="#" class="ml-md-auto text-decoration-none">
-                        <i class="icon-edit"></i> 
-                        <u>Изменить/уточнить</u>
-                    </a>
                 </div>
                 <div class="py-2 border-bottom d-flex align-items-center mb-2 flex-wrap justify-content-between"><strong>Поделиться:</strong>
                     <div class="d-flex share-buttons mb-2">
@@ -260,9 +256,6 @@
             <div class="col-sm-12 col-lg-3">
                 <button type="button" class="request-photo mb-4 btn btn-outline-primary"><i class="icon-flower"></i><strong>Добавить на <br> стену памяти</strong></button>
                 <div role="group" class="bg-white border edit-burial-menu mb-5 btn-group-vertical">
-                    <div class="py-3 text-dark text-uppercase edit-burial-menu__title">
-                        <strong>Изменить или уточнить</strong>
-                    </div>
                     <button type="button" class="btn btn-light"><i class="icon-data"></i>Основные данные</button>
                     <button type="button" class="btn btn-light"><i class="icon-stone-photo"></i>Фотографии памятника</button>
                     <button type="button" class="btn btn-light"><i class="icon-personal-photo"></i>Личные фотографии</button>

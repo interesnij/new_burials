@@ -145,7 +145,7 @@ pub async fn search_page(req: HttpRequest) -> actix_web::Result<HttpResponse> {
         let params = params_some.unwrap();
         let page = crate::utils::get_page(&req);
         let user_id = get_request_user(&req).await; 
-        let (q, object_list, count) = Deceased::main_search2 ( 
+        let (q, object_list, next_page_number) = Deceased::main_search2 ( 
             params.first_name.clone(),  
             params.middle_name.clone(),
             params.last_name.clone(),
@@ -171,12 +171,14 @@ pub async fn search_page(req: HttpRequest) -> actix_web::Result<HttpResponse> {
                 object_list:      Vec<Deceased>,
                 q:                String,
                 services_enabled: bool,
+                next_page_number: i32,
             }
             let body = Template {
                 request_user:     _request_user,
                 object_list:      object_list,
                 q:                q,
                 services_enabled: services_enabled,
+                next_page_number: next_page_number,
             }
             .render_once()
             .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
@@ -189,11 +191,13 @@ pub async fn search_page(req: HttpRequest) -> actix_web::Result<HttpResponse> {
                 object_list:      Vec<Deceased>,
                 q:                String,
                 services_enabled: bool,
+                next_page_number: i32,
             }
             let body = Template {
                 object_list:      object_list,
                 q:                q,
                 services_enabled: services_enabled,
+                next_page_number: next_page_number,
             }
             .render_once()
             .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;

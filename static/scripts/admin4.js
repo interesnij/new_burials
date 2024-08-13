@@ -315,7 +315,7 @@ on('body', 'click', '.remove_district', function() {
 
 on('body', 'click', '#edit_place', function() {
   _this = this;
-  form = _this.parentElement.parentElement.parentElement.parentElement.parentElement;
+  form = _this.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
 
   form.querySelector("#id_title").style.setProperty('border', 'inherit', 'important');
   form.querySelector("#id_country").style.setProperty('border', 'inherit', 'important');
@@ -347,7 +347,7 @@ on('body', 'click', '#edit_place', function() {
 
 on('body', 'click', '#edit_brave', function() {
   _this = this;
-  form = _this.parentElement.parentElement.parentElement.parentElement.parentElement;
+  form = _this.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
 
   form.querySelector("#id_title").style.setProperty('border', 'inherit', 'important');
   form.querySelector("#id_country").style.setProperty('border', 'inherit', 'important');

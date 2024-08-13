@@ -223,69 +223,75 @@ pub async fn place_map(req: HttpRequest, _id: web::Path<i32>) -> actix_web::Resu
     Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
 }
 
+#[derive(Deserialize)]
+pub struct SData {
+    pub title:       Option<String>,
+    pub country_id:  Option<i32>,
+    pub region_id:   Option<i32>,
+    pub district_id: Option<i32>,
+    pub city_id:     Option<i32>,
+}
 pub async fn all_places_page(req: HttpRequest) -> actix_web::Result<HttpResponse> {
     let (is_desctop, is_ajax) = crate::utils::get_device_and_ajax(&req);
-    let services_enabled = false;
-
-    let user_id = get_request_user(&req).await;
-
+    let params_some = web::Query::<SData>::from_query(&req.query_string());
     let page = crate::utils::get_page(&req);
-    let count = crate::models::MainStat::get_or_create().places_count;
+    let user_id = get_request_user(&req).await;
+    let services_enabled = false;
+    if params_some.is_ok() {
+        let params = params_some.unwrap(); 
+        let (q, object_list, next_page_number) = Place::main_search2 ( 
+            params.title.clone(),  
+            params.country_id,
+            params.region_id,
+            params.district_id,
+            params.city_id,
+            page,
+        );
+        if user_id.is_some() { 
+            let _request_user = user_id.unwrap();
 
-    let mut next_page_number = 0;
-    let have_next: i32;
-    let object_list: Vec<Place>;
-
-    if page > 1 {
-        let step = (page - 1) * 20;
-        have_next = page * 20 + 1;
-        object_list = Place::get_all_places(20, step.into());
+                #[derive(TemplateOnce)]
+                #[template(path = "desctop/place/all_places.stpl")]
+                struct Template {
+                    request_user:     User,
+                    object_list:      Vec<Place>,
+                    services_enabled: bool,
+                    next_page_number: i32,
+                    q:                String,
+                }
+                let body = Template {
+                    request_user:     _request_user,
+                    object_list:      object_list,
+                    services_enabled: services_enabled,
+                    next_page_number: next_page_number,
+                    q:                q,
+                }
+                .render_once()
+                .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
+                Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
+        }
+        else {
+                #[derive(TemplateOnce)]
+                #[template(path = "desctop/place/anon_all_places.stpl")]
+                struct Template {
+                    object_list:      Vec<Place>,
+                    services_enabled: bool,
+                    next_page_number: i32,
+                    q:                String,
+                }
+                let body = Template {
+                    object_list:      object_list,
+                    services_enabled: services_enabled,
+                    next_page_number: next_page_number,
+                    q:                q,
+                }
+                .render_once()
+                .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
+                Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
+        }
     }
     else {
-        have_next = 20 + 1;
-        object_list = Place::get_all_places(20, 0);
-    }
-    if i32::from(count) > have_next as i32 {
-        next_page_number = page + 1;
-    }
-
-    if user_id.is_some() { 
-        let _request_user = user_id.unwrap();
-
-            #[derive(TemplateOnce)]
-            #[template(path = "desctop/place/all_places.stpl")]
-            struct Template {
-                request_user:     User,
-                object_list:      Vec<Place>,
-                services_enabled: bool,
-                next_page_number: i32,
-            }
-            let body = Template {
-                request_user:     _request_user,
-                object_list:      object_list,
-                services_enabled: services_enabled,
-                next_page_number: next_page_number,
-            }
-            .render_once()
-            .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
-            Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
-    }
-    else {
-            #[derive(TemplateOnce)]
-            #[template(path = "desctop/place/anon_all_places.stpl")]
-            struct Template {
-                object_list:      Vec<Place>,
-                services_enabled: bool,
-                next_page_number: i32,
-            }
-            let body = Template {
-                object_list:      object_list,
-                services_enabled: services_enabled,
-                next_page_number: next_page_number,
-            }
-            .render_once()
-            .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
-            Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body(body))
+        return Ok(HttpResponse::Ok().content_type("text/html; charset=utf-8").body("no params"));
     }
 }
 
