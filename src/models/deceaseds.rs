@@ -721,7 +721,7 @@ impl Deceased {
                     .limit(100)
                     .offset(offset)
                     .load::<Deceased>(&_connection)
-                    .expect("E.");
+                    .expect("E.")
             },
             6  => {
                 if schema::deceaseds::table
@@ -740,7 +740,7 @@ impl Deceased {
                     .limit(100)
                     .offset(offset)
                     .load::<Deceased>(&_connection)
-                    .expect("E.");
+                    .expect("E.")
             },
             7  => {
                 if schema::deceaseds::table
@@ -759,7 +759,7 @@ impl Deceased {
                     .limit(100)
                     .offset(offset)
                     .load::<Deceased>(&_connection)
-                    .expect("E.");
+                    .expect("E.")
             },
             8  => {
                 if schema::deceaseds::table
@@ -778,7 +778,7 @@ impl Deceased {
                     .limit(100)
                     .offset(offset)
                     .load::<Deceased>(&_connection)
-                    .expect("E.");
+                    .expect("E.")
             },
             9  => {
                 if schema::deceaseds::table
@@ -797,7 +797,7 @@ impl Deceased {
                     .limit(100)
                     .offset(offset)
                     .load::<Deceased>(&_connection)
-                    .expect("E.");
+                    .expect("E.")
             },
             10 => {
                 if schema::deceaseds::table
@@ -816,7 +816,7 @@ impl Deceased {
                     .limit(100)
                     .offset(offset)
                     .load::<Deceased>(&_connection)
-                    .expect("E.");
+                    .expect("E.")
             },
             _ => Vec::new(),
         }; 
