@@ -14,7 +14,6 @@ use crate::models::{
     Review,
     Service,
     User,
-    Countrie,
 };
 use sailfish::TemplateOnce;
 use diesel::{
