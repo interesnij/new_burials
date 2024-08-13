@@ -518,7 +518,7 @@ impl Deceased {
             if schema::deceaseds::table
                     .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
                     .select(schema::deceaseds::id)
-                    .limit(have_next)
+                    .limit(have_next.into())
                     .offset(offset)
                     .first::<i32>(&_connection)
                     .is_ok() {
@@ -537,7 +537,7 @@ impl Deceased {
                     .filter(schema::deceaseds::last_name.ilike("%".to_owned() + &last_name.as_deref().unwrap() + "%"))
                     .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
                     .select(schema::deceaseds::id)
-                    .limit(have_next)
+                    .limit(have_next.into())
                     .offset(offset)
                     .first::<i32>(&_connection)
                     .is_ok() {
@@ -556,7 +556,7 @@ impl Deceased {
                     .filter(schema::deceaseds::place_id.eq(place.unwrap()))
                     .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
                     .select(schema::deceaseds::id)
-                    .limit(have_next)
+                    .limit(have_next.into())
                     .offset(offset)
                     .first::<i32>(&_connection)
                     .is_ok() {
@@ -578,7 +578,7 @@ impl Deceased {
                                 .filter(schema::deceaseds::birth_date.eq(birth_date.unwrap()))
                                 .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
                                 .select(schema::deceaseds::id)
-                                .limit(have_next)
+                                .limit(have_next.into())
                                 .offset(offset)
                                 .first::<i32>(&_connection)
                                 .is_ok() {
@@ -597,7 +597,7 @@ impl Deceased {
                                 .filter(schema::deceaseds::birth_date.lt(birth_date.unwrap()))
                                 .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
                                 .select(schema::deceaseds::id)
-                                .limit(have_next)
+                                .limit(have_next.into())
                                 .offset(offset)
                                 .first::<i32>(&_connection)
                                 .is_ok() {
@@ -616,7 +616,7 @@ impl Deceased {
                                 .filter(schema::deceaseds::birth_date.gt(birth_date.unwrap()))
                                 .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
                                 .select(schema::deceaseds::id)
-                                .limit(have_next)
+                                .limit(have_next.into())
                                 .offset(offset)
                                 .first::<i32>(&_connection)
                                 .is_ok() {
@@ -645,7 +645,7 @@ impl Deceased {
                                 .filter(schema::deceaseds::death_date.eq(death_date.unwrap()))
                                 .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
                                 .select(schema::deceaseds::id)
-                                .limit(have_next)
+                                .limit(have_next.into())
                                 .offset(offset)
                                 .first::<i32>(&_connection)
                                 .is_ok() {
@@ -664,7 +664,7 @@ impl Deceased {
                                 .filter(schema::deceaseds::death_date.lt(death_date.unwrap()))
                                 .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
                                 .select(schema::deceaseds::id)
-                                .limit(have_next)
+                                .limit(have_next.into())
                                 .offset(offset)
                                 .first::<i32>(&_connection)
                                 .is_ok() {
@@ -683,7 +683,7 @@ impl Deceased {
                                 .filter(schema::deceaseds::death_date.gt(death_date.unwrap()))
                                 .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
                                 .select(schema::deceaseds::id)
-                                .limit(have_next)
+                                .limit(have_next.into())
                                 .offset(offset)
                                 .first::<i32>(&_connection)
                                 .is_ok() {
@@ -709,7 +709,7 @@ impl Deceased {
                     .filter(schema::deceaseds::first_name.eq("%".to_owned() + &first_name.as_deref().unwrap() + "%"))
                     .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
                     .select(schema::deceaseds::id)
-                    .limit(have_next)
+                    .limit(have_next.into())
                     .offset(offset)
                     .first::<i32>(&_connection)
                     .is_ok() {
@@ -728,7 +728,7 @@ impl Deceased {
                     .filter(schema::deceaseds::middle_name.eq("%".to_owned() + &middle_name.as_deref().unwrap() + "%"))
                     .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
                     .select(schema::deceaseds::id)
-                    .limit(have_next)
+                    .limit(have_next.into())
                     .offset(offset)
                     .first::<i32>(&_connection)
                     .is_ok() {
@@ -747,7 +747,7 @@ impl Deceased {
                     .filter(schema::deceaseds::is_veteran.eq(true))
                     .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
                     .select(schema::deceaseds::id)
-                    .limit(have_next)
+                    .limit(have_next.into())
                     .offset(offset)
                     .first::<i32>(&_connection)
                     .is_ok() {
@@ -766,7 +766,7 @@ impl Deceased {
                     .filter(schema::deceaseds::is_famous.eq(true))
                     .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
                     .select(schema::deceaseds::id)
-                    .limit(have_next)
+                    .limit(have_next.into())
                     .offset(offset)
                     .first::<i32>(&_connection)
                     .is_ok() {
@@ -785,7 +785,7 @@ impl Deceased {
                     .filter(schema::deceaseds::image.is_not_null())
                     .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
                     .select(schema::deceaseds::id)
-                    .limit(have_next)
+                    .limit(have_next.into())
                     .offset(offset)
                     .first::<i32>(&_connection)
                     .is_ok() {
@@ -804,7 +804,7 @@ impl Deceased {
                     .filter(schema::deceaseds::cord.is_not_null())
                     .filter(schema::deceaseds::types.eq_any(vec!(2, 3)))
                     .select(schema::deceaseds::id)
-                    .limit(have_next)
+                    .limit(have_next.into())
                     .offset(offset)
                     .first::<i32>(&_connection)
                     .is_ok() {

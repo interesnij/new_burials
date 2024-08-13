@@ -220,12 +220,13 @@ impl Place {
         if title.is_some() {
             q = title.as_deref().unwrap().to_string();
             if city_id.is_some() {
+                let city_id_unwrap = city_id.unwrap();
                 if schema::places::table
                     .filter(schema::places::title.ilike("%".to_owned() + &q + "%"))
                     .filter(schema::places::types.eq_any(vec!(2, 3)))
-                    .filter(schema::places::city_id.eq(city_id))
+                    .filter(schema::places::city_id.eq(city_id_unwrap))
                     .select(schema::places::id)
-                    .limit(have_next)
+                    .limit(have_next.into())
                     .offset(offset)
                     .first::<i32>(&_connection)
                     .is_ok() {
@@ -235,19 +236,20 @@ impl Place {
                 return ( q, schema::places::table
                     .filter(schema::places::title.ilike("%".to_owned() + &q + "%"))
                     .filter(schema::places::types.eq_any(vec!(2, 3)))
-                    .filter(schema::places::city_id.eq(city_id))
+                    .filter(schema::places::city_id.eq(city_id_unwrap))
                     .limit(100)
                     .offset(offset)
                     .load::<Place>(&_connection)
                     .expect("E."), next_page_number);
             }
             else if district_id.is_some() {
+                let district_id_unwrap = district_id.unwrap();
                 if schema::places::table
                     .filter(schema::places::title.ilike("%".to_owned() + &q + "%"))
                     .filter(schema::places::types.eq_any(vec!(2, 3)))
-                    .filter(schema::places::district_id.eq(district_id))
+                    .filter(schema::places::district_id.eq(district_id_unwrap))
                     .select(schema::places::id)
-                    .limit(have_next)
+                    .limit(have_next.into())
                     .offset(offset)
                     .first::<i32>(&_connection)
                     .is_ok() {
@@ -256,19 +258,20 @@ impl Place {
                 return ( q, schema::places::table
                     .filter(schema::places::title.ilike("%".to_owned() + &q + "%"))
                     .filter(schema::places::types.eq_any(vec!(2, 3)))
-                    .filter(schema::places::district_id.eq(district_id))
+                    .filter(schema::places::district_id.eq(district_id_unwrap))
                     .limit(100)
                     .offset(offset)
                     .load::<Place>(&_connection)
                     .expect("E."), next_page_number);
             }
             else if region_id.is_some() {
+                let region_id_unwrap = region_id.unwrap();
                 if schema::places::table
                     .filter(schema::places::title.ilike("%".to_owned() + &q + "%"))
                     .filter(schema::places::types.eq_any(vec!(2, 3)))
-                    .filter(schema::places::region_id.eq(region_id))
+                    .filter(schema::places::region_id.eq(region_id_unwrap))
                     .select(schema::places::id)
-                    .limit(have_next)
+                    .limit(have_next.into())
                     .offset(offset)
                     .first::<i32>(&_connection)
                     .is_ok() {
@@ -277,19 +280,20 @@ impl Place {
                 return ( q, schema::places::table
                     .filter(schema::places::title.ilike("%".to_owned() + &q + "%"))
                     .filter(schema::places::types.eq_any(vec!(2, 3)))
-                    .filter(schema::places::region_id.eq(region_id))
+                    .filter(schema::places::region_id.eq(region_id_unwrap))
                     .limit(100)
                     .offset(offset)
                     .load::<Place>(&_connection)
                     .expect("E."), next_page_number);
             }
             else if country_id.is_some() {
+                let country_id_unwrap = country_id.unwrap();
                 if schema::places::table
                     .filter(schema::places::title.ilike("%".to_owned() + &q + "%"))
                     .filter(schema::places::types.eq_any(vec!(2, 3)))
-                    .filter(schema::places::country_id.eq(country_id))
+                    .filter(schema::places::country_id.eq(country_id_unwrap))
                     .select(schema::places::id)
-                    .limit(have_next)
+                    .limit(have_next.into())
                     .offset(offset)
                     .first::<i32>(&_connection)
                     .is_ok() {
@@ -298,7 +302,7 @@ impl Place {
                 return ( q, schema::places::table
                     .filter(schema::places::title.ilike("%".to_owned() + &q + "%"))
                     .filter(schema::places::types.eq_any(vec!(2, 3)))
-                    .filter(schema::places::country_id.eq(country_id))
+                    .filter(schema::places::country_id.eq(country_id_unwrap))
                     .limit(100)
                     .offset(offset)
                     .load::<Place>(&_connection)
@@ -308,7 +312,7 @@ impl Place {
                 if schema::places::table
                     .filter(schema::places::types.eq_any(vec!(2, 3)))
                     .select(schema::places::id)
-                    .limit(have_next)
+                    .limit(have_next.into())
                     .offset(offset)
                     .first::<i32>(&_connection)
                     .is_ok() {
@@ -324,11 +328,12 @@ impl Place {
         }
         else {
             if city_id.is_some() {
+                let city_id_unwrap = city_id.unwrap();
                 if schema::places::table
                     .filter(schema::places::types.eq_any(vec!(2, 3)))
-                    .filter(schema::places::city_id.eq(city_id))
+                    .filter(schema::places::city_id.eq(city_id_unwrap))
                     .select(schema::places::id)
-                    .limit(have_next)
+                    .limit(have_next.into())
                     .offset(offset)
                     .first::<i32>(&_connection)
                     .is_ok() {
@@ -336,18 +341,19 @@ impl Place {
                 }
                 return ("".to_string(), schema::places::table
                     .filter(schema::places::types.eq_any(vec!(2, 3)))
-                    .filter(schema::places::city_id.eq(city_id))
+                    .filter(schema::places::city_id.eq(city_id_unwrap))
                     .limit(100)
                     .offset(offset)
                     .load::<Place>(&_connection)
                     .expect("E."), next_page_number);
             }
             else if district_id.is_some() {
+                let district_id_unwrap = district_id.unwrap();
                 if schema::places::table
                     .filter(schema::places::types.eq_any(vec!(2, 3)))
-                    .filter(schema::places::district_id.eq(district_id))
+                    .filter(schema::places::district_id.eq(district_id_unwrap))
                     .select(schema::places::id)
-                    .limit(have_next)
+                    .limit(have_next.into())
                     .offset(offset)
                     .first::<i32>(&_connection)
                     .is_ok() {
@@ -355,18 +361,19 @@ impl Place {
                 }
                 return ("".to_string(), schema::places::table
                     .filter(schema::places::types.eq_any(vec!(2, 3)))
-                    .filter(schema::places::district_id.eq(district_id))
+                    .filter(schema::places::district_id.eq(district_id_unwrap))
                     .limit(100)
                     .offset(offset)
                     .load::<Place>(&_connection)
                     .expect("E."), next_page_number);
             }
             else if region_id.is_some() {
+                let region_id_unwrap = region_id.unwrap();
                 if schema::places::table
                     .filter(schema::places::types.eq_any(vec!(2, 3)))
-                    .filter(schema::places::region_id.eq(region_id))
+                    .filter(schema::places::region_id.eq(region_id_unwrap))
                     .select(schema::places::id)
-                    .limit(have_next)
+                    .limit(have_next.into())
                     .offset(offset)
                     .first::<i32>(&_connection)
                     .is_ok() {
@@ -374,18 +381,19 @@ impl Place {
                 }
                 return ("".to_string(), schema::places::table
                     .filter(schema::places::types.eq_any(vec!(2, 3)))
-                    .filter(schema::places::region_id.eq(region_id))
+                    .filter(schema::places::region_id.eq(region_id_unwrap))
                     .limit(100)
                     .offset(offset)
                     .load::<Place>(&_connection)
                     .expect("E."), next_page_number);
             }
             else if country_id.is_some() {
+                let country_id_unwrap = country_id.unwrap();
                 if schema::places::table
                     .filter(schema::places::types.eq_any(vec!(2, 3)))
-                    .filter(schema::places::country_id.eq(country_id))
+                    .filter(schema::places::country_id.eq(country_id_unwrap))
                     .select(schema::places::id)
-                    .limit(have_next)
+                    .limit(have_next.into())
                     .offset(offset)
                     .first::<i32>(&_connection)
                     .is_ok() {
@@ -393,7 +401,7 @@ impl Place {
                 }
                 return ("".to_string(), schema::places::table
                     .filter(schema::places::types.eq_any(vec!(2, 3)))
-                    .filter(schema::places::country_id.eq(country_id))
+                    .filter(schema::places::country_id.eq(country_id_unwrap))
                     .limit(100)
                     .offset(offset)
                     .load::<Place>(&_connection)
@@ -403,7 +411,7 @@ impl Place {
                 if schema::places::table
                     .filter(schema::places::types.eq_any(vec!(2, 3)))
                     .select(schema::places::id)
-                    .limit(have_next)
+                    .limit(have_next.into())
                     .offset(offset)
                     .first::<i32>(&_connection)
                     .is_ok() {
