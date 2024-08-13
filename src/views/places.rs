@@ -14,6 +14,7 @@ use crate::models::{
     Review,
     Service,
     User,
+    Countrie,
 };
 use sailfish::TemplateOnce;
 use diesel::{
@@ -237,6 +238,8 @@ pub async fn all_places_page(req: HttpRequest) -> actix_web::Result<HttpResponse
     let page = crate::utils::get_page(&req);
     let user_id = get_request_user(&req).await;
     let services_enabled = false;
+    let country_list = Countrie::get_all();
+
     if params_some.is_ok() {
         let params = params_some.unwrap(); 
         let (q, object_list, next_page_number) = Place::main_search2 ( 
@@ -258,6 +261,7 @@ pub async fn all_places_page(req: HttpRequest) -> actix_web::Result<HttpResponse
                     services_enabled: bool,
                     next_page_number: i32,
                     q:                String,
+                    country_list:     Vec<Countrie>,
                 }
                 let body = Template {
                     request_user:     _request_user,
@@ -265,6 +269,7 @@ pub async fn all_places_page(req: HttpRequest) -> actix_web::Result<HttpResponse
                     services_enabled: services_enabled,
                     next_page_number: next_page_number,
                     q:                q,
+                    country_list:     country_list,
                 }
                 .render_once()
                 .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
@@ -278,12 +283,14 @@ pub async fn all_places_page(req: HttpRequest) -> actix_web::Result<HttpResponse
                     services_enabled: bool,
                     next_page_number: i32,
                     q:                String,
+                    country_list:     Vec<Countrie>,
                 }
                 let body = Template {
                     object_list:      object_list,
                     services_enabled: services_enabled,
                     next_page_number: next_page_number,
                     q:                q,
+                    country_list:     country_list,
                 }
                 .render_once()
                 .map_err(|e| InternalError::new(e, StatusCode::INTERNAL_SERVER_ERROR))?;
