@@ -233,7 +233,7 @@ impl Place {
                         next_page_number = page + 1;
                 }
                 
-                return ( q, schema::places::table
+                return ( q.clone(), schema::places::table
                     .filter(schema::places::title.ilike("%".to_owned() + &q + "%"))
                     .filter(schema::places::types.eq_any(vec!(2, 3)))
                     .filter(schema::places::city_id.eq(city_id_unwrap))
@@ -255,7 +255,7 @@ impl Place {
                     .is_ok() {
                         next_page_number = page + 1;
                 }
-                return ( q, schema::places::table
+                return ( q.clone(), schema::places::table
                     .filter(schema::places::title.ilike("%".to_owned() + &q + "%"))
                     .filter(schema::places::types.eq_any(vec!(2, 3)))
                     .filter(schema::places::district_id.eq(district_id_unwrap))
@@ -277,7 +277,7 @@ impl Place {
                     .is_ok() {
                         next_page_number = page + 1;
                 }
-                return ( q, schema::places::table
+                return ( q.clone(), schema::places::table
                     .filter(schema::places::title.ilike("%".to_owned() + &q + "%"))
                     .filter(schema::places::types.eq_any(vec!(2, 3)))
                     .filter(schema::places::region_id.eq(region_id_unwrap))
@@ -299,7 +299,7 @@ impl Place {
                     .is_ok() {
                         next_page_number = page + 1;
                 }
-                return ( q, schema::places::table
+                return ( q.clone(), schema::places::table
                     .filter(schema::places::title.ilike("%".to_owned() + &q + "%"))
                     .filter(schema::places::types.eq_any(vec!(2, 3)))
                     .filter(schema::places::country_id.eq(country_id_unwrap))
