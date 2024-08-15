@@ -417,6 +417,26 @@ on('body', 'change', '.load_regions', function() {
   };
 });
 
+on('body', 'change', '.load_regions_2', function() {
+  var val = this.value; 
+  block = this;
+  if (val == '') { 
+    block.innerHTML = "";
+  } else {
+      var link = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject( 'Microsoft.XMLHTTP' );
+      link.open( 'GET', "/load_regions/" + val, true );
+      link.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+      link.onreadystatechange = function () {
+        if ( link.readyState == 4 ) { 
+            if ( link.status == 200 ) {
+                block.innerHTML = link.responseText.querySelector("select");
+            }
+        }
+    };
+    link.send( null );
+  };
+});
+
 on('body', 'input', '.place_search', function() {
   console.log("place_search change");
   _this = this; 
