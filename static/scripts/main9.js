@@ -415,11 +415,11 @@ on('body', 'change', '.load_regions', function() {
     };
     link.send( null );
   };
-});
+}); 
 
 on('body', 'change', '.load_regions_2', function() {
   var val = this.value; 
-  block = this;
+  block = this.parentElement.nextElementSibling;
   if (val == '') { 
     block.innerHTML = "";
   } else {
@@ -429,8 +429,7 @@ on('body', 'change', '.load_regions_2', function() {
       link.onreadystatechange = function () {
         if ( link.readyState == 4 ) { 
             if ( link.status == 200 ) {
-                a = link.responseText;
-                block.innerHTML = a.querySelector("select").innerHTML;
+                block.innerHTML = link.responseText;
             }
         }
     };
