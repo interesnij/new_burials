@@ -1,4 +1,4 @@
-<form class="find-burial-form py-4 px-md-5 px-3 row">
+<form class="find-burial-form py-4 px-md-5 px-3">
     <div class="flex-grow-1 row">
         <div class="col-md-12 col-lg-4">
             <div class="form-group">
@@ -39,7 +39,7 @@
                     <option value="">Выберите страну</option>
 					<% for i in country_list.iter() { %>
                         <option value="<%= i.id %>"><%= i.name %></option>
-                    <% } %>
+                    <% } %> 
                 </select>
 			</div> 
             <div class="mb-3 form-select">

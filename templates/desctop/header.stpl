@@ -8,7 +8,7 @@
     <title>Поиск захоронений онлайн, поиск могилы по фамилии, месту или дате смерти</title>
     <meta name="description" content="Этот сайт является агрегатором ритуальных услуг со всех городов, а так же предоставляет электронную регистрацию захоронений.">
     <meta name="keywords" content="Этот сайт является агрегатором ритуальных услуг со всех городов, а так же предоставляет электронную регистрацию захоронений.">
-    <link href="/static/styles/bootstrap.css" rel="stylesheet">
+    <link href="/static/styles/bootstrap2.css" rel="stylesheet">
     <link href="/static/styles/style.css" rel="stylesheet">
 </head> 
 
