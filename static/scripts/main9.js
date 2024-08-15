@@ -429,7 +429,8 @@ on('body', 'change', '.load_regions_2', function() {
       link.onreadystatechange = function () {
         if ( link.readyState == 4 ) { 
             if ( link.status == 200 ) {
-                block.innerHTML = link.responseText.querySelector("select");
+                a = link.responseText;
+                block.innerHTML = a.querySelector("select").innerHTML;
             }
         }
     };
