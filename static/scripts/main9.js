@@ -430,6 +430,7 @@ on('body', 'change', '.load_regions_2', function() {
         if ( link.readyState == 4 ) { 
             if ( link.status == 200 ) {
                 block.innerHTML = link.responseText;
+                block.querySelector("select").classList.replace("load_region_items", "load_region_items_2");
             }
         }
     };
