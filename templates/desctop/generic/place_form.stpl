@@ -1,6 +1,6 @@
 <form class="find-burial-form py-4 px-md-5 px-3">
     <div class="flex-grow-1 row">
-        <div class="col-md-12 col-lg-4">
+        <div class="col-md-12 col-lg-8">
             <div class="form-group">
                 <input name="title"
                     id="id_title" 
@@ -11,17 +11,6 @@
                 <label for="id_title">По названию</label>
             </div> 
         </div> 
-        <div class="col-md-12 col-lg-4">
-            <div class="form-group">
-                <input  
-                    name="title"
-                    id="id_location" 
-                    placeholder="Введите страну, регион, район, город..."
-                    type="text" 
-                    class="form-control"
-                > 
-                <label for="id_location" class="">По локации</label>
-            </div>
         </div>
         <div class="submit-col col-md-12 col-lg-4">
             <button type="button" class="btn btn-primary search_places">
