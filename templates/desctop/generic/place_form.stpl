@@ -32,7 +32,7 @@
     </div>
 
     <div class="border-top mt-3 pt-3 row"> 
-		<div class="d-flex flex-column justify-content-end col-sm-12 col-md-6">
+		<div class="col-sm-12 col-md-6">
 			<div class="mb-3 form-select">
 				<label class="font-semibold">Страна:</label>
                 <select id="id_country" name="country_id" class="form-select search_country form-control mt-2">
@@ -41,7 +41,8 @@
                         <option value="<%= i.id %>"><%= i.name %></option>
                     <% } %> 
                 </select>
-			</div> 
+			</div>
+        
             <div class="mb-3 form-select">
 				<label class="font-semibold">Регион:</label>
 					<select id="id_region_id" name="region_id" class="form-select search_region form-control mt-2">
