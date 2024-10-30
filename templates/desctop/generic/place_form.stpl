@@ -26,7 +26,7 @@
                     <option value="">Выберите страну</option>
 					<% for i in country_list.iter() { %>
                         <option value="<%= i.id %>"><%= i.name %></option>
-                    <% } %> 
+                    <% } %>  
                 </select>
 			</div>
         
