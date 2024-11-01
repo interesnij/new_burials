@@ -124,7 +124,7 @@
                             
                             <br>
                                 <div class="md:col-span-3 col-span-12 text-start">
-                                    <label class="font-semibold md:invisible md:block hidden">Часы работы:</label>
+                                    <label class="font-semibold md:invisible md:block">Часы работы:</label>
                                     <div class="relative mt-1">
                                         <input type="text" 
                                             class="form-control ps-12 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded 

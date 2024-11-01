@@ -34,9 +34,7 @@
                         <div class="col-sm-4"><strong>Координаты GPS:</strong></div>
                         <div class="col-sm-8">
                             <span><%= place.cord.as_deref().unwrap() %> &nbsp;
-                                <a role="button" data-cord="<%= place.cord.as_deref().unwrap() %>" data-pk="<%= place.id %>" tabindex="0" class="data-cord text-primary">
-                                    <u>показать на карте</u>
-                                </a>
+
                             </span>
                         </div>
                     </div>

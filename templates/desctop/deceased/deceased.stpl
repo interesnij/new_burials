@@ -132,9 +132,7 @@
                     <div class="col-sm-4"><strong>Координаты GPS:</strong></div>
                     <div class="col-sm-8">
                         <span><%= deceased.cord.as_deref().unwrap() %> &nbsp;
-                            <a data-cord="<%= deceased.cord.as_deref().unwrap() %>" data-pk="<%= deceased.id %>" role="button" tabindex="0" class="data-cord text-primary">
-                                <u>показать на карте</u>
-                            </a>
+
                         </span>
                     </div>
                 </div>
