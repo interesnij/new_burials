@@ -52,6 +52,7 @@ pub struct Place {
     pub height:           f64,
     pub seconds:          i32,
     pub uuid:             String,
+    pub other_id:         i32,
 }
 
 // Структура для создания новой записи Place
@@ -79,6 +80,7 @@ pub struct NewPlace {
     pub height:           f64,
     pub seconds:          i32,
     pub uuid:             String,
+    pub other_id:         i32,
 }
 
 pub struct SmallPlace {
@@ -547,6 +549,7 @@ impl Place {
             height:           0.0,
             seconds:          0,
             uuid:             uuid::Uuid::new_v4().to_string(),
+            other_id:         0,
         };
         let _new = diesel::insert_into(schema::places::table)
             .values(&new_form)
@@ -669,6 +672,7 @@ impl Place {
             height:           0.0,
             seconds:          0,
             uuid:             uuid::Uuid::new_v4().to_string(),
+            other_id:         0,
         };
         let _new = diesel::insert_into(schema::places::table)
             .values(&new_form)

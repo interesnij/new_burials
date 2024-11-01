@@ -54,6 +54,7 @@ pub struct Deceased {
     pub height:          f64,
     pub seconds:         i32,
     pub uuid:            String,
+    pub other_id:        i32,
 }
 
 // Структура для создания новых записей об усопших
@@ -81,6 +82,7 @@ pub struct NewDeceased {
     pub height:          f64,
     pub seconds:         i32,
     pub uuid:            String,
+    pub other_id:        i32,
 }
 
 impl Deceased {
@@ -298,6 +300,7 @@ impl Deceased {
             height:          0.0,
             seconds:         0,
             uuid:            uuid::Uuid::new_v4().to_string(),
+            other_id:        0,
         };
         let _new = diesel::insert_into(schema::deceaseds::table)
             .values(&new_form)

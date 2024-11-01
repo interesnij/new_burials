@@ -94,7 +94,8 @@ CREATE TABLE deceaseds (
     view            INT NOT NULL,
     height          FLOAT NOT NULL,
     seconds         INT NOT NULL,
-    uuid            VARCHAR(50) NOT NULL
+    uuid            VARCHAR(50) NOT NULL,
+    other_id        INT NOT NULL DEFAULT 0
 );
 
 /*
@@ -182,7 +183,8 @@ CREATE TABLE organizations (
     view        INT NOT NULL,
     height      FLOAT NOT NULL,
     seconds     INT NOT NULL,
-    uuid        VARCHAR(50) NOT NULL
+    uuid        VARCHAR(50) NOT NULL,
+    other_id    INT NOT NULL DEFAULT 0
 );
 
 -- Создание индекса для ускорения поиска по идентификатору организации
@@ -250,7 +252,8 @@ CREATE TABLE places (
     view             INT NOT NULL,
     height           FLOAT NOT NULL,
     seconds          INT NOT NULL,
-    uuid             VARCHAR(50) NOT NULL
+    uuid             VARCHAR(50) NOT NULL,
+    other_id         INT NOT NULL DEFAULT 0
 ); 
 
 

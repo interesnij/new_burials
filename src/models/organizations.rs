@@ -45,6 +45,7 @@ pub struct Organization {
     pub height:      f64,
     pub seconds:     i32,
     pub uuid:        String,
+    pub other_id:    i32,
 } 
 
 // Структура для создания новой организации
@@ -65,6 +66,7 @@ pub struct NewOrganization {
     pub height:      f64,
     pub seconds:     i32,
     pub uuid:        String,
+    pub other_id:    i32,
 }
 
 pub struct PlaceSmall {
@@ -226,6 +228,7 @@ impl Organization {
             height:      0.0,
             seconds:     0,
             uuid:        uuid::Uuid::new_v4().to_string(),
+            other_id:    0,
         };
         let _new = diesel::insert_into(schema::organizations::table)
             .values(&new_form)
