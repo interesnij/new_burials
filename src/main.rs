@@ -49,7 +49,7 @@ async fn main() -> std::io::Result<()> {
             .configure(routes)
             .default_service(web::route().to(not_found))
     })
-    .bind("192.168.0.49:9010")?
+    .bind("192.168.0.127:9010")?
     .run()
     .await
 }
