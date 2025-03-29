@@ -3,12 +3,10 @@
 diesel::table! {
     cities (id) {
         id -> Int4,
-        #[max_length = 100]
         name -> Varchar,
         geo_id -> Nullable<Int4>,
         region_id -> Nullable<Int4>,
         country_id -> Int4,
-        #[max_length = 100]
         cord -> Nullable<Varchar>,
     }
 }
@@ -18,9 +16,7 @@ diesel::table! {
         id -> Int4,
         user_id -> Int4,
         page -> Int2,
-        #[max_length = 200]
         link -> Varchar,
-        #[max_length = 200]
         title -> Varchar,
         height -> Float8,
         seconds -> Int4,
@@ -31,23 +27,15 @@ diesel::table! {
 diesel::table! {
     cookie_users (id) {
         id -> Int4,
-        #[max_length = 100]
         ip -> Varchar,
         device -> Int2,
         linguage -> Int2,
-        #[max_length = 10]
         currency -> Varchar,
-        #[max_length = 150]
         city_ru -> Nullable<Varchar>,
-        #[max_length = 150]
         city_en -> Nullable<Varchar>,
-        #[max_length = 150]
         region_ru -> Nullable<Varchar>,
-        #[max_length = 150]
         region_en -> Nullable<Varchar>,
-        #[max_length = 150]
         country_ru -> Nullable<Varchar>,
-        #[max_length = 150]
         country_en -> Nullable<Varchar>,
         height -> Float8,
         seconds -> Int4,
@@ -58,14 +46,11 @@ diesel::table! {
 diesel::table! {
     countries (id) {
         id -> Int4,
-        #[max_length = 100]
         name -> Varchar,
         geo_id -> Nullable<Int4>,
         continent_id -> Nullable<Int4>,
         timezone_id -> Nullable<Int4>,
-        #[max_length = 10]
         phone -> Nullable<Varchar>,
-        #[max_length = 100]
         cord -> Nullable<Varchar>,
     }
 }
@@ -75,21 +60,14 @@ diesel::table! {
         id -> Int4,
         user_id -> Int4,
         place_id -> Int4,
-        #[max_length = 100]
         first_name -> Varchar,
-        #[max_length = 100]
         middle_name -> Nullable<Varchar>,
-        #[max_length = 100]
         last_name -> Varchar,
         birth_date -> Nullable<Date>,
         death_date -> Nullable<Date>,
-        #[max_length = 100]
         image -> Nullable<Varchar>,
-        #[max_length = 500]
         memory_words -> Nullable<Varchar>,
-        #[max_length = 500]
         description -> Nullable<Varchar>,
-        #[max_length = 100]
         cord -> Nullable<Varchar>,
         is_veteran -> Bool,
         is_famous -> Bool,
@@ -100,7 +78,6 @@ diesel::table! {
         view -> Int4,
         height -> Float8,
         seconds -> Int4,
-        #[max_length = 50]
         uuid -> Varchar,
         other_id -> Int4,
     }
@@ -109,11 +86,9 @@ diesel::table! {
 diesel::table! {
     districts (id) {
         id -> Int4,
-        #[max_length = 100]
         name -> Varchar,
         region_id -> Nullable<Int4>,
         country_id -> Int4,
-        #[max_length = 100]
         cord -> Nullable<Varchar>,
     }
 }
@@ -123,7 +98,6 @@ diesel::table! {
         id -> Int4,
         object_id -> Int4,
         object_types -> Int2,
-        #[max_length = 100]
         src -> Varchar,
     }
 }
@@ -163,19 +137,12 @@ diesel::table! {
 diesel::table! {
     organizations (id) {
         id -> Int4,
-        #[max_length = 100]
         name -> Varchar,
-        #[max_length = 1000]
         description -> Varchar,
-        #[max_length = 255]
         director -> Varchar,
-        #[max_length = 15]
         phone -> Varchar,
-        #[max_length = 100]
         hours -> Varchar,
-        #[max_length = 100]
         website -> Nullable<Varchar>,
-        #[max_length = 100]
         image -> Nullable<Varchar>,
         user_id -> Int4,
         types -> Int4,
@@ -183,7 +150,6 @@ diesel::table! {
         view -> Int4,
         height -> Float8,
         seconds -> Int4,
-        #[max_length = 50]
         uuid -> Varchar,
         other_id -> Int4,
     }
@@ -196,7 +162,6 @@ diesel::table! {
         city_id -> Int4,
         region_id -> Nullable<Int4>,
         country_id -> Int4,
-        #[max_length = 500]
         address2 -> Varchar,
         created -> Timestamp,
     }
@@ -218,31 +183,21 @@ diesel::table! {
         district_id -> Nullable<Int4>,
         region_id -> Nullable<Int4>,
         country_id -> Int4,
-        #[max_length = 100]
         title -> Varchar,
-        #[max_length = 1000]
         description -> Nullable<Varchar>,
-        #[max_length = 100]
         hours -> Nullable<Varchar>,
-        #[max_length = 100]
         image -> Nullable<Varchar>,
-        #[max_length = 255]
         address -> Nullable<Varchar>,
         count -> Int2,
-        #[max_length = 255]
         director -> Nullable<Varchar>,
-        #[max_length = 15]
         phone -> Nullable<Varchar>,
-        #[max_length = 100]
         cadastral_number -> Nullable<Varchar>,
-        #[max_length = 100]
         cord -> Nullable<Varchar>,
         types -> Int4,
         created -> Timestamp,
         view -> Int4,
         height -> Float8,
         seconds -> Int4,
-        #[max_length = 50]
         uuid -> Varchar,
         other_id -> Int4,
     }
@@ -251,12 +206,10 @@ diesel::table! {
 diesel::table! {
     regions (id) {
         id -> Int4,
-        #[max_length = 100]
         name -> Varchar,
         geo_id -> Nullable<Int4>,
         country_id -> Int4,
         timezone_id -> Nullable<Int4>,
-        #[max_length = 100]
         cord -> Nullable<Varchar>,
     }
 }
@@ -267,7 +220,6 @@ diesel::table! {
         user_id -> Int4,
         object_id -> Int4,
         object_types -> Int2,
-        #[max_length = 1000]
         content -> Varchar,
         types -> Int2,
         created -> Timestamp,
@@ -277,12 +229,9 @@ diesel::table! {
 diesel::table! {
     services (id) {
         id -> Int4,
-        #[max_length = 100]
         title -> Varchar,
         position -> Int2,
-        #[max_length = 100]
         image -> Nullable<Varchar>,
-        #[max_length = 300]
         description -> Nullable<Varchar>,
     }
 }
@@ -300,24 +249,16 @@ diesel::table! {
 diesel::table! {
     users (id) {
         id -> Int4,
-        #[max_length = 100]
         username -> Varchar,
-        #[max_length = 100]
         first_name -> Varchar,
-        #[max_length = 100]
         last_name -> Varchar,
-        #[max_length = 12]
         phone -> Varchar,
-        #[max_length = 100]
         email -> Varchar,
-        #[max_length = 100]
         password -> Varchar,
         description -> Nullable<Text>,
-        #[max_length = 100]
         image -> Nullable<Varchar>,
         perm -> Int2,
         created -> Timestamp,
-        #[max_length = 50]
         uuid -> Varchar,
     }
 }
